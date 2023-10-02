@@ -1,0 +1,20 @@
+.banner1 {
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+   }
+
+   .banner1 .item {
+     width: calc(50% - 10px);
+     margin-bottom: 20px;
+   }
+
+   .banner1 .item img {
+     width: 100%;
+   }
+
+   @media screen and (max-width: 600px) {
+     .banner1 .item {
+       width: 100%;
+     }
+   }

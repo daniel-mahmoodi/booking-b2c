@@ -1,0 +1,11 @@
+.header {
+  padding-bottom: 84px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+}

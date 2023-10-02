@@ -1,0 +1,12 @@
+.body {
+  /* width: 100%; Set the width to 100% to take the full width of its parent */
+  /* overflow-x: scroll; Enable horizontal scrolling */
+  /* white-space: nowrap; Prevent button text from wrapping to the next line */
+  padding: 10px; /* Add padding for spacing */
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap: wrap;
+  margin: 2px 10px;
+  border-radius: 6px;
+}

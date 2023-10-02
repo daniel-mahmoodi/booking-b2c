@@ -1,0 +1,21 @@
+.menuItem {
+  width: 100px;
+}
+.active {
+  font-weight: bold;
+}
+
+.divider {
+  align-self: stretch;
+  min-height: 1px;
+  min-width: 1px;
+  margin: 0;
+  border: none;
+  flex: 0 1 0;
+  height: auto;
+  width: auto;
+  margin: 15px 0px;
+  max-width: 100%;
+  background: var(--border-1);
+  background-color: rgba(77, 70, 70, 0.3);
+}

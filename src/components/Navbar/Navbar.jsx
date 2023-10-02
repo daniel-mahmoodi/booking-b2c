@@ -1,11 +1,24 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Catalog from "../Catalog/Catalog";
-
+import NavbarHeader from "./NavbarHeader";
+import classes from "./Navbar.module.css";
 const Navbar = () => {
+  const [stickyNav, setStickyNav] = useState(false);
+  useEffect(() => {
+    window.onscroll = () => {
+      setStickyNav(window.scrollY >= 84 ? true : false);
+      return () => (window.onscroll = null);
+    };
+  }, []);
   return (
-    <div>
-      <Catalog />
-    </div>
+    <Fragment>
+      <div className={stickyNav ? classes.header : ""}>
+        <NavbarHeader />
+      </div>
+      <div className={stickyNav ? classes.sticky : ""}>
+        <Catalog />
+      </div>
+    </Fragment>
   );
 };
 

@@ -1,0 +1,6 @@
+.breadcrumb {
+  text-decoration: none;
+  display: flex;
+  justify-content: right;
+  max-width: fit-content;
+}
