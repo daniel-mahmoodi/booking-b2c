@@ -6,6 +6,7 @@ import MainEventsPage from "../Events/MainEventsPage";
 import { useDispatch } from "react-redux";
 import { fetchListOfCatalogs } from "../../store/catalog-action";
 import HomePage from "../Home/HomePage/HomePage";
+import SinglePage from "../Card/SinglePage";
 const MainPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,8 +25,14 @@ const MainPage = () => {
             <Route path="/home-page" exact>
               <HomePage />
             </Route>
-            <Route path="/home-page/catalog/:catalogId" exact>
+            <Route path="/catalog" exact>
               <MainEventsPage />
+            </Route>
+            <Route path="/single-page" exact>
+              <SinglePage />
+            </Route>
+            <Route path="*">
+              <Redirect to="/home-page" />
             </Route>
           </Switch>
           <Footer />

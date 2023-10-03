@@ -1,25 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialCatalogState = {
-  catalogsList: [],
-  childrenOfCatalog: [],
+  listOfCatalogs: [],
+  catalogDetails: [],
   filterSelectedId: 0,
   selectedCatalogName: "",
+  myCatalogLoader: false,
+  showCatalogError: false,
+  myCatalogDetailsLoader: false,
+  showCatalogDetailsError: false,
 };
 const catalogSlice = createSlice({
   name: "catalog",
   initialState: initialCatalogState,
   reducers: {
     addCatalogsList(state, action) {
-      state.catalogsList = action.payload;
+      state.listOfCatalogs = action.payload;
     },
-    addCatalogChildrenList(state, action) {
-      state.childrenOfCatalog = action.payload;
+    addSelectedCatalogDetails(state, action) {
+      state.catalogDetails = action.payload;
     },
     addFilterItemId(state, action) {
       state.filterSelectedId = action.payload;
     },
     addSelectedCatalogName(state, action) {
       state.selectedCatalogName = action.payload;
+    },
+    toggleMyCatalogLoader(state, action) {
+      state.myCatalogLoader = action.payload;
+    },
+    toggleShowCatalogError(state, action) {
+      state.showCatalogError = action.payload;
+    },
+    toggleMyCatalogDetailsLoader(state, action) {
+      state.myCatalogDetailsLoader = action.payload;
+    },
+    toggleShowCatalogDetailsError(state, action) {
+      state.showCatalogDetailsError = action.payload;
     },
   },
 });

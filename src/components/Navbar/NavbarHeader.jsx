@@ -23,7 +23,7 @@ function NavbarHeader() {
             </div>
             <div className="page-header__left">
               <NavSearch />
-              <HomeInMobile />
+              {/* <HomeInMobile /> */}
               <ShoppingBag />
               <NavSignInButton />
               <HambergerMobileButton />

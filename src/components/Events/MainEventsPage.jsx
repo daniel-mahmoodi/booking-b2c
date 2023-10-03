@@ -1,28 +1,17 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import Banner from "./Banner/Banner";
-import Filter from "./Filter";
+import Filter from "./Filter/Filter";
 import Events from "./Events";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchChildrenOfCatalog } from "../../store/catalog-action";
+import { useSelector } from "react-redux";
 
 const MainEventsPage = () => {
-  const dispatch = useDispatch();
-  const params = useParams();
-  const cildrenOfCatalog = useSelector(
-    (state) => state.catalog.childrenOfCatalog
-  );
-  console.log("childrenOfCatalog", cildrenOfCatalog);
-  useEffect(() => {
-    dispatch(fetchChildrenOfCatalog(params.catalogId));
-    
-  }, [dispatch, params.catalogId]);
+  const catalogDetails = useSelector((state) => state.catalog.catalogDetails);
 
   return (
     <Fragment>
       <Banner />
       <div className="page-content bg-body-tertiary">
-        <Filter data={cildrenOfCatalog} />
+        <Filter data={catalogDetails} />
         <Events />
       </div>
     </Fragment>

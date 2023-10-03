@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const MyCategoryLoader = (props) => (
+const MyCatalogLoader = (props) => (
      <ContentLoader 
      speed={2}
      width={120}
@@ -15,4 +15,4 @@ const MyCategoryLoader = (props) => (
    </ContentLoader>
 );
 
-export default MyCategoryLoader;
+export default MyCatalogLoader;
