@@ -1,0 +1,105 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  height: 36px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plus {
+  cursor: pointer;
+  background-color: red;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+.input {
+  background-color: rgba(128, 128, 128, 0.579);
+  border: 1px solid gray;
+  border-radius: 12px;
+  margin: 0;
+  padding: 0;
+  width: 64px;
+  height: 32px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text */
+  color: white;
+}
+.input:hover {
+  border: 3px solid gray;
+}
+.minus {
+  cursor: pointer;
+  background-color: green;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+.capacity {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: red !important; /* Override Bootstrap text color */
+  height: 25%;
+  margin: 0;
+  padding: 0px;
+  font-size: 12px;
+}
+.desc {
+  width: 50%;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.desc div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.desc div :first-child {
+  font-weight: bold;
+  padding: 0 0 0 2px;
+  margin: 0;
+}
+.desc :first-child :last-child {
+  color: rgb(123, 12, 8);
+}
+
+.desc :last-child :last-child {
+  color: rgb(0, 101, 25);
+}
+.oldPrice {
+  text-decoration: line-through red;
+}
+
+@media (max-width: 768px) {
+  .body {
+    display: block;
+    margin-top: 24px;
+  }
+  .buttons {
+    width: 100%;
+    margin: 12px 0px;
+  }
+  .desc {
+    width: 100%;
+    margin: 12px 0px;
+  }
+}

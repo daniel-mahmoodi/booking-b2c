@@ -1,46 +1,60 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTicket } from "../../store/event-action";
+import classes from "./SansesType.module.css";
+import CalendarSection from "./CalendarSection";
+import ServiceSection from "./ServiceSection";
+import TicketSection from "./TicketSection";
 const SansesType = ({ listOfSanses }) => {
-  const handleDaySelected = (id) => {
-    console.log("item.executeDateTime", id);
+  const dispatch = useDispatch();
+  const showTicketComponent = useSelector(
+    (state) => state.event.showTicketComponent
+  );
+  const ticketLoading = useSelector((state) => state.event.ticketLoading);
+  const serviceDetails = useSelector((state) => state.event.serviceDetails);
+  const [userSelectedSanses, setUserSelectedSanses] = useState([]);
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [sansSelectedTitle, setSansSelectedTitle] = useState("");
 
-    const dayExist = listOfSanses.map((item) => item.executeDateTime);
-    console.log("dayExist", dayExist);
+  const ticketDetails = useSelector((state) => state.event.ticketDetails);
+
+  const toggleDropDown = () => {
+    setShowDropDown((prev) => !prev);
+  };
+
+  const getDateHandler = (date) => {
+    const dayExist = listOfSanses.find(
+      (item) => item.executeDateTime.split("T")[0] === date
+    );
+    if (dayExist) {
+      setUserSelectedSanses(dayExist.sansList);
+    } else {
+      setUserSelectedSanses([]);
+    }
+  };
+  const handleSansSelected = (item) => {
+    setSansSelectedTitle(item.title);
+    dispatch(getTicket(serviceDetails.id, item.id));
+    toggleDropDown();
   };
   return (
-    <div>
-      <div class="dropdown">
-        <button
-          class="btn rounded border border-secondary dropdown-toggle "
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          انتخاب روز سرویس
-        </button>
-        <ul class="dropdown-menu">
-          {listOfSanses.map((item) => (
-            <li onClick={() => handleDaySelected(item.executeDateTime)}>
-              {item.executeDateTime}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="dropdown">
-        <button
-          class="btn rounded border border-secondary dropdown-toggle "
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          انتخاب سانس
-        </button>
-        <ul class="dropdown-menu">
-          {listOfSanses.map((item) => (
-            <li>{item.executeDateTime}</li>
-          ))}
-        </ul>
-      </div>
+    <div className={classes.body}>
+      <CalendarSection
+        getDateHandler={getDateHandler}
+        userSelectedSanses={userSelectedSanses}
+      />
+      <ServiceSection
+        userSelectedSanses={userSelectedSanses}
+        toggleDropDown={toggleDropDown}
+        showDropDown={showDropDown}
+        sansSelectedTitle={sansSelectedTitle}
+        handleSansSelected={handleSansSelected}
+      />
+      <TicketSection
+        ticketLoading={ticketLoading}
+        showTicketComponent={showTicketComponent}
+        ticketDetails={ticketDetails}
+      />
     </div>
   );
 };

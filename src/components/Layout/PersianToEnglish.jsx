@@ -1,6 +1,9 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
-const PersianToEnglish = ({ persianText }) => {
+const usePersianToEnglish = (persianText) => {
+  const [convertedText, setConvertedText] = useState({
+    date: "",
+  });
   // Function to replace Persian numerals with English numerals
   const convertPersianToEnglish = (text) => {
     // Define a mapping of Persian to English numerals
@@ -21,14 +24,12 @@ const PersianToEnglish = ({ persianText }) => {
     return text.replace(/[۰-۹]/g, (match) => persianToEnglishMap[match]);
   };
 
-  const englishText = persianText&&convertPersianToEnglish(persianText);
+  useEffect(() => {
+    const date = persianText ? convertPersianToEnglish(persianText) : "";
+    setConvertedText({ date });
+  }, [persianText]);
 
-  return (
-    <div>
-      <p>Persian Text: {persianText}</p>
-      <p>English Text: {englishText}</p>
-    </div>
-  );
+  return convertedText;
 };
 
-export default PersianToEnglish;
+export default usePersianToEnglish;

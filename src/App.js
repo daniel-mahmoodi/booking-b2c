@@ -5,7 +5,7 @@ import PricingNotificationBar from "./components/Order/PricingNotificationBar";
 import PurchaseModal from "./components/Order/PurchaseModal";
 import ShoppingCartModal from "./components/Order/ShoppingCartModal";
 import Sequences from "./components/Sequences/Sequences";
-import Calendar from "./components/Layout/Calendars";
+import Login from "./components/Auth/Login";
 
 function App() {
   const showSequencesModal = useSelector(
@@ -15,8 +15,9 @@ function App() {
     <div className="App" dir="rtl">
       {/* <PurchaseModal /> */}
       {/* <ShoppingCartModal/> */}
-      <Calendar/>
+
       {showSequencesModal && <Sequences />}
+      
       <MainPage />
     </div>
   );

@@ -56,3 +56,27 @@ export const getSanses = (id) => {
       });
   };
 };
+export const getTicket = (serviceId, sansId) => {
+  return async (dispatch) => {
+    dispatch(eventActions.toggleTicketLoading(true));
+    dispatch(eventActions.toggleTicketComponent(false));
+    axios({
+      method: "GET",
+      url: `${apiUrl}/Ticket/GetTicket?SansId=${sansId}&ServiceId=${serviceId}`,
+    })
+      .then((response) => {
+        dispatch(eventActions.toggleTicketComponent(true));
+        dispatch(eventActions.toggleTicketLoading(false));
+        console.log("response", response);
+        // dispatch(eventActions.toggleAcceptButtonLoading(false));
+        dispatch(eventActions.addTicketDetails(response.data));
+        // dispatch(eventActions.toggleSansesModal(true));
+      })
+      .catch((error) => {
+        console.log("error", error);
+        dispatch(eventActions.toggleTicketComponent(false));
+        dispatch(eventActions.toggleTicketLoading(false));
+        // dispatch(eventActions.toggleAcceptButtonLoading(false));
+      });
+  };
+};

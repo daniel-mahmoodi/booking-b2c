@@ -1,0 +1,25 @@
+.body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.desc {
+  color: hsla(0, 0%, 0%, 0.7);
+  font-weight: bold;
+}
+
+.customInput {
+  height: 36px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px hsla(0, 0%, 0%, 0.503) solid;
+  padding: 4px 12px;
+  background-color: white;
+  /* box-shadow: 0 0 1px #484848; */
+}
+
+.customInput:focus {
+  outline: none;
+  border: 1px solid #0c8af8;
+  box-shadow: 0 0 1px 1px #0074d9;
+}

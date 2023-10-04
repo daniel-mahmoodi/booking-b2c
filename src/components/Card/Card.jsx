@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSanses, getServiceDetails } from "../../store/event-action";
 import { useHistory } from "react-router-dom";
 import MyLoading from "../Layout/MyLoading";
+import { eventActions } from "../../store/event-slice";
 
 const Card = ({ data }) => {
   const dispatch = useDispatch();
@@ -67,7 +68,11 @@ const Card = ({ data }) => {
                 className="uk-button uk-button-default"
                 href="09_blog-post.html"
               >
-                {acceptButtonLoading ? <MyLoading /> : "ثبت سفارش"}
+                {acceptButtonLoading ? (
+                  <MyLoading color={"#ffffff"} />
+                ) : (
+                  "ثبت سفارش"
+                )}
               </button>
             </div>
           </div>

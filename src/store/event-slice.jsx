@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
+
 const initialEventState = {
   listOfServices: [],
   listOfSanses: [],
   serviceDetails: {},
   selectedSansData: {},
+  ticketDetails: {},
   showSequencesModal: false,
   myCardsLoader: false,
   showCardsError: false,
   acceptButtonLoading: false,
+  ticketLoading: false,
+  showTicketComponent: false,
 };
 const eventSlice = createSlice({
   name: "event",
@@ -22,6 +25,15 @@ const eventSlice = createSlice({
     },
     addServiceDetails(state, action) {
       state.serviceDetails = action.payload;
+    },
+    addTicketDetails(state, action) {
+      state.ticketDetails = action.payload;
+    },
+    toggleTicketLoading(state, action) {
+      state.ticketLoading = action.payload;
+    },
+    toggleTicketComponent(state, action) {
+      state.showTicketComponent = action.payload;
     },
     toggleSansesModal(state, action) {
       state.showSequencesModal = action.payload;

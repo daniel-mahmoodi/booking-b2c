@@ -24,17 +24,10 @@ const Sequences = () => {
             &times;
           </span>
           <div className={classes.details}>
-            <div>
-              <SansesType listOfSanses={listOfSanses} />
-              {listOfSanses.map((sans) => (
-                <Sanses key={sans.id} data={sans} />
-              ))}
-            </div>
+            <SansesType listOfSanses={listOfSanses} />
+
             <div className={classes.dividerLine}></div>
-            <div className={classes.explainSans}>
-              <h3>توضیحات:</h3>
-              <p>{selectedSansData.description}</p>
-            </div>
+
             <button onClick={placeOrderHandler} className={classes.accept}>
               تایید تیکت
             </button>
