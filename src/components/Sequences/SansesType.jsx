@@ -58,6 +58,7 @@ const SansesType = ({ listOfSanses }) => {
         showTicketComponent={showTicketComponent}
         ticketDetails={ticketDetails}
         eventId={sansSelectedeventId}
+        
       />
     </div>
   );

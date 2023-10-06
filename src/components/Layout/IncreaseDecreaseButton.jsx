@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
 import classes from "./IncreaseDecreaseButton.module.css";
 // import useCheckStock from "../Hook/useCheckStock";
 const IncreaseDecreaseButton = ({ data, eventId }) => {
   const dispatch = useDispatch();
+  // const [basketItemPlusOneItem, setTicketExist] = useState();
   const basketItems = useSelector((state) => state.basket.items);
-  const listOfSanses = useSelector((state) => state.event.listOfSanses);
+  const serviceDetails = useSelector((state) => state.event.serviceDetails);
   // const checkStockHook = useCheckStock(data.id,data.capacity);
-  const basketItemPlusOneItem = basketItems?.find(
-    (item) => item.ticket.id === data.id
-  );
-  console.log("listOfSanses", listOfSanses);
+  const serviceExist = basketItems.find((event) => event.eventId === eventId);
+  // console.log("serviceExist", serviceExist);
+
+  const basketItemPlusOneItem =
+    serviceExist && serviceExist.tickets?.find((item) => item.id === data.id);
+  // console.log("basketItemPlusOneItem", basketItemPlusOneItem);
+
   const remainedCapacity = basketItemPlusOneItem
-    ? data.capacity - basketItemPlusOneItem.quantity
+    ? data.capacity - basketItemPlusOneItem.count
     : data.capacity;
-  console.log("id", basketItems, data);
+  // console.log("data , remainedCapacity", data, remainedCapacity);
   const addItemHandler = () => {
     if (remainedCapacity > 0) {
       dispatch(
         basketActions.addItemToBasket({
-          quantity: 1,
-          ...data,
+          eventId: eventId,
+          eventTitle: serviceDetails.eventName,
+          imageUrl: serviceDetails.imageUrl,
+          tickets: { ...data, count: 1 },
         })
       );
     }
@@ -41,7 +47,7 @@ const IncreaseDecreaseButton = ({ data, eventId }) => {
           </span>
           <span className="display">
             <span data-id="9" data-cart-count="" className="item">
-              {basketItemPlusOneItem ? basketItemPlusOneItem.quantity : 0}
+              {basketItemPlusOneItem ? basketItemPlusOneItem.count : 0}
             </span>
           </span>
           <span onClick={addItemHandler} className="btn">

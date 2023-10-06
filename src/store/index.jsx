@@ -37,7 +37,7 @@ const store = configureStore({
     catalog: catalogReducer,
     profile: profileReducer,
     event: persistedEventReducer,
-    basket: persistedBasketReducer,
+    basket: basketReducer,
     auth: persistedAuthReducer,
   },
   // Redux Persist:

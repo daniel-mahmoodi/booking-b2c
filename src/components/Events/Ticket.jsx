@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import classes from "./Ticket.module.css";
 import IncreaseDecreaseButton from "../Layout/IncreaseDecreaseButton";
 const Ticket = ({ ticketDetails,eventId }) => {
