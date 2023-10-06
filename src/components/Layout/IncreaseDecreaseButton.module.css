@@ -1,0 +1,15 @@
+.capacity {
+     position: absolute;
+     top: 100%;
+     /* bottom:0; */
+     left:25%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     color: red !important; /* Override Bootstrap text color */
+     /* height: 12px; */
+     margin: 0;
+     padding: 0px;
+     font-size: 12px;
+   }

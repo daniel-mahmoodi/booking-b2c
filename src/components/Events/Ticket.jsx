@@ -1,26 +1,14 @@
 import React, { Fragment, useState } from "react";
 import classes from "./Ticket.module.css";
-const Ticket = ({ ticketDetails }) => {
-  const [quantity, setQuantity] = useState(1);
-  console.log("ticketDetails", ticketDetails);
-  const handleIncrease = () => {
-    if (quantity < ticketDetails.capacity) setQuantity(quantity + 1);
-  };
-
-  const handleDecrease = () => {
-    if (quantity > 1 && quantity <= ticketDetails.capacity) {
-      setQuantity(quantity - 1);
-    }
-  };
-  const handleInputChange = (e) => {
-    if (e.target.value <= ticketDetails.capacity) {
-      setQuantity(e.target.value);
-    }
-  };
-
+import IncreaseDecreaseButton from "../Layout/IncreaseDecreaseButton";
+const Ticket = ({ ticketDetails,eventId }) => {
+ 
   return (
     <div className={classes.body}>
-      <div className={classes.buttons}>
+      <div className="basket">
+        <IncreaseDecreaseButton data={ticketDetails} eventId={eventId} />
+      </div>
+      {/* <div className={classes.buttons}>
         <div onClick={handleDecrease}>
           <ion-icon
             class={classes.plus}
@@ -41,7 +29,7 @@ const Ticket = ({ ticketDetails }) => {
         <div onClick={handleIncrease}>
           <ion-icon class={classes.minus} name="add-circle-outline"></ion-icon>
         </div>
-      </div>
+      </div> */}
       <div className={classes.desc}>
         {ticketDetails.discountedPrice === ticketDetails.price ? (
           <div>

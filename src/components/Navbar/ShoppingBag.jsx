@@ -1,12 +1,24 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { profileActions } from "../../store/profile-slice";
+import NavShoppingItem from "./NavShoppingItem";
 
 const ShoppingBag = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.basket.items);
+  const totalDiscountedPrice = useSelector((state) => state.basket.totalDiscountedPrice);
+  const sendUserToBasketHandler = () => {
+    history.push("/profile");
+    dispatch(profileActions.selectActiveTb("basket"));
+  };
   return (
     <div
       style={{ margin: "0 10px", position: "relative" }}
       className="bag-item"
     >
-      <a href="">
+      <a>
         <i
           className="fa fa-shopping-bag"
           style={{
@@ -17,33 +29,21 @@ const ShoppingBag = () => {
         ></i>
       </a>
       <div className="basket-header">
-        <div className="item">
-          <img src="assets/img/blog-thumb-1.jpg" alt="" />
-          <div className="p-2">
-            <p className="m-0 fw-md title">عنوان محصول</p>
-            <p className="m-0 description">توضیحات بیشتر</p>
-          </div>
-          <span className="delete">
-            <i className="fa fa-times" aria-hidden="true"></i>
-          </span>
-        </div>
-        <div className="item">
-          <img src="assets/img/blog-thumb-1.jpg" alt="" />
-          <div className="p-2">
-            <p className="m-0 fw-md title">عنوان محصول</p>
-            <p className="m-0 description">توضیحات بیشتر</p>
-          </div>
-          <span className="delete">
-            <i className="fa fa-times" aria-hidden="true"></i>
-          </span>
-        </div>
+        {items.map((item) => (
+          <NavShoppingItem key={item.id} data={item} />
+        ))}
         <hr />
         <p className="total-price-box">
           <span>مبلغ قابل پرداخت</span>
-          <span className="text-green fw-md">۵۴۰۰۰ تومان</span>
+          <span className="text-green fw-md">{totalDiscountedPrice} تومان</span>
         </p>
         <hr />
-        <a className="uk-button uk-button-danger shine">مشاهده سبد خرید</a>
+        <a
+          onClick={sendUserToBasketHandler}
+          className="uk-button uk-button-danger shine"
+        >
+          مشاهده سبد خرید
+        </a>
       </div>
       <span
         style={{

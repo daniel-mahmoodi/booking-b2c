@@ -37,7 +37,9 @@ const ServiceSection = ({
           </ul>
         </div>
       ) : (
-        ""
+        <div className={`${classes.serviceButton} ${classes.disable}`}>
+          انتخاب سرویس
+        </div>
       )}
     </Fragment>
   );

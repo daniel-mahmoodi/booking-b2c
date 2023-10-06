@@ -8,7 +8,7 @@ const SpecialOffers = () => {
       </h4>
       <ul className="list-articles">
         <li className="list-articles-item">
-          <a className="list-articles-item__link" href="#">
+          <a className="list-articles-item__link">
             <div className="list-articles-item__img shine">
               <img
                 src="./assets/img/img-article-thumb-1.jpg"

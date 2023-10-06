@@ -38,7 +38,6 @@ const UserInfoSticky = () => {
             <a
               className="uk-button uk-button-danger"
               style={{ position: "relative", height: "35px", width: "90px" }}
-              href="#"
             >
               <span
                 style={{
@@ -61,7 +60,7 @@ const UserInfoSticky = () => {
             <div className="profile-dropdown">
               <ul>
                 <li>
-                  <a href="#" className="shine">
+                  <a className="shine">
                     <span>
                       <i
                         className="fa fa-user"
@@ -73,11 +72,11 @@ const UserInfoSticky = () => {
                         }}
                       ></i>
                     </span>
-                    <span style={{ fontSize: "12px" }}>امیرحسین رضاوند</span>
+                    <span style={{ fontSize: "12px" }}>نام کاربری</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="shine">
+                  <a className="shine">
                     <span>
                       <i
                         className="fa fa-shopping-bag"
@@ -93,7 +92,7 @@ const UserInfoSticky = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="shine">
+                  <a className="shine">
                     <span>
                       <i
                         className="fa fa-th-large"
@@ -109,7 +108,7 @@ const UserInfoSticky = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="shine">
+                  <a className="shine">
                     <span>
                       <i
                         className="fa fa-power-off"

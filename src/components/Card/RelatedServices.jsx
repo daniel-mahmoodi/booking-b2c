@@ -23,7 +23,7 @@ function RelatedServices() {
                       className="blog-card__media shine"
                       style={{ marginBottom: "10px" }}
                     >
-                      <a href="#">
+                      <a>
                         <img
                           src="assets/img/blog-thumb-1.jpg"
                           alt="لورم ایپسوم متن ساختگی"
@@ -36,7 +36,7 @@ function RelatedServices() {
                         className="blog-card__title"
                         style={{ textAlign: "right" }}
                       >
-                        <a href="#" style={{ fontSize: "18px" }}>
+                        <a style={{ fontSize: "18px" }}>
                           لورم ایپسوم متن ساختگی با
                         </a>
                       </div>
@@ -56,9 +56,7 @@ function RelatedServices() {
                         className="blog-card__more"
                         style={{ textAlign: "center", paddingBottom: "15px" }}
                       >
-                        <a className="uk-button uk-button-default" href="#">
-                          ثبت سفارش
-                        </a>
+                        <a className="uk-button uk-button-default">ثبت سفارش</a>
                       </div>
                     </div>
                   </div>
@@ -79,7 +77,7 @@ function RelatedServices() {
                       className="blog-card__media shine"
                       style={{ marginBottom: "10px" }}
                     >
-                      <a href="#">
+                      <a>
                         <img
                           src="assets/img/blog-thumb-1.jpg"
                           alt="لورم ایپسوم متن ساختگی"
@@ -92,7 +90,7 @@ function RelatedServices() {
                         className="blog-card__title"
                         style={{ textAlign: "right" }}
                       >
-                        <a href="#" style={{ fontSize: "18px" }}>
+                        <a style={{ fontSize: "18px" }}>
                           لورم ایپسوم متن ساختگی با
                         </a>
                       </div>
@@ -112,9 +110,7 @@ function RelatedServices() {
                         className="blog-card__more"
                         style={{ textAlign: "center", paddingBottom: "15px" }}
                       >
-                        <a className="uk-button uk-button-default" href="#">
-                          ثبت سفارش
-                        </a>
+                        <a className="uk-button uk-button-default">ثبت سفارش</a>
                       </div>
                     </div>
                   </div>
@@ -135,7 +131,7 @@ function RelatedServices() {
                       className="blog-card__media shine"
                       style={{ marginBottom: "10px" }}
                     >
-                      <a href="#">
+                      <a>
                         <img
                           src="assets/img/blog-thumb-1.jpg"
                           alt="لورم ایپسوم متن ساختگی"
@@ -148,7 +144,7 @@ function RelatedServices() {
                         className="blog-card__title"
                         style={{ textAlign: "right" }}
                       >
-                        <a href="#" style={{ fontSize: "18px" }}>
+                        <a style={{ fontSize: "18px" }}>
                           لورم ایپسوم متن ساختگی با
                         </a>
                       </div>
@@ -168,9 +164,7 @@ function RelatedServices() {
                         className="blog-card__more"
                         style={{ textAlign: "center", paddingBottom: "15px" }}
                       >
-                        <a className="uk-button uk-button-default" href="#">
-                          ثبت سفارش
-                        </a>
+                        <a className="uk-button uk-button-default">ثبت سفارش</a>
                       </div>
                     </div>
                   </div>

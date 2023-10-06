@@ -46,7 +46,16 @@
 .serviceButton:hover {
   background-color: #6c757d80;
 }
-
+.disable {
+  background-color: #cbcbcb;
+  border: 0;
+  color: #2125298b;
+  width: 25%;
+}
+.disable:hover {
+  background-color: #cbcbcb;
+  cursor: text;
+}
 .dropdownMenu {
   display: none;
   position: absolute;

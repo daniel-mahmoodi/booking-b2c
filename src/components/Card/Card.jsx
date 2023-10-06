@@ -4,7 +4,7 @@ import { getSanses, getServiceDetails } from "../../store/event-action";
 import { useHistory } from "react-router-dom";
 import MyLoading from "../Layout/MyLoading";
 import { eventActions } from "../../store/event-slice";
-
+const IMGUrl = "https://takish724.ir/";
 const Card = ({ data }) => {
   const dispatch = useDispatch();
   const acceptButtonLoading = useSelector(
@@ -14,11 +14,12 @@ const Card = ({ data }) => {
 
   const selectCardHandler = () => {
     dispatch(getServiceDetails(data.id));
-    history.push("/single-page");
+    history.push("/service-details");
   };
   const submitOrderHandler = (event) => {
     event.stopPropagation();
     dispatch(getSanses(data.id));
+    dispatch(eventActions.toggleTicketComponent(false));
   };
   return (
     <div onClick={selectCardHandler}>
@@ -34,9 +35,9 @@ const Card = ({ data }) => {
             className="blog-card__media shine"
             style={{ marginBottom: "10px" }}
           >
-            <a href="09_blog-post.html">
+            <a>
               <img
-                src={data.imageUrl}
+                src={`${IMGUrl}${data.imageUrl.replace("..", "")}`}
                 alt={data.title}
                 style={{ width: "100%" }}
               />
@@ -44,18 +45,24 @@ const Card = ({ data }) => {
           </div>
           <div className="blog-card__body">
             <div className="blog-card__title">
-              <div href="09_blog-post.html" style={{ fontSize: "18px" }}>
-                {data.title}
+              <div style={{ fontSize: "16px" }}>
+                {`${data.title} ${data.author}`}
               </div>
             </div>
-            <div className="blog-card__intro">
+            {/* <div className="blog-card__intro">
               <p style={{ textAlign: "justify", fontSize: "14px" }}>
                 {data.description}
               </p>
-            </div>
+            </div> */}
             <div
               className="listing-card__location"
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{
+                padding: "3px",
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                height: "24px",
+              }}
             >
               <span>{data.price}تومان</span>
             </div>
@@ -64,10 +71,7 @@ const Card = ({ data }) => {
               style={{ textAlign: "center", paddingBottom: "15px" }}
               onClick={submitOrderHandler}
             >
-              <button
-                className="uk-button uk-button-default"
-                href="09_blog-post.html"
-              >
+              <button className="uk-button uk-button-default">
                 {acceptButtonLoading ? (
                   <MyLoading color={"#ffffff"} />
                 ) : (

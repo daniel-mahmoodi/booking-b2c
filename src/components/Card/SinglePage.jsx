@@ -15,7 +15,7 @@ const SinglePage = () => {
         <div className="uk-section-large uk-container">
           <div className="uk-grid uk-grid-medium" data-uk-grid>
             <div className="uk-width-2-3@m">
-              <Article data={serviceDetails} />
+              {Object.keys(serviceDetails).length && <Article data={serviceDetails} />}
             </div>
             <LeftSidebar />
           </div>

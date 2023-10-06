@@ -1,0 +1,28 @@
+.dataBlock {
+  border-top: 1px solid lightgray;
+  padding: 10px 15px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dataBlock p {
+  margin: 0 0 10px;
+}
+.title {
+  display: none;
+  padding: 0 5px;
+  margin: 0;
+}
+@media screen and (max-width: 780px) {
+  .dataBlock {
+    display: block;
+  }
+}
+@media (max-width: 1000px) {
+  .title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

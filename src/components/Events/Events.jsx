@@ -34,10 +34,10 @@ function Events() {
       {/* <ul className="uk-pagination uk-flex-center uk-margin-large-top">
         <li></li>
         <li className="uk-active"><span>1</span></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
+        <li><a>2</a></li>
+        <li><a>3</a></li>
         <li>
-          <a href="#"><i className="fa fa-chevron-left" aria-hidden="true"></i></a>
+          <a><i className="fa fa-chevron-left" aria-hidden="true"></i></a>
         </li>
       </ul> */}
     </div>

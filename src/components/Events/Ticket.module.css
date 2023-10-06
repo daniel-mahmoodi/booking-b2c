@@ -48,16 +48,7 @@
   height: 32px;
   color: white;
 }
-.capacity {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  color: red !important; /* Override Bootstrap text color */
-  height: 25%;
-  margin: 0;
-  padding: 0px;
-  font-size: 12px;
-}
+
 .desc {
   width: 50%;
   font-size: 12px;

@@ -15,7 +15,8 @@ const SansesType = ({ listOfSanses }) => {
   const [userSelectedSanses, setUserSelectedSanses] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
   const [sansSelectedTitle, setSansSelectedTitle] = useState("");
-
+  const [sansSelectedeventId, setSansSelectedeventId] = useState();
+  console.log("serviceId", serviceDetails);
   const ticketDetails = useSelector((state) => state.event.ticketDetails);
 
   const toggleDropDown = () => {
@@ -28,12 +29,14 @@ const SansesType = ({ listOfSanses }) => {
     );
     if (dayExist) {
       setUserSelectedSanses(dayExist.sansList);
+      
     } else {
       setUserSelectedSanses([]);
     }
   };
   const handleSansSelected = (item) => {
     setSansSelectedTitle(item.title);
+    setSansSelectedeventId(item.eventId);
     dispatch(getTicket(serviceDetails.id, item.id));
     toggleDropDown();
   };
@@ -54,6 +57,7 @@ const SansesType = ({ listOfSanses }) => {
         ticketLoading={ticketLoading}
         showTicketComponent={showTicketComponent}
         ticketDetails={ticketDetails}
+        eventId={sansSelectedeventId}
       />
     </div>
   );

@@ -1,5 +1,7 @@
 import axios from "axios";
 import { catalogActions } from "./catalog-slice";
+import { eventActions } from "./event-slice";
+import { getServices } from "./event-action";
 
 const apiUrl = process.env.REACT_APP_API_ENDPOINT;
 
@@ -34,7 +36,7 @@ export const fetchCatalogDetails = (parentId) => {
   return async (dispatch) => {
     dispatch(catalogActions.toggleShowCatalogDetailsError(false));
     dispatch(catalogActions.toggleMyCatalogDetailsLoader(true));
-
+    dispatch(eventActions.addListOfServices([]));
     axios({
       method: "GET",
       url: `${apiUrl}/Catalog/GetCatalogs?ParentId=${parentId}`,
@@ -42,7 +44,9 @@ export const fetchCatalogDetails = (parentId) => {
       .then((response) => {
         dispatch(catalogActions.toggleMyCatalogDetailsLoader(false));
         dispatch(catalogActions.addSelectedCatalogDetails(response.data));
-        if (!response.data.length) {
+        if (response.data.length) {
+          dispatch(getServices(response.data[0].id));
+        } else {
           dispatch(catalogActions.toggleShowCatalogDetailsError(true));
         }
       })

@@ -9,7 +9,7 @@ const Sequences = () => {
   const dispatch = useDispatch();
   const listOfSanses = useSelector((state) => state.event.listOfSanses);
   const selectedSansData = useSelector((state) => state.event.selectedSansData);
-
+  console.log("listOfSanses in sequence com", listOfSanses);
   const toggleModal = () => {
     dispatch(eventActions.toggleSansesModal(false));
   };

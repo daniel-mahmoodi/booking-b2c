@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const useCheckStock = (id, capacity, reservedTemporary) => {
-  const items = useSelector((state) => state.cart.items);
-  const [stockRemined, setStockRemined] = useState(
-    capacity - reservedTemporary
-  );
-  const checkStock = items?.find((item) => item.ticketId === id);
+const useCheckStock = (id) => {
+  const basketItems = useSelector((state) => state.cart.items);
+  const [stockRemined, setStockRemined] = useState(0);
+  const checkStock = basketItems?.find((item) => item.id === id);
 
   useEffect(() => {
     if (checkStock) {
-      const stockOfTicket = capacity - checkStock.count;
-      if (stockOfTicket >= 0) {
-        setStockRemined(stockOfTicket);
+      const stockOfProduct = checkStock.stock - checkStock.quantity;
+      if (stockOfProduct >= 0) {
+        setStockRemined(stockOfProduct);
       }
-    } else {
-      setStockRemined(capacity);
     }
-  }, [capacity, checkStock, reservedTemporary]);
+  }, [checkStock]);
   return stockRemined;
 };
 
