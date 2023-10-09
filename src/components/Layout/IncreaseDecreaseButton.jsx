@@ -11,31 +11,40 @@ const IncreaseDecreaseButton = ({ data, eventId }) => {
   // const checkStockHook = useCheckStock(data.id,data.capacity);
   const serviceExist = basketItems.find((event) => event.eventId === eventId);
   // console.log("serviceExist", serviceExist);
-
+  console.log(" basketItems,data,eventId", basketItems, data, eventId);
   const basketItemPlusOneItem =
-    serviceExist && serviceExist.tickets?.find((item) => item.id === data.id);
+    serviceExist &&
+    serviceExist.tickets?.find((item) => item.ticketId === data.ticketId);
   // console.log("basketItemPlusOneItem", basketItemPlusOneItem);
-
-  const remainedCapacity = basketItemPlusOneItem
-    ? data.capacity - basketItemPlusOneItem.count
-    : data.capacity;
+  console.log(
+    " serviceExist,basketItemPlusOneItem",
+    serviceExist,
+    basketItemPlusOneItem
+  );
+  console.log("datta", data);
+  // const remainedCapacity = basketItemPlusOneItem
+  //   ? data.capacity - basketItemPlusOneItem.count
+  //   : data.capacity;
   // console.log("data , remainedCapacity", data, remainedCapacity);
   const addItemHandler = () => {
-    if (remainedCapacity > 0) {
+    // if (remainedCapacity > 0) {
+    if (eventId) {
       dispatch(
         basketActions.addItemToBasket({
           eventId: eventId,
           eventTitle: serviceDetails.eventName,
-          imageUrl: serviceDetails.imageUrl,
-          tickets: { ...data, count: 1 },
+          tickets: { ...data, count: 1, imageUrl: serviceDetails.imageUrl},
         })
       );
     }
+    // }
   };
 
   const removeItemHandler = () => {
-    if (basketItemPlusOneItem) {
-      dispatch(basketActions.removeItemFromBasket(data.id));
+    if (basketItemPlusOneItem && eventId) {
+      dispatch(
+        basketActions.removeItemFromBasket({ ticketId: data.ticketId, eventId })
+      );
     }
   };
   return (
@@ -54,7 +63,7 @@ const IncreaseDecreaseButton = ({ data, eventId }) => {
             <span className="item">+</span>
           </span>
         </div>
-        <p className={classes.capacity}>{`ظرفیت: ${remainedCapacity}`}</p>
+        {/* <p className={classes.capacity}>{`ظرفیت: ${remainedCapacity}`}</p> */}
       </div>
     </div>
   );

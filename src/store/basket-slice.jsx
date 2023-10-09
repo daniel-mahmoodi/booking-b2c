@@ -52,14 +52,8 @@ const basketSlice = createSlice({
     addItemToBasket(state, action) {
       const newItem = action.payload;
       state.basketChanged = true;
-
-      newItem.tickets.price === newItem.tickets.discountedPrice
-        ? (state.totalPrice =
-            state.totalPrice + newItem.tickets.price * newItem.tickets.count)
-        : (state.totalPrice =
-            state.totalPrice +
-            newItem.tickets.discountedPrice * newItem.tickets.count);
-      state.totalDiscountedPrice = state.totalPrice;
+      // console.log("State before:", state, action.payload);
+     
       // state.totalQuantity++;
       const existingService = state.items.find(
         (event) => event.eventId === newItem.eventId
@@ -67,12 +61,16 @@ const basketSlice = createSlice({
 
       if (existingService) {
         const existingBasketItem = existingService.tickets?.find(
-          (item) => item.id === newItem.tickets.id
+          (item) => item.ticketId === newItem.tickets.ticketId
         );
         if (existingBasketItem) {
           existingBasketItem.count++;
         } else {
-          existingService?.tickets?.push([{ ...newItem.tickets }]);
+          if (existingService.tickets) {
+            existingService.tickets?.push([{ ...newItem.tickets }]);
+          } else {
+            existingService.push({ tickets: [{ ...newItem.tickets }] });
+          }
         }
       } else {
         state.items?.push({
@@ -82,13 +80,23 @@ const basketSlice = createSlice({
           tickets: [{ ...newItem.tickets }],
         });
       }
+    //   newItem.tickets.price === newItem.tickets.discountedPrice
+    //   ? (state.totalPrice =
+    //       state.totalPrice + newItem.tickets.price * newItem.tickets.count)
+    //   : (state.totalPrice =
+    //       state.totalPrice +
+    //       newItem.tickets.discountedPrice * newItem.tickets.count);
+    // state.totalDiscountedPrice = state.totalPrice;
     },
     //
     removeItemFromBasket(state, action) {
-      const id = action.payload;
+      const { ticketId, eventId } = action.payload;
       state.basketChanged = true;
-      const existingBasketItem = state.items?.find(
-        (item) => item.ticket.id === id
+      const existingService = state.items.find(
+        (event) => event.eventId === eventId
+      );
+      const existingBasketItem = existingService?.tickets.find(
+        (item) => item.ticketId === ticketId
       );
 
       existingBasketItem.price === existingBasketItem.discountedPrice
@@ -97,34 +105,92 @@ const basketSlice = createSlice({
             state.totalPrice - existingBasketItem.discountedPrice);
       state.totalDiscountedPrice = state.totalPrice;
 
-      state.totalQuantity--;
+      // state.totalQuantity--;
 
-      if (existingBasketItem.quantity === 1) {
-        existingBasketItem.quantity = 0;
-        state.items = state.items.filter((item) => item.ticket.id !== id);
+      if (existingBasketItem.count === 1) {
+        existingBasketItem.count = 0;
+        state.items.map((item) => {
+          // Check if the item's eventId and ticketId match the ones to be deleted
+          if (item.eventId === eventId) {
+            // Filter out the ticket with the specified ticketId
+            item.tickets = item.tickets.filter(
+              (ticket) => ticket.ticketId !== ticketId
+            );
+            item.count = 0;
+          }
+          return item;
+        });
       } else {
-        existingBasketItem.quantity--;
+        existingBasketItem.count--;
       }
     },
     eraseItemFromBasket(state, action) {
-      const id = action.payload;
+      const { ticketId, eventId } = action.payload;
       state.basketChanged = true;
-      const existingBasketItem = state.items?.find(
-        (anyItem) => anyItem.ticket.id === id
+      // const existingBasketItem = state.items?.find(
+      //   (anyItem) => anyItem.ticket.id === ticketId
+      // );
+
+      // existingBasketItem.price === existingBasketItem.discountedPrice
+      //   ? (state.totalPrice =
+      //       state.totalPrice -
+      //       existingBasketItem.price * existingBasketItem.count)
+      //   : (state.totalPrice =
+      //       state.totalPrice -
+      //       existingBasketItem.discountedPrice * existingBasketItem.count);
+      // state.totalDiscountedPrice = state.totalPrice;
+      // state.totalQuantity = state.totalQuantity - existingBasketItem.count;
+      // state.items = state.items?.filter(
+      //   (item) => item.ticket.ticketId !== ticketId
+      // );
+      // existingBasketItem.count = 0;
+      const existingService = state.items.find(
+        (event) => event.eventId === eventId
       );
+      if (existingService) {
+        const existingBasketItem = existingService.tickets?.find(
+          (item) => item.ticketId === ticketId
+        );
+        if (existingBasketItem) {
+          existingBasketItem.count = 0;
+          state.items.map((item) => {
+            // Check if the item's eventId and ticketId match the ones to be deleted
+            if (item.eventId === eventId) {
+              // Filter out the ticket with the specified ticketId
+              item.tickets = item.tickets.filter(
+                (ticket) => ticket.ticketId !== ticketId
+              );
+            }
+            return item;
+          });
 
-      existingBasketItem.price === existingBasketItem.discountedPrice
-        ? (state.totalPrice =
-            state.totalPrice -
-            existingBasketItem.price * existingBasketItem.quantity)
-        : (state.totalPrice =
-            state.totalPrice -
-            existingBasketItem.discountedPrice * existingBasketItem.quantity);
-      state.totalDiscountedPrice = state.totalPrice;
+          // existingBasketItem.count = 0;
+          // state.items.map((event) =>
+          //   event.tickets.filter(
+          //     (item) => item.ticketId === existingBasketItem.ticketId
+          //   )
+          // );
+          // const newBasket = state.items.flatMap((item) =>
+          //   item.tickets.map((item) => item.ticketId === ticketId)
+          // );
 
-      state.totalQuantity = state.totalQuantity - existingBasketItem.quantity;
-      state.items = state.items?.filter((item) => item.ticket.id !== id);
-      existingBasketItem.quantity = 0;
+          // console.log(
+          //   "State beforeexistingBasketItem:",
+          //   current(existingBasketItem)
+          // );
+          // console.log("State beforenewbasket:", current(newBasket));
+        } else {
+          // existingService?.tickets?.push([{ ...newItem.tickets }]);
+        }
+      } else {
+        // state.items?.push({
+        //   eventId: newItem.eventId,
+        //   eventTitle: newItem.eventTitle,
+        //   imageUrl: newItem.imageUrl,
+        //   tickets: [{ ...newItem.tickets }],
+        // });
+      }
+      console.log("State before:", state.items);
     },
   },
 });

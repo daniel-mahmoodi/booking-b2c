@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BasketItem from "./BasketItem";
 import { useSelector } from "react-redux";
+import EventList from "./EventList";
 
 function BasketTab() {
-  const items = useSelector((state) => state.basket.items);
+  const basketItems = useSelector((state) => state.basket.items);
   const totalDiscountedPrice = useSelector(
     (state) => state.basket.totalDiscountedPrice
   );
-  console.log("items", items);
+  console.log("basketItems", basketItems);
+ 
+
   return (
     <div className="profile-left" id="basket">
       <div className="d-flex p-2 basket-top-container">
@@ -45,10 +48,10 @@ function BasketTab() {
             <li>تعداد</li>
             <li>قیمت کل</li>
           </ul>
-
-          {items.map((item) => (
-            <BasketItem key={item.id} data={item} />
+          {basketItems.map((event) => (
+            <EventList key={event.id} items={event} />
           ))}
+
           {/* End of item block */}
           <div className="basket-footer d-flex justify-between align-center px-3">
             <div>

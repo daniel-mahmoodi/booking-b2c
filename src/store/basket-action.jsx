@@ -74,7 +74,7 @@ export const sendCartData = (basket, token) => {
       cartItems: basket.flatMap((item) =>
         item.tickets.map((ticket) => {
           return sendCartItems.cartItems.push({
-            ticketId: ticket.id,
+            ticketId: ticket.ticketId,
             count: ticket.count,
           });
         })
@@ -91,7 +91,7 @@ export const sendCartData = (basket, token) => {
     //     });
     //   });
     // }
-    console.log("sendCartItems", sendCartItems);
+    console.log("transformedDatat sendCartItems", sendCartItems);
 
     axios({
       method: "POST",

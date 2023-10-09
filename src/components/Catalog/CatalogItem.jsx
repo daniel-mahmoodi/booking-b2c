@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { catalogActions } from "../../store/catalog-slice";
 import { useHistory } from "react-router-dom";
 import { fetchCatalogDetails } from "../../store/catalog-action";
-const IMGUrl = "https://takish724.ir/";
+const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const CatalogItem = ({ data }) => {
   const dispatch = useDispatch();
   const history = useHistory();

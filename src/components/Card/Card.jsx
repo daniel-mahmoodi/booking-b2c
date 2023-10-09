@@ -4,7 +4,7 @@ import { getSanses, getServiceDetails } from "../../store/event-action";
 import { useHistory } from "react-router-dom";
 import MyLoading from "../Layout/MyLoading";
 import { eventActions } from "../../store/event-slice";
-const IMGUrl = "https://takish724.ir/";
+const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const Card = ({ data }) => {
   const dispatch = useDispatch();
   const acceptButtonLoading = useSelector(
