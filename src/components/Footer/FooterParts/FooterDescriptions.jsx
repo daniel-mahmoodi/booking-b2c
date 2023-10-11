@@ -14,12 +14,12 @@ const FooterDescriptions = () => {
         </a>
       </div>
       <p style={{ fontSize: "14px" }}>
-        لورم ایپسوم متن ساختگی <br />
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+        تاکیش724<br />
+        {/* لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
         از <br />
-        لورم ایپسوم متن ساختگی
+        لورم ایپسوم متن ساختگی */}
       </p>
-      <ul className="uk-list">
+      {/* <ul className="uk-list">
         <li>
           <span>ایمیل: </span>
           <a href="mailto:ar.rezavand@gmail.com">ar.rezavand@gmamil.com</a>
@@ -33,7 +33,7 @@ const FooterDescriptions = () => {
             ۹۱۰۰۹۶۸۲۲۸
           </a>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

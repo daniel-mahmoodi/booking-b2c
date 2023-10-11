@@ -12,7 +12,7 @@ const HomePage = () => {
       <Slider />
       <FirstSectionBanner />
       <SectionPapular />
-      <SectionFeatured />
+      {/* <SectionFeatured /> */}
       <SecondSectionBanner />
     </Fragment>
   );

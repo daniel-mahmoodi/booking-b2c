@@ -6,7 +6,7 @@ export const getCartData = (token) => {
   return async (dispatch) => {
     const fetchData = async () => {
       const headers = new Headers();
-      headers.append("Authorization", `Bearer ${token}`); // Replace with your actual token
+      headers.append("Authorization", token); // Replace with your actual token
 
       const options = {
         method: "GET", // Adjust the HTTP method as needed
@@ -98,7 +98,7 @@ export const sendCartData = (basket, token) => {
       url: `${apiUrl}/Cart/AddCart`,
       data: sendCartItems,
       headers: {
-        Authorization: `bearer ${token}`,
+        Authorization: token,
         "Content-Type": " application/json",
       },
     })

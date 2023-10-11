@@ -54,7 +54,7 @@ const basketSlice = createSlice({
       state.basketChanged = true;
       // console.log("State before:", state, action.payload);
      
-      // state.totalQuantity++;
+      state.totalQuantity++;
       const existingService = state.items.find(
         (event) => event.eventId === newItem.eventId
       );
@@ -105,7 +105,7 @@ const basketSlice = createSlice({
             state.totalPrice - existingBasketItem.discountedPrice);
       state.totalDiscountedPrice = state.totalPrice;
 
-      // state.totalQuantity--;
+      state.totalQuantity--;
 
       if (existingBasketItem.count === 1) {
         existingBasketItem.count = 0;
@@ -139,20 +139,20 @@ const basketSlice = createSlice({
       //       state.totalPrice -
       //       existingBasketItem.discountedPrice * existingBasketItem.count);
       // state.totalDiscountedPrice = state.totalPrice;
-      // state.totalQuantity = state.totalQuantity - existingBasketItem.count;
       // state.items = state.items?.filter(
-      //   (item) => item.ticket.ticketId !== ticketId
-      // );
-      // existingBasketItem.count = 0;
-      const existingService = state.items.find(
-        (event) => event.eventId === eventId
-      );
-      if (existingService) {
-        const existingBasketItem = existingService.tickets?.find(
-          (item) => item.ticketId === ticketId
-        );
-        if (existingBasketItem) {
-          existingBasketItem.count = 0;
+        //   (item) => item.ticket.ticketId !== ticketId
+        // );
+        // existingBasketItem.count = 0;
+        const existingService = state.items.find(
+          (event) => event.eventId === eventId
+          );
+          if (existingService) {
+            const existingBasketItem = existingService.tickets?.find(
+              (item) => item.ticketId === ticketId
+              );
+              if (existingBasketItem) {
+                existingBasketItem.count = 0;
+                state.totalQuantity = state.totalQuantity - existingBasketItem.count;
           state.items.map((item) => {
             // Check if the item's eventId and ticketId match the ones to be deleted
             if (item.eventId === eventId) {

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialAuthState = {
   token: "",
+  mobileNumber: "",
+  openOtpPage: false,
   isLoggedIn: false,
   isAgancyApproved: true,
   agancyDataDesc: "",
@@ -19,14 +21,18 @@ const authSlice = createSlice({
     showLoginWarning(state, action) {
       state.loginWarning = action.payload;
     },
-    // login(state, action) {
-    //   state.isLoggedIn = true;
-    //   state.token = `Bearer ${action.payload}`;
-    // },
-    // logout(state) {
-    //   state.isLoggedIn = false;
-    //   state.token = "";
-    // },
+    
+    addUserMobileNumber(state, action) {
+      state.mobileNumber = action.payload;
+    },
+    login(state, action) {
+      state.isLoggedIn = true;
+      state.token = `Bearer ${action.payload}`;
+    },
+    logout(state) {
+      state.isLoggedIn = false;
+      state.token = "";
+    },
     toggleAuthLoading(state, action) {
       state.authLoading = action.payload;
     },

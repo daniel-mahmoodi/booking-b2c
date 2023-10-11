@@ -13,18 +13,17 @@ import { Login } from "../Auth/Login";
 import { sendCartData } from "../../store/basket-action";
 import { basketActions } from "../../store/basket-slice";
 
-let isInitial = true;
-
 const MainPage = () => {
   const dispatch = useDispatch();
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJjbGllbnQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTMzMjM2NDk1NSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6ImU0ODRjZmMxLTFmMDAtNDIzNC1iYWNhLTBjYmRjYTlhYmJjMiIsImp0aSI6IjNiYTkyNzgwLWUxYzQtNDliYS05NzExLWVlMGQwZjhiOWY4YSIsImV4cCI6MTY5NjkxNzAzNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDU4LyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTA1OC8ifQ.k_sWj-wKfVhXl8S-gvnc6vOSnqovtRStmgS6nz-TowA";
+  const token = useSelector((state) => state.auth.token);
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
-    dispatch(sendCartData(items, token));
-  }, [dispatch]);
+    if (token) {
+      dispatch(sendCartData(items, token));
+    }
+  }, [dispatch, token]);
   // prevent footer component shows in login and signin pages
   const location = useLocation();
   const excludeFooterRoutes = ["/login", "/signup"];

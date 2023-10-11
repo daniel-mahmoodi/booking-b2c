@@ -1,15 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
-const apiUrl = process.env.REACT_APP_API_IMAGE_URL;
+import { useState } from "react";
+import { useEffect } from "react";
+const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const NavShoppingItem = ({ data }) => {
+  console.log('datain nabshop',data);
+  const [image, setImage] = useState("");
+  useEffect(() => {
+    if (data.tickets) {
+      // setImage(`${IMGUrl}${data.imageUrl.replace("..", "")}`);
+    }
+  }, [data.imageUrl, data.tickets]);
   const dispatch = useDispatch();
   const eraseItemFromBasketHandler = () => {
     dispatch(basketActions.eraseItemFromBasket(data.id));
   };
   return (
     <div className="item">
-      <img src={`${apiUrl}/...`} alt="" />
+      <img src={image} alt="" />
       <div className="p-2">
         <p className="m-0 fw-md title">{data.title}</p>
         <p className="m-0 description">توضیحات بیشتر</p>
