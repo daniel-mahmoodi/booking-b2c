@@ -6,7 +6,6 @@ const initialEventState = {
   serviceDetails: {},
   selectedSansData: {},
   ticketDetails: {},
-  showSequencesModal: false,
   myCardsLoader: false,
   showCardsError: false,
   acceptButtonLoading: false,
@@ -34,9 +33,6 @@ const eventSlice = createSlice({
     },
     toggleTicketComponent(state, action) {
       state.showTicketComponent = action.payload;
-    },
-    toggleSansesModal(state, action) {
-      state.showSequencesModal = action.payload;
     },
     addSelectedSansData(state, action) {
       state.selectedSansData = action.payload;

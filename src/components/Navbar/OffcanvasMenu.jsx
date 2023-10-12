@@ -1,14 +1,35 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../store/ui-slice";
+import NavSignInButton from "./NavSignInButton";
 
 const OffcanvasMenu = () => {
+  const dispatch = useDispatch();
+  const toggleSideBarHandler = () => {
+    dispatch(uiActions.toggleSideBar(false));
+  };
   return (
     <div id="offcanvas" data-uk-offcanvas="overlay: true">
-      <div className="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between">
+      <div
+        className="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between"
+        style={{
+          display: "block",
+          position: "absolute",
+          right: "0px",
+          left: "auto",
+          top: "0px",
+          zIndex: "1000",
+        }}
+      >
         <button
+          onClick={toggleSideBarHandler}
           className="uk-offcanvas-close"
+          style={{ backgroundColor: "white", border: "0" }}
           type="button"
           data-uk-close=""
-        ></button>
+        >
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
         <div>
           <div className="uk-margin">
             <div className="logo">
@@ -64,12 +85,7 @@ const OffcanvasMenu = () => {
           </div>
         </div>
         <div>
-          <div className="uk-margin">
-            <a className="uk-button uk-button-danger" href="#!">
-              <i className="fas fa-user"></i>
-              <span style={{ marginRight: "5px" }}>پروفایل</span>
-            </a>
-          </div>
+          <NavSignInButton />
         </div>
       </div>
     </div>

@@ -111,6 +111,7 @@
   .serviceBody {
     justify-content: center;
     width: 100%;
+    margin: 12px 0px;
   }
   .serviceButton {
     width: 50%;
@@ -122,6 +123,9 @@
     width: 100%;
   }
   .ticket {
+    width: 100%;
+  }
+  .loading {
     width: 100%;
   }
 }

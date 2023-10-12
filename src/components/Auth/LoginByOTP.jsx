@@ -41,7 +41,9 @@ function LoginByOTP({ changeRegistrationType }) {
     e.preventDefault();
     if (!state.Mobile) {
       dispatch(
-        authActions.showLoginWarning({ Mobile: "این فیلد نباید خالی باشد" })
+        authActions.showLoginWarning({
+          ConfirmPassword: "این فیلد نباید خالی باشد",
+        })
       );
     }
 

@@ -3,15 +3,14 @@ import classes from "./BasketItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
 import IncreaseDecreaseButton from "../Layout/IncreaseDecreaseButton";
-const IMGUrl = "https://takish724.ir/";
+const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 // const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const BasketItem = ({ data, eventId }) => {
   const dispatch = useDispatch();
   const [imageUrl, setImageUrl] = useState("");
   useEffect(() => {
     if (data.imageUrl) {
-      // setImageUrl(`${IMGUrl}${data.imageUrl.replace("..", "")}`);
-      setImageUrl("nothing");
+      setImageUrl(`${IMGUrl}${data.imageUrl.replace("..", "")}`);
     }
   }, [data.imageUrl]);
   const eraseItemHandler = () => {
@@ -64,7 +63,7 @@ const BasketItem = ({ data, eventId }) => {
       <div className="total-price-container">
         <div className={`"title" ${classes.title}`}>قیمت کل : </div>
         <div>
-          <span className="price">{data.quantity * data.discountedPrice}</span>
+          <span className="price">{data.count * data.discountedPrice}</span>
         </div>
       </div>
     </div>

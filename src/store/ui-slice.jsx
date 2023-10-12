@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialUiState = {
   openOtpPage: false,
+  showSideBar: false,
+  showSequencesModal: false,
 };
 const uiSlice = createSlice({
   name: "ui",
@@ -9,6 +11,12 @@ const uiSlice = createSlice({
   reducers: {
     sendUserToOtpPage(state, action) {
       state.openOtpPage = action.payload;
+    },
+    toggleSideBar(state, action) {
+      state.showSideBar = action.payload;
+    },
+    toggleSansesModal(state, action) {
+      state.showSequencesModal = action.payload;
     },
   },
 });

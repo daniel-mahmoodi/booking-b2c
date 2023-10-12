@@ -1,5 +1,6 @@
 import axios from "axios";
 import { eventActions } from "./event-slice";
+import { uiActions } from "./ui-slice";
 
 const apiUrl = process.env.REACT_APP_API_ENDPOINT;
 export const getServices = (id) => {
@@ -31,6 +32,7 @@ export const getServiceDetails = (id) => {
     })
       .then((response) => {
         dispatch(eventActions.addServiceDetails(response.data));
+        console.log('getServiceDetails', response.data);
       })
       .catch((error) => {
         console.log("error", error);
@@ -48,7 +50,7 @@ export const getSanses = (id) => {
       .then((response) => {
         dispatch(eventActions.toggleAcceptButtonLoading(false));
         dispatch(eventActions.addListOfSanses(response.data));
-        dispatch(eventActions.toggleSansesModal(true));
+        dispatch(uiActions.toggleSansesModal(true));
       })
       .catch((error) => {
         console.log("error", error);

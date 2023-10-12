@@ -12,7 +12,6 @@ function Footer() {
         <TopFooter />
         <MiddleFooter />
         <BottomFooter />
-        {/* <OffcanvasMenu /> */}
       </footer>
     </Fragment>
   );

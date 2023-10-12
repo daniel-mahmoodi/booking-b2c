@@ -37,8 +37,10 @@ const ServiceSection = ({
           </ul>
         </div>
       ) : (
-        <div className={`${classes.serviceButton} ${classes.disable}`}>
-          انتخاب سرویس
+        <div className={classes.serviceBody}>
+          <div className={`${classes.serviceButton} ${classes.disable}`}>
+            انتخاب سرویس
+          </div>
         </div>
       )}
     </Fragment>

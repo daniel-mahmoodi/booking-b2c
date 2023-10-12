@@ -29,12 +29,12 @@ const SansesType = ({ listOfSanses }) => {
     );
     if (dayExist) {
       setUserSelectedSanses(dayExist.sansList);
-      
     } else {
       setUserSelectedSanses([]);
     }
   };
   const handleSansSelected = (item) => {
+    console.log("item", item);
     setSansSelectedTitle(item.title);
     setSansSelectedeventId(item.eventId);
     dispatch(getTicket(serviceDetails.id, item.id));
@@ -58,7 +58,6 @@ const SansesType = ({ listOfSanses }) => {
         showTicketComponent={showTicketComponent}
         ticketDetails={ticketDetails}
         eventId={sansSelectedeventId}
-        
       />
     </div>
   );

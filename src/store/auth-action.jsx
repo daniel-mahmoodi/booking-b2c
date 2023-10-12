@@ -10,11 +10,13 @@ export const signUpRequest = (userData) => {
     const bodyFormData = new FormData();
     bodyFormData.append("FirstName", userData.FirstName);
     bodyFormData.append("LastName", userData.LastName);
-    userData.Mobile && bodyFormData.append("Mobile", userData.Mobile);
     if (userData.Email) {
       bodyFormData.append("Email", userData.Email);
       bodyFormData.append("Password", userData.Password);
       bodyFormData.append("ConfirmPassword", userData.ConfirmPassword);
+    }
+    if (userData.Mobile) {
+      userData.Mobile && bodyFormData.append("Mobile", userData.Mobile);
     }
     axios({
       method: "POST",
@@ -28,6 +30,10 @@ export const signUpRequest = (userData) => {
         console.log(response);
         if (userData.Password && userData.Email) {
           dispatch(loginRequest(userData));
+        }
+        if (userData.Mobile) {
+          dispatch(authActions.addUserMobileNumber(userData.Mobile));
+          dispatch(uiActions.sendUserToOtpPage(true));
         }
         //    dispatch(loginRequest(userData.Email, userData.Password));
       })

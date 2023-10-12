@@ -100,12 +100,13 @@ const RegistrationByOTP = ({ changeRegistrationType }) => {
                 className="uk-input"
                 type="text"
                 name="Mobile"
-                placeholder="شماره موبال خود را وارد کنید"
+                placeholder="شماره موبایل خود را وارد کنید"
                 value={state.Mobile}
                 onChange={handleInputChange}
               />
               {signUpWarning && (
-                <p className="invalid-msg">{signUpWarning.Mobile}</p>
+                <p className="invalid-msg">{signUpWarning.ConfirmPassword
+                }</p>
               )}
             </div>
 

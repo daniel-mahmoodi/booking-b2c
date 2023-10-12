@@ -53,7 +53,7 @@ const basketSlice = createSlice({
       const newItem = action.payload;
       state.basketChanged = true;
       // console.log("State before:", state, action.payload);
-     
+
       state.totalQuantity++;
       const existingService = state.items.find(
         (event) => event.eventId === newItem.eventId
@@ -67,7 +67,14 @@ const basketSlice = createSlice({
           existingBasketItem.count++;
         } else {
           if (existingService.tickets) {
-            existingService.tickets?.push([{ ...newItem.tickets }]);
+            existingService.tickets?.push({ ...newItem.tickets });
+            // console.log(
+            //   "State before:here",
+            //   existingBasketItem,
+            //   newItem.tickets.ticketId,
+            //   current(existingService.tickets),
+            //   current(state.items)
+            // );
           } else {
             existingService.push({ tickets: [{ ...newItem.tickets }] });
           }
@@ -80,13 +87,13 @@ const basketSlice = createSlice({
           tickets: [{ ...newItem.tickets }],
         });
       }
-    //   newItem.tickets.price === newItem.tickets.discountedPrice
-    //   ? (state.totalPrice =
-    //       state.totalPrice + newItem.tickets.price * newItem.tickets.count)
-    //   : (state.totalPrice =
-    //       state.totalPrice +
-    //       newItem.tickets.discountedPrice * newItem.tickets.count);
-    // state.totalDiscountedPrice = state.totalPrice;
+      //   newItem.tickets.price === newItem.tickets.discountedPrice
+      //   ? (state.totalPrice =
+      //       state.totalPrice + newItem.tickets.price * newItem.tickets.count)
+      //   : (state.totalPrice =
+      //       state.totalPrice +
+      //       newItem.tickets.discountedPrice * newItem.tickets.count);
+      // state.totalDiscountedPrice = state.totalPrice;
     },
     //
     removeItemFromBasket(state, action) {
@@ -140,19 +147,19 @@ const basketSlice = createSlice({
       //       existingBasketItem.discountedPrice * existingBasketItem.count);
       // state.totalDiscountedPrice = state.totalPrice;
       // state.items = state.items?.filter(
-        //   (item) => item.ticket.ticketId !== ticketId
-        // );
-        // existingBasketItem.count = 0;
-        const existingService = state.items.find(
-          (event) => event.eventId === eventId
-          );
-          if (existingService) {
-            const existingBasketItem = existingService.tickets?.find(
-              (item) => item.ticketId === ticketId
-              );
-              if (existingBasketItem) {
-                existingBasketItem.count = 0;
-                state.totalQuantity = state.totalQuantity - existingBasketItem.count;
+      //   (item) => item.ticket.ticketId !== ticketId
+      // );
+      // existingBasketItem.count = 0;
+      const existingService = state.items.find(
+        (event) => event.eventId === eventId
+      );
+      if (existingService) {
+        const existingBasketItem = existingService.tickets?.find(
+          (item) => item.ticketId === ticketId
+        );
+        if (existingBasketItem) {
+          existingBasketItem.count = 0;
+          state.totalQuantity = state.totalQuantity - existingBasketItem.count;
           state.items.map((item) => {
             // Check if the item's eventId and ticketId match the ones to be deleted
             if (item.eventId === eventId) {

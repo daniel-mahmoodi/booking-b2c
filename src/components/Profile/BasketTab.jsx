@@ -9,7 +9,6 @@ function BasketTab() {
     (state) => state.basket.totalDiscountedPrice
   );
   console.log("basketItems", basketItems);
- 
 
   return (
     <div className="profile-left" id="basket">
@@ -48,9 +47,10 @@ function BasketTab() {
             <li>تعداد</li>
             <li>قیمت کل</li>
           </ul>
-          {basketItems.map((event) => (
-            <EventList key={event.id} items={event} />
-          ))}
+          {basketItems &&
+            basketItems.map((event) => (
+              <EventList key={event.id} items={event} />
+            ))}
 
           {/* End of item block */}
           <div className="basket-footer d-flex justify-between align-center px-3">

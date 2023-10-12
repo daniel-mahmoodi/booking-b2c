@@ -27,6 +27,7 @@ function NavbarHeader() {
               <ShoppingBag />
               <NavSignInButton />
               <HambergerMobileButton />
+              
             </div>
           </div>
         </div>

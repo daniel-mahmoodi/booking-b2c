@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./Sequences.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { eventActions } from "../../store/event-slice";
+import { uiActions } from "../../store/ui-slice";
 import Sanses from "./Sanses";
 import SansesType from "./SansesType";
 
@@ -11,7 +11,7 @@ const Sequences = () => {
   const selectedSansData = useSelector((state) => state.event.selectedSansData);
   console.log("listOfSanses in sequence com", listOfSanses);
   const toggleModal = () => {
-    dispatch(eventActions.toggleSansesModal(false));
+    dispatch(uiActions.toggleSansesModal(false));
   };
   const placeOrderHandler = () => {
     console.log("placeOrderHandler");
@@ -28,9 +28,9 @@ const Sequences = () => {
 
             <div className={classes.dividerLine}></div>
 
-            <button onClick={placeOrderHandler} className={classes.accept}>
+            {/* <button onClick={placeOrderHandler} className={classes.accept}>
               تایید تیکت
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

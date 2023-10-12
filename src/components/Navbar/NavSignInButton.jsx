@@ -2,12 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { authActions } from "../../store/auth-slice";
+import { uiActions } from "../../store/ui-slice";
 
 const NavSignInButton = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const sendUserToLoginhandler = () => {
+    dispatch(uiActions.toggleSideBar(false));
     if (isLoggedIn) {
       dispatch(authActions.logout());
     } else {

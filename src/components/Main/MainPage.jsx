@@ -30,7 +30,7 @@ const MainPage = () => {
   const shouldShowFooter = !excludeFooterRoutes.includes(location.pathname);
 
   useEffect(() => {
-    if (basketChanged) {
+    if (basketChanged && token) {
       const timer = setTimeout(() => {
         dispatch(sendCartData(items, token));
         dispatch(basketActions.toggleBasketChanges(false));

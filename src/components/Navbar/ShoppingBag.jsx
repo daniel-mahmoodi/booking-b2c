@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { profileActions } from "../../store/profile-slice";
-import NavShoppingItem from "./NavShoppingItem";
+import NavShoppingItems from "./NavShoppingItems";
 
 const ShoppingBag = () => {
   const history = useHistory();
@@ -33,7 +33,7 @@ const ShoppingBag = () => {
       </a>
       <div className="basket-header">
         {items.map((item) => (
-          <NavShoppingItem key={item.id} data={item} />
+          <NavShoppingItems key={item.id} data={item} />
         ))}
         {totalDiscountedPrice > 0 && (
           <>

@@ -4,17 +4,22 @@ import { basketActions } from "../../store/basket-slice";
 import { useState } from "react";
 import { useEffect } from "react";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
-const NavShoppingItem = ({ data }) => {
-  console.log('datain nabshop',data);
+const NavShoppingItem = ({ data,eventId }) => {
+  console.log("datain nabshop", data);
   const [image, setImage] = useState("");
   useEffect(() => {
-    if (data.tickets) {
+    if (data.imageUrl) {
       // setImage(`${IMGUrl}${data.imageUrl.replace("..", "")}`);
     }
-  }, [data.imageUrl, data.tickets]);
+  }, [data.imageUrl, data]);
   const dispatch = useDispatch();
-  const eraseItemFromBasketHandler = () => {
-    dispatch(basketActions.eraseItemFromBasket(data.id));
+  const eraseItemHandler = () => {
+    dispatch(
+      basketActions.eraseItemFromBasket({
+        ticketId: data.ticketId,
+        eventId: eventId,
+      })
+    );
   };
   return (
     <div className="item">
@@ -23,7 +28,7 @@ const NavShoppingItem = ({ data }) => {
         <p className="m-0 fw-md title">{data.title}</p>
         <p className="m-0 description">توضیحات بیشتر</p>
       </div>
-      <span onClick={eraseItemFromBasketHandler} className="delete">
+      <span onClick={eraseItemHandler} className="delete">
         <i className="fa fa-times" aria-hidden="true"></i>
       </span>
     </div>
