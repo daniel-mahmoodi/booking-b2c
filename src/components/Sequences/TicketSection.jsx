@@ -8,13 +8,18 @@ const TicketSection = ({
   showTicketComponent,
   ticketDetails,
   eventId,
+  sansSelectedTitle,
 }) => {
   return (
     <Fragment>
       {!ticketLoading ? (
         showTicketComponent && (
           <div className={classes.ticket}>
-            <Ticket ticketDetails={ticketDetails} eventId={eventId} />
+            <Ticket
+              ticketDetails={ticketDetails}
+              eventId={eventId}
+              sansSelectedTitle={sansSelectedTitle}
+            />
           </div>
         )
       ) : (

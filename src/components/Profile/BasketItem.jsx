@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./BasketItem.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
 import IncreaseDecreaseButton from "../Layout/IncreaseDecreaseButton";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
@@ -21,8 +21,10 @@ const BasketItem = ({ data, eventId }) => {
   console.log("data in baketitems", data);
   return (
     <div className={classes.dataBlock}>
-      {/* Repeat this block for each item in the basket */}
-      <div className="row justify-center mb-2" style={{ position: "relative" }}>
+      <div
+        className={`${classes.firstColumn} row justify-center mb-2`}
+        style={{ position: "relative" }}
+      >
         <div className="col-auto">
           <div onClick={eraseItemHandler} className="close">
             <i className="fa fa-times" aria-hidden="true"></i>
@@ -46,7 +48,7 @@ const BasketItem = ({ data, eventId }) => {
           </div> */}
         </div>
       </div>
-      <div className="unit-price">
+      <div className={`${classes.column} unit-price`}>
         <div className={`"title" ${classes.title}`}>قیمت واحد : </div>
         <div>
           {data.price !== data.discountedPrice ? (
@@ -60,7 +62,7 @@ const BasketItem = ({ data, eventId }) => {
         </div>
       </div>
       <IncreaseDecreaseButton data={data} eventId={eventId} />
-      <div className="total-price-container">
+      <div className={`${classes.column} total-price-container`}>
         <div className={`"title" ${classes.title}`}>قیمت کل : </div>
         <div>
           <span className="price">{data.count * data.discountedPrice}</span>

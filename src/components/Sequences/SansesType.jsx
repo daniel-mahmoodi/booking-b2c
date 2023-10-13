@@ -16,7 +16,7 @@ const SansesType = ({ listOfSanses }) => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [sansSelectedTitle, setSansSelectedTitle] = useState("");
   const [sansSelectedeventId, setSansSelectedeventId] = useState();
-  console.log("serviceId", serviceDetails);
+
   const ticketDetails = useSelector((state) => state.event.ticketDetails);
 
   const toggleDropDown = () => {
@@ -58,6 +58,7 @@ const SansesType = ({ listOfSanses }) => {
         showTicketComponent={showTicketComponent}
         ticketDetails={ticketDetails}
         eventId={sansSelectedeventId}
+        sansSelectedTitle={sansSelectedTitle}
       />
     </div>
   );

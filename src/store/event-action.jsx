@@ -35,7 +35,7 @@ export const getServiceDetails = (id) => {
         console.log('getServiceDetails', response.data);
       })
       .catch((error) => {
-        console.log("error", error);
+        console.log("error getServiceDetails", error);
       });
   };
 };

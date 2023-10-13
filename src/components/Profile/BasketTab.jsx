@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import BasketItem from "./BasketItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EventList from "./EventList";
+import { uiActions } from "../../store/ui-slice";
 
 function BasketTab() {
+  const dispatch = useDispatch();
   const basketItems = useSelector((state) => state.basket.items);
   const totalDiscountedPrice = useSelector(
     (state) => state.basket.totalDiscountedPrice
   );
   console.log("basketItems", basketItems);
-
+  const showChekoutModalHandler = () => {
+    dispatch(uiActions.toggleCheckoutModal(true));
+  };
+  
   return (
     <div className="profile-left" id="basket">
       <div className="d-flex p-2 basket-top-container">
@@ -42,7 +47,7 @@ function BasketTab() {
       <div className="basket-contaienr" data-basket-detail-step="1">
         <div className="basket">
           <ul className="data-header">
-            <li>تخفیف ها</li>
+            <li>عنوان</li>
             <li>قیمت واحد</li>
             <li>تعداد</li>
             <li>قیمت کل</li>
@@ -55,26 +60,26 @@ function BasketTab() {
           {/* End of item block */}
           <div className="basket-footer d-flex justify-between align-center px-3">
             <div>
-              <span>مجموع قیمت :</span>{" "}
+              <span>مجموع قیمت :</span>
               <span>{totalDiscountedPrice} تومان</span>
             </div>
-            <div className="discount-container">
+            {/* <div className="discount-container">
               <button>اعمال</button>
               <input type="text" />
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="uk-width-1-1 uk-first-column d-flex justify-end mt-2">
+        {/* <div className="uk-width-1-1 uk-first-column d-flex justify-end mt-2">
           <button
             className="uk-button uk-button-danger uk-button-large shine"
             type="submit"
           >
             پرداخت
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="basket-contaienr" data-basket-detail-step="2">
-        <p className="mb-0 fw-md">نحوه پرداخت</p>
+        <p className="mb-0 fw-md">ادامه روند خرید و پرداخت:</p>
         <div className="basket-divider"></div>
         <p className="mt-1 basket-step2-alert">
           <i className="fa fa-exclamation-circle" aria-hidden="true"></i> با
@@ -85,7 +90,7 @@ function BasketTab() {
             <p className="my-0 fw-md">مبلغ قابل پرداخت</p>
             <p className="my-0">{totalDiscountedPrice} تومان</p>
           </div>
-          <div>
+          <div onClick={showChekoutModalHandler}>
             <button
               className="uk-button uk-button-danger uk-button-large shine"
               type="submit"

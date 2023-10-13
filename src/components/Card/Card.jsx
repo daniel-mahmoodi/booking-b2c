@@ -18,6 +18,7 @@ const Card = ({ data }) => {
   };
   const submitOrderHandler = (event) => {
     event.stopPropagation();
+    dispatch(getServiceDetails(data.id));
     dispatch(getSanses(data.id));
     dispatch(eventActions.toggleTicketComponent(false));
   };

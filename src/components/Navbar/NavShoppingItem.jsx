@@ -9,7 +9,7 @@ const NavShoppingItem = ({ data,eventId }) => {
   const [image, setImage] = useState("");
   useEffect(() => {
     if (data.imageUrl) {
-      // setImage(`${IMGUrl}${data.imageUrl.replace("..", "")}`);
+      setImage(`${IMGUrl}${data.imageUrl.replace("..", "")}`);
     }
   }, [data.imageUrl, data]);
   const dispatch = useDispatch();

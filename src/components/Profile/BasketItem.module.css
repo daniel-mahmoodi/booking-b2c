@@ -3,8 +3,7 @@
   padding: 10px 15px;
   font-size: 12px;
   display: flex;
-  justify-content: space-between;
-  justify-self: center;
+  justify-content: center;
 }
 
 .dataBlock p {
@@ -14,6 +13,14 @@
   display: none;
   padding: 0 5px;
   margin: 0;
+}
+@media screen and (min-width: 780px) {
+  .firstColumn {
+    width: 50%;
+  }
+  .column {
+    width: 25%;
+  }
 }
 @media screen and (max-width: 780px) {
   .dataBlock {

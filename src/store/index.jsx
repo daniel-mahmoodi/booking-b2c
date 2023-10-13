@@ -6,6 +6,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 //.
 import uiReducer from "./ui-slice";
+import orderReducer from "./order-slice";
 import catalogReducer from "./catalog-slice";
 import profileReducer from "./profile-slice";
 import eventReducer from "./event-slice";
@@ -36,6 +37,7 @@ const persistedBasketReducer = persistReducer(
 const store = configureStore({
   reducer: {
     ui: uiReducer,
+    order: orderReducer,
     catalog: catalogReducer,
     profile: profileReducer,
     event: persistedEventReducer,

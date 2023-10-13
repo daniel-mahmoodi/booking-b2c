@@ -4,6 +4,7 @@ const initialUiState = {
   openOtpPage: false,
   showSideBar: false,
   showSequencesModal: false,
+  showCheckoutModal: false,
 };
 const uiSlice = createSlice({
   name: "ui",
@@ -17,6 +18,9 @@ const uiSlice = createSlice({
     },
     toggleSansesModal(state, action) {
       state.showSequencesModal = action.payload;
+    },
+    toggleCheckoutModal(state, action) {
+      state.showCheckoutModal = action.payload;
     },
   },
 });

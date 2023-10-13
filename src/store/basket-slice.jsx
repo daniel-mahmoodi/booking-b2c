@@ -2,6 +2,8 @@ import { createSlice, current } from "@reduxjs/toolkit";
 
 const defaultBasketState = {
   items: [],
+  mobile: null,
+  userFullName: "",
   favoriteItems: { items: [] },
   totalPrice: 0,
   totalDiscountedPrice: 0,
@@ -26,6 +28,8 @@ const basketSlice = createSlice({
     //     },
     replaceBasket(state, action) {
       state.items = action.payload.basketState.basketData.basketItems;
+      state.mobile = action.payload.basketState.basketData.mobile;
+      state.userFullName = action.payload.basketState.basketData.userFullName;
       state.totalPrice = action.payload.basketState.totalPrice;
       console.log("current", current(state));
       console.log("State before:", state, action.payload);
@@ -52,13 +56,11 @@ const basketSlice = createSlice({
     addItemToBasket(state, action) {
       const newItem = action.payload;
       state.basketChanged = true;
-      // console.log("State before:", state, action.payload);
 
       state.totalQuantity++;
       const existingService = state.items.find(
         (event) => event.eventId === newItem.eventId
       );
-
       if (existingService) {
         const existingBasketItem = existingService.tickets?.find(
           (item) => item.ticketId === newItem.tickets.ticketId
@@ -83,10 +85,17 @@ const basketSlice = createSlice({
         state.items?.push({
           eventId: newItem.eventId,
           eventTitle: newItem.eventTitle,
-          imageUrl: newItem.imageUrl,
           tickets: [{ ...newItem.tickets }],
         });
       }
+      const allPrices = state.items.flatMap((event) =>
+        event.tickets.map((ticket) => ticket.price)
+      );
+
+      state.totalDiscountedPrice = allPrices.reduce(
+        (sum, price) => sum + price,
+        0
+      );
       //   newItem.tickets.price === newItem.tickets.discountedPrice
       //   ? (state.totalPrice =
       //       state.totalPrice + newItem.tickets.price * newItem.tickets.count)
@@ -124,12 +133,32 @@ const basketSlice = createSlice({
               (ticket) => ticket.ticketId !== ticketId
             );
             item.count = 0;
+            if (!item.tickets.length) {
+              state.items = state.items.filter(
+                (event) => event.eventId !== item.eventId
+              );
+              console.log(
+                "State before:here"
+                // existingBasketItem,
+                // existingService,
+                // current(item),
+                // current(state.items)
+              );
+            }
           }
           return item;
         });
       } else {
         existingBasketItem.count--;
       }
+      const allPrices = state.items.flatMap((event) =>
+        event.tickets.map((ticket) => ticket.price)
+      );
+
+      state.totalDiscountedPrice = allPrices.reduce(
+        (sum, price) => sum + price,
+        0
+      );
     },
     eraseItemFromBasket(state, action) {
       const { ticketId, eventId } = action.payload;
@@ -167,6 +196,12 @@ const basketSlice = createSlice({
               item.tickets = item.tickets.filter(
                 (ticket) => ticket.ticketId !== ticketId
               );
+              if (!item.tickets.length) {
+                state.items = state.items.filter(
+                  (event) => event.eventId !== item.eventId
+                );
+                console.log("State before:here");
+              }
             }
             return item;
           });
@@ -197,7 +232,7 @@ const basketSlice = createSlice({
         //   tickets: [{ ...newItem.tickets }],
         // });
       }
-      console.log("State before:", state.items);
+      // console.log("State before:", state.items);
     },
   },
 });

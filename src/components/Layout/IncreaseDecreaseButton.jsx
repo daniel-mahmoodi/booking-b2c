@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
 import classes from "./IncreaseDecreaseButton.module.css";
 // import useCheckStock from "../Hook/useCheckStock";
-const IncreaseDecreaseButton = ({ data, eventId }) => {
+const IncreaseDecreaseButton = ({ data, eventId, sansSelectedTitle }) => {
   const dispatch = useDispatch();
   // const [basketItemPlusOneItem, setTicketExist] = useState();
   const basketItems = useSelector((state) => state.basket.items);
@@ -16,12 +16,7 @@ const IncreaseDecreaseButton = ({ data, eventId }) => {
     serviceExist &&
     serviceExist.tickets?.find((item) => item.ticketId === data.ticketId);
   // console.log("basketItemPlusOneItem", basketItemPlusOneItem);
-  console.log(
-    " serviceExist,basketItemPlusOneItem",
-    serviceExist,
-    basketItemPlusOneItem
-  );
-  console.log("datta", data);
+  console.log("serviceDetails", serviceDetails, data);
   // const remainedCapacity = basketItemPlusOneItem
   //   ? data.capacity - basketItemPlusOneItem.count
   //   : data.capacity;
@@ -33,7 +28,13 @@ const IncreaseDecreaseButton = ({ data, eventId }) => {
         basketActions.addItemToBasket({
           eventId: eventId,
           eventTitle: serviceDetails.eventName,
-          tickets: { ...data, count: 1, imageUrl: serviceDetails.imageUrl},
+          tickets: {
+            ...data,
+            count: 1,
+            ticketTitle: serviceDetails.serviceName,
+            sansTitle: sansSelectedTitle,
+            imageUrl: serviceDetails.imageUrl,
+          },
         })
       );
     }
