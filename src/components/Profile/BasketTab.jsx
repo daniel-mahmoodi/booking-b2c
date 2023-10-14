@@ -14,7 +14,7 @@ function BasketTab() {
   const showChekoutModalHandler = () => {
     dispatch(uiActions.toggleCheckoutModal(true));
   };
-  
+  console.log("all events", basketItems);
   return (
     <div className="profile-left" id="basket">
       <div className="d-flex p-2 basket-top-container">

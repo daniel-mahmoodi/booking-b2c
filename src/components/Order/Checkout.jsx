@@ -50,9 +50,10 @@ const Checkout = () => {
       payload: value,
     });
   };
-
   const handleSubmit = () => {
     // e.preventDefault();
+    window.location.href =
+      "https://api.takish724.ir/api/Client/Redirect/RedirectToTheBank?PaymentId=1";
     if (!state.mobile) {
       dispatch(
         orderActions.showCheckoutWarning({

@@ -30,9 +30,9 @@ const basketSlice = createSlice({
       state.items = action.payload.basketState.basketData.basketItems;
       state.mobile = action.payload.basketState.basketData.mobile;
       state.userFullName = action.payload.basketState.basketData.userFullName;
-      state.totalPrice = action.payload.basketState.totalPrice;
+      state.totalDiscountedPrice = action.payload.basketState.totalPrice;
       console.log("current", current(state));
-      console.log("State before:", state, action.payload);
+      console.log("current State before:", state, action.payload);
     },
     //     changeTotalDiscountedAmountAfterAddingCoupon(state, action) {
     //       state.totalDiscountedPrice = action.payload;
@@ -89,13 +89,14 @@ const basketSlice = createSlice({
         });
       }
       const allPrices = state.items.flatMap((event) =>
-        event.tickets.map((ticket) => ticket.price)
+        event.tickets.map((ticket) => ticket.price * ticket.count)
       );
 
       state.totalDiscountedPrice = allPrices.reduce(
         (sum, price) => sum + price,
         0
       );
+      console.log("allPrices", allPrices, current(state.items));
       //   newItem.tickets.price === newItem.tickets.discountedPrice
       //   ? (state.totalPrice =
       //       state.totalPrice + newItem.tickets.price * newItem.tickets.count)
@@ -115,11 +116,11 @@ const basketSlice = createSlice({
         (item) => item.ticketId === ticketId
       );
 
-      existingBasketItem.price === existingBasketItem.discountedPrice
-        ? (state.totalPrice = state.totalPrice - existingBasketItem.price)
-        : (state.totalPrice =
-            state.totalPrice - existingBasketItem.discountedPrice);
-      state.totalDiscountedPrice = state.totalPrice;
+      // existingBasketItem.price === existingBasketItem.discountedPrice
+      //   ? (state.totalPrice = state.totalPrice - existingBasketItem.price)
+      //   : (state.totalPrice =
+      //       state.totalPrice - existingBasketItem.discountedPrice);
+      // state.totalDiscountedPrice = state.totalPrice;
 
       state.totalQuantity--;
 
@@ -152,7 +153,7 @@ const basketSlice = createSlice({
         existingBasketItem.count--;
       }
       const allPrices = state.items.flatMap((event) =>
-        event.tickets.map((ticket) => ticket.price)
+        event.tickets.map((ticket) => ticket.price * ticket.count)
       );
 
       state.totalDiscountedPrice = allPrices.reduce(
@@ -233,6 +234,14 @@ const basketSlice = createSlice({
         // });
       }
       // console.log("State before:", state.items);
+      const allPrices = state.items.flatMap((event) =>
+        event.tickets.map((ticket) => ticket.price * ticket.count)
+      );
+
+      state.totalDiscountedPrice = allPrices.reduce(
+        (sum, price) => sum + price,
+        0
+      );
     },
   },
 });

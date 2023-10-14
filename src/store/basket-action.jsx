@@ -25,7 +25,7 @@ export const getCartData = (token) => {
 
     try {
       const basketData = await fetchData();
-      console.log("basketData", basketData);
+      console.log("current basketData", basketData);
       let totalPrice = 0;
 
       basketData.basketItems.flatMap((event) =>

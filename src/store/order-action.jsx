@@ -4,15 +4,12 @@ const apiUrl = process.env.REACT_APP_API_ENDPOINT;
 export const SendOrder = (token) => {
   return async (dispatch) => {
     dispatch(orderActions.toggleOrderLoading(true));
-    const bodyFormData = new FormData();
-    bodyFormData.append("paymentMethod", 1);
-    bodyFormData.append("paymentGatewayId", 1);
 
     axios({
       method: "POST",
       url: `${apiUrl}/Order/SendOrder`,
-      data: bodyFormData,
-      headers: { Authorization: token, "Content-Type": "multipart/form-data" },
+      data: { paymentMethod: 1, paymentGatewayId: 1 },
+      headers: { Authorization: token, "Content-Type": "application/json" },
     })
       .then(function (response) {
         dispatch(orderActions.toggleOrderLoading(false));
