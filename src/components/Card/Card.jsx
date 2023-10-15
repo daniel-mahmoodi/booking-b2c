@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSanses, getServiceDetails } from "../../store/event-action";
 import { useHistory } from "react-router-dom";
@@ -10,6 +10,7 @@ const Card = ({ data }) => {
   const acceptButtonLoading = useSelector(
     (state) => state.event.acceptButtonLoading
   );
+  const serviceDetails = useSelector((state) => state.event.serviceDetails);
   const history = useHistory();
 
   const selectCardHandler = () => {
@@ -73,7 +74,7 @@ const Card = ({ data }) => {
               onClick={submitOrderHandler}
             >
               <button className="uk-button uk-button-default">
-                {acceptButtonLoading ? (
+                {acceptButtonLoading && serviceDetails.id === data.id ? (
                   <MyLoading color={"#ffffff"} />
                 ) : (
                   "ثبت سفارش"

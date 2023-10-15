@@ -30,7 +30,13 @@
 }
 
 /* Close button */
+.closeParent {
+  z-index: 1000;
+  position: relative;
+}
 .close {
+  position: absolute;
+  left: 0;
   color: #aaa;
   float: left;
   font-size: 28px;

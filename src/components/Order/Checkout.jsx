@@ -3,11 +3,14 @@ import { uiActions } from "../../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "../../store/order-slice";
 import { SendOrder } from "../../store/order-action";
+import { ClimbingBoxLoader, FadeLoader } from "react-spinners";
+import MyLoading from "../Layout/MyLoading";
 
 const Checkout = () => {
   const token = useSelector((state) => state.auth.token);
   const UserFullName = useSelector((state) => state.basket.userFullName);
   const Mobile = useSelector((state) => state.basket.mobile);
+  const message = useSelector((state) => state.order.message);
   const initialState = {
     userFullName: UserFullName,
     mobile: Mobile,
@@ -52,8 +55,6 @@ const Checkout = () => {
   };
   const handleSubmit = () => {
     // e.preventDefault();
-    window.location.href =
-      "https://api.takish724.ir/api/Client/Redirect/RedirectToTheBank?PaymentId=1";
     if (!state.mobile) {
       dispatch(
         orderActions.showCheckoutWarning({
@@ -225,7 +226,22 @@ const Checkout = () => {
                   className="uk-button uk-button-danger uk-button-large shine next-basket-btn mb-1"
                   type="submit"
                 >
-                  اتمام خرید و پرداخت
+                  {message ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-around",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div>{message}</div>
+                      <div>
+                        <MyLoading color={"#ffffff"} />
+                      </div>
+                    </div>
+                  ) : (
+                    `اتمام خرید و پرداخت`
+                  )}
                 </button>
                 {/* <button
                   className="uk-button uk-button-danger uk-button-large shine next-basket-btn mb-1"
@@ -234,7 +250,7 @@ const Checkout = () => {
                   ادامه خرید و موارد دیگر
                 </button> */}
               </div>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
@@ -253,7 +269,7 @@ const Checkout = () => {
                 >
                   مشاهده سبد خرید
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

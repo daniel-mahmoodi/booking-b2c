@@ -14,14 +14,22 @@ export const SendOrder = (token) => {
       .then(function (response) {
         dispatch(orderActions.toggleOrderLoading(false));
         //handle success
-        console.log("response", response);
 
+        if (response.status === 200)
+          dispatch(
+            orderActions.sendUserToPay({
+              message: response.data.message,
+              url: response.data.url,
+            })
+          );
+        // if (response) dispatch(orderActions.sendUserToPay(response.data));
+        // }
         //    dispatch(loginRequest(userData.Email, userData.Password));
       })
 
       .catch(function (error) {
         dispatch(orderActions.toggleOrderLoading(true));
-        console.log("error", error.response);
+        console.log("error", error);
         setTimeout(() => {
           dispatch(orderActions.toggleOrderLoading(false));
         }, 2000);
