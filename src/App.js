@@ -4,7 +4,7 @@ import MainPage from "./components/Main/MainPage";
 import PricingNotificationBar from "./components/Order/PricingNotificationBar";
 import PurchaseModal from "./components/Order/PurchaseModal";
 import ShoppingCartModal from "./components/Order/ShoppingCartModal";
-import Sequences from "./components/Sequences/Sequences";
+import Sequences from "./components/Sequence/Sequence";
 import Login from "./components/Auth/LoginByPass";
 import OffcanvasMenu from "./components/Navbar/OffcanvasMenu";
 import Checkout from "./components/Order/Checkout";

@@ -3,7 +3,7 @@ import BasketItem from "./BasketItem";
 import { useDispatch, useSelector } from "react-redux";
 import EventList from "./EventList";
 import { uiActions } from "../../store/ui-slice";
-import PaymentButton from "../Utilities/PaymentButton";
+import PaymentButton from "../Layout/PaymentButton";
 
 function BasketTab() {
   const basketItems = useSelector((state) => state.basket.items);

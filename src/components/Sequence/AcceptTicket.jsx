@@ -1,10 +1,10 @@
 import React from "react";
-import PaymentButton from "../Utilities/PaymentButton";
+import PaymentButton from "../Layout/PaymentButton";
 import { useModal } from "../Hook/useModal";
 
 const AcceptTicket = () => {
   const { toggleModal } = useModal();
-  
+
   return (
     <div
       style={{

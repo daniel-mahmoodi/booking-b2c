@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import Ticket from "../Events/Ticket";
-import MyLoading from "../Layout/MyLoading";
-import classes from "./SansesType.module.css";
+import Ticket from "../../Events/Ticket";
+import MyLoading from "../../Layout/MyLoading";
+import classes from "./SequenceSections.module.css";
 
 const TicketSection = ({
   ticketLoading,

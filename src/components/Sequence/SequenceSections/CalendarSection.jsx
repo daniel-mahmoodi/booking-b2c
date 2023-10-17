@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Calendar from "../Layout/Calendar";
-import classes from "./SansesType.module.css";
+import Calendar from "../../Layout/Calendar";
+import classes from "./SequenceSections.module.css";
 const CalendarSection = ({ getDateHandler, userSelectedSanses }) => {
   const [haveDate, setHaveDate] = useState(false);
   const dateIsSelected = () => {

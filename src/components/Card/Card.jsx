@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getSanses, getServiceDetails } from "../../store/event-action";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { getServiceDetails } from "../../store/event-action";
 import { useHistory } from "react-router-dom";
-import MyLoading from "../Layout/MyLoading";
-import { eventActions } from "../../store/event-slice";
+import SubmitButton from "../Layout/SubmitButton";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const Card = ({ data }) => {
   const dispatch = useDispatch();
-  const acceptButtonLoading = useSelector(
-    (state) => state.event.acceptButtonLoading
-  );
-  const serviceDetails = useSelector((state) => state.event.serviceDetails);
-  const history = useHistory();
 
+  console.log("dataaa", data);
+  const history = useHistory();
   const selectCardHandler = () => {
     dispatch(getServiceDetails(data.id));
     history.push("/service-details");
   };
-  const submitOrderHandler = (event) => {
-    event.stopPropagation();
-    dispatch(getServiceDetails(data.id));
-    dispatch(getSanses(data.id));
-    dispatch(eventActions.toggleTicketComponent(false));
-  };
+
   return (
     <div onClick={selectCardHandler}>
       <div
@@ -68,19 +59,7 @@ const Card = ({ data }) => {
             >
               <span>{data.price}تومان</span>
             </div>
-            <div
-              className="blog-card__more"
-              style={{ textAlign: "center", paddingBottom: "15px" }}
-              onClick={submitOrderHandler}
-            >
-              <button className="uk-button uk-button-default">
-                {acceptButtonLoading && serviceDetails.id === data.id ? (
-                  <MyLoading color={"#ffffff"} />
-                ) : (
-                  "ثبت سفارش"
-                )}
-              </button>
-            </div>
+            <SubmitButton id={data.id} />
           </div>
         </div>
       </div>

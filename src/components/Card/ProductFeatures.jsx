@@ -1,13 +1,13 @@
 import React from "react";
 import { submitOrderHandler } from "../Utilities/Utils";
+import SubmitButton from "../Layout/SubmitButton";
 
-const ProductFeatures = () => {
-  
+const ProductFeatures = ({ price, id }) => {
   return (
     <div className="widjet widjet-category">
-      <h4 className="widjet__title" style={{ fontSize: "14px" }}>
+      {/* <h4 className="widjet__title" style={{ fontSize: "14px" }}>
         ویژگی ها
-      </h4>
+      </h4> */}
       <ul
         className="list-category list-checked"
         style={{ listStyleType: "none", fontSize: "14px" }}
@@ -16,34 +16,16 @@ const ProductFeatures = () => {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span>قیمت</span>
             <div>
-              <span
+              {/* <span
                 style={{ color: "red", textDecoration: "line-through red" }}
               >
                 ۱۲,۰۰۰ تومان
               </span>
-              <br />
-              <span style={{ color: "green" }}>۱۲,۰۰۰ تومان</span>
+              <br /> */}
+              <span style={{ color: "green" }}>{price} تومان</span>
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "20px",
-            }}
-          >
-            <button
-              className="uk-button uk-button-danger uk-button-large shine"
-              data-basket
-          //     onClick={()=>submitOrderHandler(data.id)}
-            >
-              <span
-                className="fa fa-shopping-bag"
-                style={{ marginLeft: "10px" }}
-              ></span>
-              <span>افزودن به سبد خرید</span>
-            </button>
-          </div>
+          <SubmitButton id={id} />
         </li>
       </ul>
     </div>

@@ -60,14 +60,14 @@
 .desc div {
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 0;
   margin: 0;
 }
 .desc div :first-child {
   font-weight: bold;
-  padding: 0 0 0 2px;
-  margin: 0;
+  padding-left: 2px;
 }
 .desc :first-child :last-child {
   color: rgb(123, 12, 8);
@@ -91,6 +91,6 @@
   }
   .desc {
     width: 100%;
-    margin: 12px 0px;
+    /* margin: 12px 0px; */
   }
 }

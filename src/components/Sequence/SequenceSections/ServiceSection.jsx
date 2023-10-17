@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "./SansesType.module.css";
+import classes from "./SequenceSections.module.css";
 const ServiceSection = ({
   userSelectedSanses,
   toggleDropDown,

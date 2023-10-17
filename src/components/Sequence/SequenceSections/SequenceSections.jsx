@@ -1,14 +1,15 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTicket } from "../../store/event-action";
-import classes from "./SansesType.module.css";
+import { getTicket } from "../../../store/event-action";
+import classes from "./SequenceSections.module.css";
 import CalendarSection from "./CalendarSection";
 import ServiceSection from "./ServiceSection";
 import TicketSection from "./TicketSection";
 import ImageSection from "./ImageSection";
-import AcceptTicket from "./AcceptTicket";
-const SansesType = ({ listOfSanses }) => {
+import AcceptTicket from "../AcceptTicket";
+const SansesType = () => {
   const dispatch = useDispatch();
+  const listOfSanses = useSelector((state) => state.event.listOfSanses);
   const showTicketComponent = useSelector(
     (state) => state.event.showTicketComponent
   );
@@ -69,7 +70,7 @@ const SansesType = ({ listOfSanses }) => {
           sansSelectedTitle={sansSelectedTitle}
         />
       </div>
-      <AcceptTicket/>
+      <AcceptTicket />
     </Fragment>
   );
 };

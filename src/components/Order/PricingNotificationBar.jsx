@@ -1,6 +1,7 @@
 import React from "react";
+import SubmitButton from "../Layout/SubmitButton";
 
-function PricingNotificationBar() {
+function PricingNotificationBar({price,id}) {
   return (
     <div
       style={{
@@ -37,27 +38,16 @@ function PricingNotificationBar() {
           >
             <span style={{ marginLeft: "15px" }}>قیمت</span>
             <div>
-              <span
+              {/* <span
                 style={{ color: "red", textDecoration: "line-through red" }}
               >
                 ۱۲,۰۰۰ تومان
-              </span>
-              <br />
-              <span style={{ color: "green" }}>۱۲,۰۰۰ تومان</span>
+              </span> */}
+              {/* <br /> */}
+              <span style={{ color: "green" }}>{price} تومان</span>
             </div>
           </div>
-          <button
-            className="uk-button uk-button-danger uk-button-large shine"
-            style={{ direction: "rtl" }}
-            data-basket
-          //   onClick={()=>submitOrderHandler(data.id)}
-          >
-            <span
-              className="fa fa-shopping-bag"
-              style={{ marginLeft: "10px" }}
-            ></span>
-            <span>افزودن به سبد خرید</span>
-          </button>
+          <SubmitButton id={id}/>
         </div>
       </div>
     </div>

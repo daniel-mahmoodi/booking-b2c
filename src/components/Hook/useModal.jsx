@@ -1,4 +1,3 @@
-// hooks/useModal.js
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
