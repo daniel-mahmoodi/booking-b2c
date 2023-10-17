@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTicket } from "../../store/event-action";
 import classes from "./SansesType.module.css";
 import CalendarSection from "./CalendarSection";
 import ServiceSection from "./ServiceSection";
 import TicketSection from "./TicketSection";
+import ImageSection from "./ImageSection";
+import AcceptTicket from "./AcceptTicket";
 const SansesType = ({ listOfSanses }) => {
   const dispatch = useDispatch();
   const showTicketComponent = useSelector(
@@ -33,34 +35,42 @@ const SansesType = ({ listOfSanses }) => {
       setUserSelectedSanses([]);
     }
   };
+  console.log("serviceDetails", serviceDetails);
   const handleSansSelected = (item) => {
-    console.log("item", item);
     setSansSelectedTitle(item.title);
     setSansSelectedeventId(item.eventId);
     dispatch(getTicket(serviceDetails.id, item.id));
     toggleDropDown();
   };
   return (
-    <div className={classes.body}>
-      <CalendarSection
-        getDateHandler={getDateHandler}
-        userSelectedSanses={userSelectedSanses}
-      />
-      <ServiceSection
-        userSelectedSanses={userSelectedSanses}
-        toggleDropDown={toggleDropDown}
-        showDropDown={showDropDown}
-        sansSelectedTitle={sansSelectedTitle}
-        handleSansSelected={handleSansSelected}
-      />
-      <TicketSection
-        ticketLoading={ticketLoading}
-        showTicketComponent={showTicketComponent}
-        ticketDetails={ticketDetails}
-        eventId={sansSelectedeventId}
-        sansSelectedTitle={sansSelectedTitle}
-      />
-    </div>
+    <Fragment>
+      <div className={classes.body}>
+        <ImageSection
+          serviceName={serviceDetails.serviceName}
+          imageUrl={serviceDetails.imageUrl}
+          eventName={serviceDetails.eventName}
+        />
+        <CalendarSection
+          getDateHandler={getDateHandler}
+          userSelectedSanses={userSelectedSanses}
+        />
+        <ServiceSection
+          userSelectedSanses={userSelectedSanses}
+          toggleDropDown={toggleDropDown}
+          showDropDown={showDropDown}
+          sansSelectedTitle={sansSelectedTitle}
+          handleSansSelected={handleSansSelected}
+        />
+        <TicketSection
+          ticketLoading={ticketLoading}
+          showTicketComponent={showTicketComponent}
+          ticketDetails={ticketDetails}
+          eventId={sansSelectedeventId}
+          sansSelectedTitle={sansSelectedTitle}
+        />
+      </div>
+      <AcceptTicket/>
+    </Fragment>
   );
 };
 

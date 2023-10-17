@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import classes from "./Sequences.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { uiActions } from "../../store/ui-slice";
+import { useSelector } from "react-redux";
 import SansesType from "./SansesType";
-
+import { useModal } from "../Hook/useModal";
 const Sequences = () => {
-  const dispatch = useDispatch();
   const listOfSanses = useSelector((state) => state.event.listOfSanses);
-  const selectedSansData = useSelector((state) => state.event.selectedSansData);
-  console.log("listOfSanses in sequence com", listOfSanses);
-  const toggleModal = () => {
-    dispatch(uiActions.toggleSansesModal(false));
-  };
-  const placeOrderHandler = () => {
-    console.log("placeOrderHandler");
-  };
+  const { toggleModal } = useModal();
   return (
     <div className={classes.modal}>
       <div className={classes.modalContent}>
@@ -23,10 +14,14 @@ const Sequences = () => {
             &times;
           </span>
         </div>
+        <div className={classes.header}>
+          <p>همین حالا خرید کنید</p>
+          <p>آیتم دلخواه خود را جهت سفارش به سبد خرید اضافه کنید</p>
+        </div>
         <div className={classes.details}>
           <SansesType listOfSanses={listOfSanses} />
 
-          <div className={classes.dividerLine}></div>
+          {/* <div className={classes.dividerLine}></div> */}
 
           {/* <button onClick={placeOrderHandler} className={classes.accept}>
               تایید تیکت

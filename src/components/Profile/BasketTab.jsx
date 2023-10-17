@@ -3,17 +3,15 @@ import BasketItem from "./BasketItem";
 import { useDispatch, useSelector } from "react-redux";
 import EventList from "./EventList";
 import { uiActions } from "../../store/ui-slice";
+import PaymentButton from "../Utilities/PaymentButton";
 
 function BasketTab() {
-  const dispatch = useDispatch();
   const basketItems = useSelector((state) => state.basket.items);
   const totalDiscountedPrice = useSelector(
     (state) => state.basket.totalDiscountedPrice
   );
   console.log("basketItems", basketItems);
-  const showChekoutModalHandler = () => {
-    dispatch(uiActions.toggleCheckoutModal(true));
-  };
+
   console.log("all events", basketItems);
   return (
     <div className="profile-left" id="basket">
@@ -90,14 +88,7 @@ function BasketTab() {
             <p className="my-0 fw-md">مبلغ قابل پرداخت</p>
             <p className="my-0">{totalDiscountedPrice} تومان</p>
           </div>
-          <div onClick={showChekoutModalHandler}>
-            <button
-              className="uk-button uk-button-danger uk-button-large shine"
-              type="submit"
-            >
-              پرداخت
-            </button>
-          </div>
+          <PaymentButton />
         </div>
       </div>
       <div className="basket-contaienr" data-basket-detail-step="3">

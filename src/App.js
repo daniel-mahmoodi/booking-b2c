@@ -9,7 +9,6 @@ import Login from "./components/Auth/LoginByPass";
 import OffcanvasMenu from "./components/Navbar/OffcanvasMenu";
 import Checkout from "./components/Order/Checkout";
 import { useEffect } from "react";
-import SequencesModal from "./components/Sequences/SequencesModal";
 function App() {
   //https://takish724.ir/Payment/Success/False/PaymentId/19
   const showSideBar = useSelector((state) => state.ui.showSideBar);
@@ -29,7 +28,7 @@ function App() {
     <div className="App" dir="rtl">
       {/* <PurchaseModal /> */}
       {/* <ShoppingCartModal/> */}
-      {/* <SequencesModal /> */}
+      {/* <Sequences /> */}
       {showSideBar && <OffcanvasMenu />}
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}

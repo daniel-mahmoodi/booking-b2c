@@ -11,7 +11,7 @@ import usePersianToEnglish from "./PersianToEnglish";
 import { eventActions } from "../../store/event-slice";
 import { useDispatch } from "react-redux";
 
-const Calendar = ({ getDateFromCalendar }) => {
+const Calendar = ({ getDateFromCalendar, dateIsSelected }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState({ format: "YYYY-MM-DD" });
 
@@ -34,6 +34,12 @@ const Calendar = ({ getDateFromCalendar }) => {
   useEffect(() => {
     getDateFromCalendar(date);
   }, [date]);
+  
+  useEffect(() => {
+    if (date) {
+      dateIsSelected(true);
+    }
+  }, [date, dateIsSelected]);
 
   return (
     <div className={classes.body}>
