@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialAuthState = {
-  token: `bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJjbGllbnQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMDkxODk3NTU2NzUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIzMmE3YjdhOS0xN2Q5LTQwOGMtOGNmMi05YzNiZmY2OGNkY2QiLCJqdGkiOiI0Y2M5OGVhZi1jYTE4LTRhZTYtOTNkNi1iN2U3NmRlY2VmMmMiLCJleHAiOjE2OTc1ODYxNzYsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTA1OC8iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwNTgvIn0.IC1npys90GZWmpOKakArJe28uqP9sec82EDWxDTOKLE`,
+  token: ``,
   mobileNumber: "",
   openOtpPage: false,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isAgancyApproved: true,
   agancyDataDesc: "",
   signUpWarning: {},
@@ -27,7 +27,7 @@ const authSlice = createSlice({
     },
     login(state, action) {
       state.isLoggedIn = true;
-      // state.token = `Bearer ${action.payload}`;
+      state.token = `Bearer ${action.payload}`;
       // state.token = ;
     },
     logout(state) {
