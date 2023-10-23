@@ -116,6 +116,7 @@ export const verifyOtp = ({ OtpToken, PhoneNumber }) => {
         //    dispatch(authActions.login(response.data.token));
         console.log("response", response);
         dispatch(authActions.toggleAuthLoading(false));
+        dispatch(authActions.sendUserToMainPage(true));
         // if (response.response?.status === 200) {
         // console.log("status", response.response.status, response.data.token);
         dispatch(authActions.login(response.data.token));

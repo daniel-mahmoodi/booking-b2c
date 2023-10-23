@@ -9,6 +9,7 @@ const initialAuthState = {
   signUpWarning: {},
   loginWarning: {},
   authLoading: false,
+  sendUser: false,
 };
 
 const authSlice = createSlice({
@@ -24,6 +25,10 @@ const authSlice = createSlice({
 
     addUserMobileNumber(state, action) {
       state.mobileNumber = action.payload;
+    },
+
+    sendUserToMainPage(state, action) {
+      state.sendUser = action.payload;
     },
     login(state, action) {
       state.isLoggedIn = true;

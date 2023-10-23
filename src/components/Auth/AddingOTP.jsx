@@ -1,8 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { loginRequest, verifyOtp } from "../../store/auth-action";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
+import MyLoading from "../Layout/MyLoading";
 
 const initialState = {
   Mobile: "",
@@ -24,8 +25,10 @@ const reducer = (state, action) => {
 function AddingOTP() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const sendUser = useSelector((state) => state.auth.sendUser);
   const loginWarning = useSelector((state) => state.auth.loginWarning);
   const mobileNumber = useSelector((state) => state.auth.mobileNumber);
+  const authLoading = useSelector((state) => state.auth.authLoading);
   const [state, localDispatch] = useReducer(reducer, initialState);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -55,6 +58,14 @@ function AddingOTP() {
       );
     }
   };
+  useEffect(() => {
+    if (sendUser) {
+      history.replace("/");
+    }
+    return () => {
+      dispatch(authActions.sendUserToMainPage(false));
+    };
+  }, [dispatch, history, sendUser]);
   return (
     <div className="page-wrapper" id="login">
       <div className="cover"></div>
@@ -118,7 +129,11 @@ function AddingOTP() {
                   className="uk-button uk-button-danger uk-button-large shine"
                   type="submit"
                 >
-                  ورود به حساب کاربری
+                  {!authLoading ? (
+                    "ورود به حساب کاربری"
+                  ) : (
+                    <MyLoading color={"white"} />
+                  )}
                 </button>
               </div>
               {/* <div
