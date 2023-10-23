@@ -19,20 +19,20 @@ const basketSlice = createSlice({
   name: "basket",
   initialState: defaultBasketState,
   reducers: {
-    //     eraseAllBasket(state) {
-    //       state.items.items = [];
-    //       state.totalPrice = 0;
-    //       state.totalQuantity = 0;
-    //       state.totalDiscountedPrice = 0;
-    //       state.basketChanged = true;
-    //     },
+        eraseAllBasket(state) {
+          state.items = [];
+          state.totalPrice = 0;
+          state.totalQuantity = 0;
+          state.totalDiscountedPrice = 0;
+          // state.basketChanged = true;
+        },
     replaceBasket(state, action) {
       state.items = action.payload.basketState.basketData.basketItems;
       state.mobile = action.payload.basketState.basketData.mobile;
       state.userFullName = action.payload.basketState.basketData.userFullName;
       state.totalDiscountedPrice = action.payload.basketState.totalPrice;
-      console.log("current", current(state));
-      console.log("current State before:", state, action.payload);
+      // console.log("current", current(state));
+      // console.log("current State before:", state, action.payload);
     },
     //     changeTotalDiscountedAmountAfterAddingCoupon(state, action) {
     //       state.totalDiscountedPrice = action.payload;
@@ -188,8 +188,8 @@ const basketSlice = createSlice({
           (item) => item.ticketId === ticketId
         );
         if (existingBasketItem) {
-          existingBasketItem.count = 0;
           state.totalQuantity = state.totalQuantity - existingBasketItem.count;
+          existingBasketItem.count = 0;
           state.items.map((item) => {
             // Check if the item's eventId and ticketId match the ones to be deleted
             if (item.eventId === eventId) {

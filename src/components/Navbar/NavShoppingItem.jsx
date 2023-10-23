@@ -4,8 +4,8 @@ import { basketActions } from "../../store/basket-slice";
 import { useState } from "react";
 import { useEffect } from "react";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
-const NavShoppingItem = ({ data,eventId }) => {
-  console.log("datain nabshop", data);
+const NavShoppingItem = ({ data, eventId, eventTitle }) => {
+  console.log("datain nabshop", data, eventTitle);
   const [image, setImage] = useState("");
   useEffect(() => {
     if (data.imageUrl) {
@@ -25,8 +25,10 @@ const NavShoppingItem = ({ data,eventId }) => {
     <div className="item">
       <img src={image} alt="" />
       <div className="p-2">
-        <p className="m-0 fw-md title">{data.title}</p>
-        <p className="m-0 description">توضیحات بیشتر</p>
+        <p className="m-0 fw-md title" style={{ fontSize: "10px" }}>
+          {eventTitle}
+        </p>
+        <p className="m-0 description">{data.ticketTitle}</p>
       </div>
       <span onClick={eraseItemHandler} className="delete">
         <i className="fa fa-times" aria-hidden="true"></i>

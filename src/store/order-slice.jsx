@@ -4,7 +4,8 @@ const initialState = {
   checkoutWarning: {},
   orderLoading: false,
   message: null,
-  url: null,
+  orderId: null,
+  isOrderDiscounted: false,
 };
 const orderSlice = createSlice({
   name: "order",
@@ -14,14 +15,18 @@ const orderSlice = createSlice({
       state.checkoutWarning = action.payload;
     },
     toggleOrderLoading(state, action) {
-      state.checkoutWarning = action.payload;
+      state.orderLoading = action.payload;
     },
-    sendUserToPay(state, action) {
+    sendUserToSpinner(state, action) {
+      state.orderId = action.payload.orderId;
       state.message = action.payload.message;
-      state.url = action.payload.url;
-      // console.log("message", current(action.payload), current(state.message));
-      // state.url = action.payload.url;
+      state.isOrderDiscounted = action.payload.isOrderDiscounted;
     },
+    // sendUserToPay(state, action) {
+    //   state.url = action.payload.url;
+    //   // console.log("message", current(action.payload), current(state.message));
+    //   // state.url = action.payload.url;
+    // },
   },
 });
 export const orderActions = orderSlice.actions;

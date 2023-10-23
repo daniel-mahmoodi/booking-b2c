@@ -4,12 +4,12 @@ import NavShoppingItem from "./NavShoppingItem";
 const NavShoppingItems = ({ data }) => {
   console.log("datain nabshop NavShoppingItems", data);
 
-
   return (
     <Fragment>
       {data.tickets.map((item) => (
         <NavShoppingItem
           key={item.ticketId}
+          eventTitle={data.eventTitle}
           data={item}
           eventId={data.eventId}
         />

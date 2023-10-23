@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import classes from "./Banner.module.css";
-import { useSelector } from "react-redux";
-function Banner() {
-  const selectedCatalogName = useSelector(
-    (state) => state.catalog.selectedCatalogName
-  );
+
+function Banner({ titleName, selectedCatalogName }) {
+ 
   return (
     <div className="section-banner">
       <div
@@ -21,7 +19,7 @@ function Banner() {
               >
                 <li>
                   <Link to="/" className={classes.breadcrumb}>
-                    صفحه نخست
+                    {titleName}
                   </Link>
                 </li>
                 {/* <li><span>عکاسی</span></li> */}

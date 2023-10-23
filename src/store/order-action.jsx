@@ -1,5 +1,7 @@
 import axios from "axios";
 import { orderActions } from "./order-slice";
+import { basketActions } from "./basket-slice";
+import { uiActions } from "./ui-slice";
 const apiUrl = process.env.REACT_APP_API_ENDPOINT;
 export const SendOrder = (token) => {
   return async (dispatch) => {
@@ -14,14 +16,18 @@ export const SendOrder = (token) => {
       .then(function (response) {
         dispatch(orderActions.toggleOrderLoading(false));
         //handle success
-
-        if (response.status === 200)
+        if (response.status === 200) {
+          console.log("200");
+          dispatch(basketActions.eraseAllBasket());
+          dispatch(uiActions.toggleCheckoutModal(false));
           dispatch(
-            orderActions.sendUserToPay({
+            orderActions.sendUserToSpinner({
               message: response.data.message,
-              url: response.data.url,
+              orderId: response.data.orderId,
+              isOrderDiscounted: response.data.isOrderDiscounted,
             })
           );
+        }
         // if (response) dispatch(orderActions.sendUserToPay(response.data));
         // }
         //    dispatch(loginRequest(userData.Email, userData.Password));

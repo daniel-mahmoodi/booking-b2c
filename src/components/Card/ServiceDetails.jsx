@@ -4,15 +4,16 @@ import Article from "./Article/Article";
 import LeftSidebar from "./LeftSidebar";
 import Banner from "../Events/Banner/Banner";
 import PricingNotificationBar from "../Order/PricingNotificationBar";
-import { useSubmitOrder } from "../Hook/useSubmitOrder";
 
 const ServiceDetails = () => {
   const serviceDetails = useSelector((state) => state.event.serviceDetails);
-  const { submitOrder } = useSubmitOrder(serviceDetails.id);
-  console.log("serviceDetails", serviceDetails);
+
   return (
     <main className="page-main">
-      <Banner />
+      <Banner
+        selectedCatalogName={serviceDetails.eventName}
+        titleName={"صفحه نخست"}
+      />
       <div className="page-content">
         <div className="uk-section-large uk-container">
           <div className="uk-grid uk-grid-medium" data-uk-grid>

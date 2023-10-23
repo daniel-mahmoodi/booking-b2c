@@ -11,6 +11,7 @@ const Checkout = () => {
   const UserFullName = useSelector((state) => state.basket.userFullName);
   const Mobile = useSelector((state) => state.basket.mobile);
   const message = useSelector((state) => state.order.message);
+  const orderLoading = useSelector((state) => state.order.orderLoading);
   const initialState = {
     userFullName: UserFullName,
     mobile: Mobile,
@@ -225,20 +226,14 @@ const Checkout = () => {
                 <button
                   className="uk-button uk-button-danger uk-button-large shine next-basket-btn mb-1"
                   type="submit"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                 >
-                  {message ? (
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-around",
-                        alignItems: "center",
-                      }}
-                    >
-                      <div>{message}</div>
-                      <div>
-                        <MyLoading color={"#ffffff"} />
-                      </div>
-                    </div>
+                  {orderLoading ? (
+                    <MyLoading color={"#ffffff"} />
                   ) : (
                     `اتمام خرید و پرداخت`
                   )}

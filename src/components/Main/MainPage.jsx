@@ -6,7 +6,7 @@ import MainEventsPage from "../Events/MainEventsPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchListOfCatalogs } from "../../store/catalog-action";
 import HomePage from "../Home/HomePage/HomePage";
-import SinglePage from "../Card/ServiceDetails";
+import ServiceDetails from "../Card/ServiceDetails";
 import Registration from "../Auth/Registration";
 import Profile from "../Profile/Profile";
 import { Login } from "../Auth/Login";
@@ -62,7 +62,7 @@ const MainPage = () => {
               <Profile />
             </Route>
             <Route path="/service-details" exact>
-              <SinglePage />
+              <ServiceDetails />
             </Route>
             <Route path="/login" exact>
               <Login />
