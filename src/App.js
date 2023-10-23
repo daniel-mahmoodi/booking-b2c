@@ -1,11 +1,7 @@
 import { useSelector } from "react-redux";
 import "./App.css";
 import MainPage from "./components/Main/MainPage";
-import PricingNotificationBar from "./components/Order/PricingNotificationBar";
-import PurchaseModal from "./components/Order/PurchaseModal";
-import ShoppingCartModal from "./components/Order/ShoppingCartModal";
 import Sequences from "./components/Sequence/Sequence";
-import Login from "./components/Auth/LoginByPass";
 import OffcanvasMenu from "./components/Navbar/OffcanvasMenu";
 import Checkout from "./components/Order/Checkout";
 import { useEffect } from "react";
@@ -24,11 +20,16 @@ function App() {
       }, 5 * 1000);
     }
   }, [urlToPay]);
+
+  useEffect(() => {
+    if (showSideBar || showSequencesModal || showCheckoutModal) {
+      document.body.classList.add("disable-scroll");
+    } else {
+      document.body.classList.remove("disable-scroll");
+    }
+  }, [showCheckoutModal, showSequencesModal, showSideBar]);
   return (
     <div className="App" dir="rtl">
-      {/* <PurchaseModal /> */}
-      {/* <ShoppingCartModal/> */}
-      {/* <Sequences /> */}
       {showSideBar && <OffcanvasMenu />}
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}
