@@ -10,7 +10,7 @@ const AppDownload = () => {
           <img src="assets/img/AppStore.svg" alt="AppStore" />
         </div> */}
         <div>
-          <img src="assets/img/PlayStore.svg" alt="PlayStore" />
+          <img src="/assets/img/PlayStore.svg" alt="PlayStore" />
         </div>
       </div>
     </div>

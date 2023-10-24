@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialUiState = {
   openOtpPage: false,
   showSideBar: false,
+  showSpinnerModal: false,
   showSequencesModal: false,
   showCheckoutModal: false,
 };
@@ -21,6 +22,9 @@ const uiSlice = createSlice({
     },
     toggleCheckoutModal(state, action) {
       state.showCheckoutModal = action.payload;
+    },
+    toggleSpinnerModal(state, action) {
+      state.showSpinnerModal = action.payload;
     },
   },
 });

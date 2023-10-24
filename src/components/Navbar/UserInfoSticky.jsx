@@ -44,7 +44,7 @@ const UserInfoSticky = () => {
                   display: "inline-block",
                   width: "30px",
                   height: "30px",
-                  backgroundImage: "url('assets/img/avatar-1.png')",
+                  backgroundImage: "url('/assets/img/avatar-1.png')",
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   borderRadius: "50%",

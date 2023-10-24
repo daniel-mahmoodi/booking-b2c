@@ -63,7 +63,7 @@ function LoginByPass({ changeRegistrationType }) {
       <div id="particles-js"></div>
       <div className="card-login" style={{ marginTop: "-400px" }}>
         <div className="header">
-          <img src="assets/img/takish-logo.png" alt="" />
+          <img src="/assets/img/takish-logo.png" alt="" />
         </div>
         <h1 className="title">ورود به سایت</h1>
         <div className="uk-width-3-3@m body">

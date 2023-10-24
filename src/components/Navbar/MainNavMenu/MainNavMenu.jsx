@@ -8,7 +8,7 @@ const MainNavMenu = () => {
         <ul className="uk-navbar-nav">
           <li>
             <NavLink
-              to="/home-page"
+              to="/home"
               className={classes.menuItem}
               activeClassName={classes.active}
               style={{ fontFamily: "iransans" }}

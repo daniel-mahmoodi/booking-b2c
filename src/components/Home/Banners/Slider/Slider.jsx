@@ -43,17 +43,17 @@ function Slider() {
         >
           <SwiperSlide>
             {" "}
-            <img src="assets/img/slider/1.jpg" alt="..." loading="lazy" />
+            <img src="/assets/img/slider/1.jpg" alt="..." loading="lazy" />
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <img src="assets/img/slider/2.jpg" alt="..." loading="lazy" />
+            <img src="/assets/img/slider/2.jpg" alt="..." loading="lazy" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="assets/img/slider/3.jpg" alt="..." loading="lazy" />
+            <img src="/assets/img/slider/3.jpg" alt="..." loading="lazy" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="assets/img/slider/4.jpg" alt="..." loading="lazy" />
+            <img src="/assets/img/slider/4.jpg" alt="..." loading="lazy" />
           </SwiperSlide>
         </Swiper>
       </div>

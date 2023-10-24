@@ -13,7 +13,7 @@ function UserProfile() {
     <div className="profile-right">
       <div className="img-container">
         <div className="overlay"></div>
-        <img src="assets/img/avatar-2.png" alt="" className="avatar" />
+        <img src="/assets/img/avatar-2.png" alt="" className="avatar" />
         <p className="title">نام کاربری</p>
       </div>
       <div className="profile-sidenav">

@@ -26,7 +26,7 @@ function SectionFeatured() {
                           <div className="listing-card__media shine">
                             <a>
                               <img
-                                src="assets/img/offer/1.jpeg"
+                                src="/assets/img/offer/1.jpeg"
                                 alt="لورم ایپسوم"
                               />
                             </a>
@@ -74,7 +74,7 @@ function SectionFeatured() {
                           <div className="listing-card__media shine">
                             <a>
                               <img
-                                src="assets/img/offer/1.jpeg"
+                                src="/assets/img/offer/1.jpeg"
                                 alt="لورم ایپسوم"
                               />
                             </a>

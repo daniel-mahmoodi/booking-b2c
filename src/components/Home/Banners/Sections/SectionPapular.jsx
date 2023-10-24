@@ -17,7 +17,7 @@ function SectionPopular() {
                     <img
                       className="city-item__img object-fit-cover"
                       style={{width:'100%', height:"100%"}}
-                      src="assets/img/popular_location/place1.jpg"
+                      src="/assets/img/popular_location/place1.jpg"
                       alt="مکان یک"
                       data-uk-cover="data-uk-cover"
                     />
@@ -42,7 +42,7 @@ function SectionPopular() {
                         <img
                           className="city-item__img"
                           style={{width:'100%', height:"100%"}}
-                          src="assets/img/img-city-2.jpg"
+                          src="/assets/img/img-city-2.jpg"
                           alt="Paris"
                           data-uk-cover="data-uk-cover"
                         />
@@ -65,7 +65,7 @@ function SectionPopular() {
                         <img
                           className="city-item__img"
                           style={{width:'100%', height:"100%"}}
-                          src="assets/img/img-city-3.jpg"
+                          src="/assets/img/img-city-3.jpg"
                           alt="London"
                           data-uk-cover="data-uk-cover"
                         />
@@ -94,7 +94,7 @@ function SectionPopular() {
                         <img
                           className="city-item__img"
                           style={{width:'100%', height:"100%"}}
-                          src="assets/img/img-city-4.jpg"
+                          src="/assets/img/img-city-4.jpg"
                           alt="Bangkok"
                           data-uk-cover="data-uk-cover"
                         />
@@ -117,7 +117,7 @@ function SectionPopular() {
                         <img
                           className="city-item__img"
                           style={{width:'100%', height:"100%"}}
-                          src="assets/img/img-city-5.jpg"
+                          src="/assets/img/img-city-5.jpg"
                           alt="Dubai"
                           data-uk-cover="data-uk-cover"
                         />
@@ -142,7 +142,7 @@ function SectionPopular() {
                     <img
                       className="city-item__img"
                       style={{width:'100%', height:"100%"}}
-                      src="assets/img/img-city-6.jpg"
+                      src="/assets/img/img-city-6.jpg"
                       alt="Singapore"
                       data-uk-cover="data-uk-cover"
                     />

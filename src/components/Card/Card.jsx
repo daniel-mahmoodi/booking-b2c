@@ -7,7 +7,6 @@ const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const Card = ({ data }) => {
   const dispatch = useDispatch();
 
-  console.log("dataaa", data);
   const history = useHistory();
   const selectCardHandler = () => {
     dispatch(getServiceDetails(data.id));

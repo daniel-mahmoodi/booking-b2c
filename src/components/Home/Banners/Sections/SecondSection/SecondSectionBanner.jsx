@@ -10,32 +10,32 @@ function SectionBanner2() {
         <div className={classes.banner2}>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/3.jpg" alt="" />
+              <img src="/assets/img/banner/3.jpg" alt="" />
             </a>
           </div>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/4.jpg" alt="" />
+              <img src="/assets/img/banner/4.jpg" alt="" />
             </a>
           </div>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/5.jpg" alt="" />
+              <img src="/assets/img/banner/5.jpg" alt="" />
             </a>
           </div>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/6.jpg" alt="" />
+              <img src="/assets/img/banner/6.jpg" alt="" />
             </a>
           </div>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/7.jpg" alt="" />
+              <img src="/assets/img/banner/7.jpg" alt="" />
             </a>
           </div>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/8.jpg" alt="" />
+              <img src="/assets/img/banner/8.jpg" alt="" />
             </a>
           </div>
         </div>

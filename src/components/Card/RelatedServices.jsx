@@ -25,7 +25,7 @@ function RelatedServices() {
                     >
                       <a>
                         <img
-                          src="assets/img/blog-thumb-1.jpg"
+                          src="/assets/img/blog-thumb-1.jpg"
                           alt="لورم ایپسوم متن ساختگی"
                           style={{ width: "100%" }}
                         />
@@ -79,7 +79,7 @@ function RelatedServices() {
                     >
                       <a>
                         <img
-                          src="assets/img/blog-thumb-1.jpg"
+                          src="/assets/img/blog-thumb-1.jpg"
                           alt="لورم ایپسوم متن ساختگی"
                           style={{ width: "100%" }}
                         />
@@ -133,7 +133,7 @@ function RelatedServices() {
                     >
                       <a>
                         <img
-                          src="assets/img/blog-thumb-1.jpg"
+                          src="/assets/img/blog-thumb-1.jpg"
                           alt="لورم ایپسوم متن ساختگی"
                           style={{ width: "100%" }}
                         />

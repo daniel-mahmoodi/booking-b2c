@@ -65,7 +65,7 @@ const RegistrationByOTP = ({ changeRegistrationType }) => {
   return (
     <div className="card-login" style={{ marginTop: "-300px" }}>
       <div className="header">
-        <img src="assets/img/takish-logo.png" alt="" />
+        <img src="/assets/img/takish-logo.png" alt="" />
       </div>
       <h1 className="title">ثبت نام</h1>
 

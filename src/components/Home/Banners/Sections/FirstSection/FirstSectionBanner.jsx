@@ -8,12 +8,12 @@ function FirstSectionBanner() {
         <div className={classes.banner1}>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/1.jpg" alt="" />
+              <img src="/assets/img/banner/1.jpg" alt="" />
             </a>
           </div>
           <div className={`${classes.item} shine`}>
             <a href="/" style={{ display: "block" }}>
-              <img src="assets/img/banner/2.jpg" alt="" />
+              <img src="/assets/img/banner/2.jpg" alt="" />
             </a>
           </div>
         </div>

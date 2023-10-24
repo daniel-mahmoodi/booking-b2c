@@ -36,7 +36,7 @@ const OffcanvasMenu = () => {
               <a className="logo__link">
                 <img
                   className="logo__img"
-                  src="assets/img/takish-logo.png"
+                  src="/assets/img/takish-logo.png"
                   alt="Doremi"
                   style={{ width: "200px" }}
                 />

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 const NavLogo = () => {
   return (
     <div className="page-header__logo logo">
-      <Link to="/home-page" className="logo__link">
+      <Link to="/home" className="logo__link">
         <img
           className="logo__img top"
-          src="assets/img/takish-logo.png"
+          src="/assets/img/takish-logo.png"
           alt="logo"
         />
       </Link>

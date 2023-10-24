@@ -8,7 +8,7 @@ function Banner({ titleName, selectedCatalogName }) {
     <div className="section-banner">
       <div
         className="section-banner__bg"
-        style={{ backgroundImage: "url(assets/img/bg-banner-blog-grid.jpg)" }}
+        style={{ backgroundImage: "url(/assets/img/bg-banner-blog-grid.jpg)" }}
       >
         <div className="uk-container d-flex">
           <div className="section-banner__content">

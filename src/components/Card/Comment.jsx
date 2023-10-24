@@ -17,7 +17,7 @@ function Comment() {
         <div className="uk-comment-header">
           <div className="uk-grid-medium uk-flex-middle" data-uk-grid>
             <div className="uk-width-auto">
-              <img className="uk-comment-avatar" src="assets/img/avatar-1.png" width="60" height="60" alt="" />
+              <img className="uk-comment-avatar" src="/assets/img/avatar-1.png" width="60" height="60" alt="" />
             </div>
             <div className="uk-width-expand">
               <div data-uk-grid>
@@ -50,7 +50,7 @@ function Comment() {
         <div className="uk-comment-header">
           <div className="uk-grid-medium uk-flex-middle" data-uk-grid>
             <div className="uk-width-auto">
-              <img className="uk-comment-avatar" src="assets/img/avatar-1.png" width="60" height="60" alt="" />
+              <img className="uk-comment-avatar" src="/assets/img/avatar-1.png" width="60" height="60" alt="" />
             </div>
             <div className="uk-width-expand">
               <div data-uk-grid>

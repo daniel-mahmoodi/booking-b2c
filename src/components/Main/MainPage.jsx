@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 import { Login } from "../Auth/Login";
 import { sendCartData } from "../../store/basket-action";
 import { basketActions } from "../../store/basket-slice";
-
+import PaymentDetails from "../Payment/PaymentDetails";
 const MainPage = () => {
   const dispatch = useDispatch();
   const basketChanged = useSelector((state) => state.basket.basketChanged);
@@ -50,9 +50,9 @@ const MainPage = () => {
           <Navbar />
           <Switch>
             <Route path="/" exact>
-              <Redirect to="/home-page" />
+              <Redirect to="/home" />
             </Route>
-            <Route path="/home-page" exact>
+            <Route path="/home" exact>
               <HomePage />
             </Route>
             <Route path="/catalog" exact>
@@ -61,6 +61,10 @@ const MainPage = () => {
             <Route path="/profile" exact>
               <Profile />
             </Route>
+            <Route path="/Payment/:paymentId" exact>
+              <PaymentDetails />
+            </Route>
+
             <Route path="/service-details" exact>
               <ServiceDetails />
             </Route>
@@ -71,7 +75,7 @@ const MainPage = () => {
               <Registration />
             </Route>
             <Route path="*">
-              <Redirect to="/home-page" />
+              <Redirect to="/home" />
             </Route>
           </Switch>
           {shouldShowFooter && <Footer />}

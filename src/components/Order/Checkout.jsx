@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { uiActions } from "../../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "../../store/order-slice";
-import { SendOrder } from "../../store/order-action";
+import { sendOrder } from "../../store/order-action";
 import { ClimbingBoxLoader, FadeLoader } from "react-spinners";
 import MyLoading from "../Layout/MyLoading";
 
@@ -73,14 +73,14 @@ const Checkout = () => {
 
     if (state.mobile && state.userFullName) {
       dispatch(orderActions.showCheckoutWarning({}));
-      dispatch(SendOrder(token));
+      dispatch(sendOrder(token));
     }
   };
 
   return (
     <div
       style={{
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
         width: "100%",
         height: "100%",
         top: 0,
