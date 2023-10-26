@@ -1,13 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Article from "./Article/Article";
 import LeftSidebar from "./LeftSidebar";
 import Banner from "../Events/Banner/Banner";
 import PricingNotificationBar from "../Order/PricingNotificationBar";
+import { useEffect } from "react";
+import { getServiceDetails } from "../../store/event-action";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const ServiceDetails = () => {
+  const dispatch = useDispatch();
+  const { serviceId } = useParams();
   const serviceDetails = useSelector((state) => state.event.serviceDetails);
-
+  useEffect(() => {
+    dispatch(getServiceDetails(serviceId));
+  }, [dispatch, serviceId]);
   return (
     <main className="page-main">
       <Banner

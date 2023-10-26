@@ -13,12 +13,13 @@ import { Login } from "../Auth/Login";
 import { sendCartData } from "../../store/basket-action";
 import { basketActions } from "../../store/basket-slice";
 import PaymentDetails from "../Payment/PaymentDetails";
+import ListOfOrders from "../Order/ListOfOrders";
+import OrderDetails from "../Order/OrderDetails";
 const MainPage = () => {
   const dispatch = useDispatch();
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
   const token = useSelector((state) => state.auth.token);
-  console.log("token", token);
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {
@@ -40,7 +41,6 @@ const MainPage = () => {
         clearTimeout(timer);
       };
     }
-    console.log("basketchanged");
   }, [basketChanged, dispatch, items, token]);
 
   return (
@@ -64,9 +64,14 @@ const MainPage = () => {
             <Route path="/Payment/:paymentId" exact>
               <PaymentDetails />
             </Route>
-
-            <Route path="/service-details" exact>
+            <Route path="/service-details/:serviceId" exact>
               <ServiceDetails />
+            </Route>
+            <Route path="/orders" exact>
+              <ListOfOrders />
+            </Route>
+            <Route path="/order-details/:orderRefrence" exact>
+              <OrderDetails />
             </Route>
             <Route path="/login" exact>
               <Login />

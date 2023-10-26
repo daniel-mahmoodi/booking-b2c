@@ -1,4 +1,5 @@
 export const submitOrderHandler = (event) => {
   event.stopPropagation();
-  console.log("submitOrderHandler");
 };
+export const ticketStatus = ["", "لغو", "", "رزرو", "", ""];
+export const paymentMethod = ["آنلاین", "کیف پول"];

@@ -6,6 +6,7 @@ import Sequences from "./components/Sequence/Sequence";
 import OffcanvasMenu from "./components/Navbar/OffcanvasMenu";
 import Checkout from "./components/Order/Checkout";
 import Spinner from "./components/Spinner/Spinner";
+
 function App() {
   const showSideBar = useSelector((state) => state.ui.showSideBar);
   const showSequencesModal = useSelector(
@@ -25,7 +26,7 @@ function App() {
     if (urlToPay) {
       setTimeout(() => {
         window.location.href = urlToPay;
-      }, 5 * 1000);
+      }, 1000);
     }
   }, [urlToPay]);
 
@@ -50,7 +51,6 @@ function App() {
           orderId={orderId}
         />
       )}
-      
       {showSideBar && <OffcanvasMenu />}
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}

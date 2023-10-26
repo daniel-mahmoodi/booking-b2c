@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import moment from "jalali-moment";
 
 const useDateConverter = (date) => {
-  console.log("date", date);
   const [convertedDate, setConvertedDate] = useState({
     Year: "",
     Month: "",

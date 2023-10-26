@@ -1,4 +1,5 @@
 // import { uiActions } from "./Ui-slice";
+import { authActions } from "./auth-slice";
 import { basketActions } from "./basket-slice";
 import axios from "axios";
 const apiUrl = process.env.REACT_APP_API_ENDPOINT;
@@ -25,7 +26,6 @@ export const getCartData = (token) => {
 
     try {
       const basketData = await fetchData();
-      console.log("current basketData", basketData);
       let totalPrice = 0;
 
       basketData.basketItems.flatMap((event) =>
@@ -68,7 +68,6 @@ export const getCartData = (token) => {
 
 export const sendCartData = (basket, token) => {
   return async (dispatch) => {
-    console.log("basket", basket);
     let sendCartItems = { cartItems: [] };
     const transformedData = {
       cartItems: basket.flatMap((item) =>
@@ -81,7 +80,6 @@ export const sendCartData = (basket, token) => {
       ),
     };
 
-    console.log("transformedDatat", transformedData);
     // const newItems = basket?.filter((item) => item.quantity !== 0);
     // if (basket.length !== 0) {
     //   basket.map((item) => {
@@ -91,7 +89,6 @@ export const sendCartData = (basket, token) => {
     //     });
     //   });
     // }
-    console.log("transformedDatat sendCartItems", sendCartItems);
 
     axios({
       method: "POST",
@@ -105,8 +102,12 @@ export const sendCartData = (basket, token) => {
       .then((response) => {
         // dispatch(basketActions.receivedData(true));
         dispatch(getCartData(token));
-        console.log("response", response);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => {
+        console.log("error", error);
+        if (error.response?.status === 401) {
+          dispatch(authActions.logout());
+        }
+      });
   };
 };

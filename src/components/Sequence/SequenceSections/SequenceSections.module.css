@@ -59,10 +59,10 @@
   display: none;
   position: absolute;
   top: 100%;
-  right: 0;
+  /* right: 0; */
   z-index: 1000;
   float: right;
-  min-width: 10rem;
+  min-width: 50%;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
@@ -85,6 +85,7 @@
   text-align: end; /* text-end */
   padding: 4px 6px; /* px-2 py-1 */
   white-space: nowrap; /* text-nowrap */
+  
 }
 .sansList:hover {
   background-color: #6c757d8d;
@@ -115,9 +116,7 @@
   .serviceButton {
     width: 50%;
   }
-  .dropdownMenu {
-    right: 50%;
-  }
+  
   .date {
     width: 100%;
   }

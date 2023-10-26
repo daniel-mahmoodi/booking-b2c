@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const NavShoppingItem = ({ data, eventId, eventTitle }) => {
-  console.log("datain nabshop", data, eventTitle);
   const [image, setImage] = useState("");
   useEffect(() => {
     if (data.imageUrl) {
@@ -13,7 +12,7 @@ const NavShoppingItem = ({ data, eventId, eventTitle }) => {
     }
   }, [data.imageUrl, data]);
   const dispatch = useDispatch();
-  const eraseItemHandler = () => {
+const eraseItemHandler = () => {
     dispatch(
       basketActions.eraseItemFromBasket({
         ticketId: data.ticketId,

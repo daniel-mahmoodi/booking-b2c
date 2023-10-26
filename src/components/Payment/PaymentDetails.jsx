@@ -10,11 +10,12 @@ const PaymentDetails = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const paymentDetails = useSelector((state) => state.order.paymentDetails);
-  console.log("paymentDetails", paymentDetails);
   useEffect(() => {
     if (paymentId) dispatch(getPaymentDetails(token, paymentId));
   }, [dispatch, paymentId, token]);
-
+  
+  const ticketPrintHandler = () => {
+  };
   return (
     <Fragment>
       {Object.keys(paymentDetails).length ? (
@@ -35,7 +36,9 @@ const PaymentDetails = () => {
           </div>
           <PaymentTable paymentDetails={paymentDetails} />
           <div className={classes.buttons}>
-            <button className={classes.button}>چاپ</button>
+            <button onClick={ticketPrintHandler} className={classes.button}>
+              چاپ
+            </button>
             {/* <button className={classes.button}>بازگشت</button> */}
           </div>
         </div>

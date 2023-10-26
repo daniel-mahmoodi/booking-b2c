@@ -19,13 +19,13 @@ const basketSlice = createSlice({
   name: "basket",
   initialState: defaultBasketState,
   reducers: {
-        eraseAllBasket(state) {
-          state.items = [];
-          state.totalPrice = 0;
-          state.totalQuantity = 0;
-          state.totalDiscountedPrice = 0;
-          // state.basketChanged = true;
-        },
+    eraseAllBasket(state) {
+      state.items = [];
+      state.totalPrice = 0;
+      state.totalQuantity = 0;
+      state.totalDiscountedPrice = 0;
+      // state.basketChanged = true;
+    },
     replaceBasket(state, action) {
       state.items = action.payload.basketState.basketData.basketItems;
       state.mobile = action.payload.basketState.basketData.mobile;
@@ -70,6 +70,7 @@ const basketSlice = createSlice({
         } else {
           if (existingService.tickets) {
             existingService.tickets?.push({ ...newItem.tickets });
+            
             // console.log(
             //   "State before:here",
             //   existingBasketItem,
@@ -79,6 +80,7 @@ const basketSlice = createSlice({
             // );
           } else {
             existingService.push({ tickets: [{ ...newItem.tickets }] });
+            
           }
         }
       } else {
@@ -96,7 +98,6 @@ const basketSlice = createSlice({
         (sum, price) => sum + price,
         0
       );
-      console.log("allPrices", allPrices, current(state.items));
       //   newItem.tickets.price === newItem.tickets.discountedPrice
       //   ? (state.totalPrice =
       //       state.totalPrice + newItem.tickets.price * newItem.tickets.count)
@@ -188,7 +189,7 @@ const basketSlice = createSlice({
           (item) => item.ticketId === ticketId
         );
         if (existingBasketItem) {
-          state.totalQuantity = state.totalQuantity - existingBasketItem.count;
+          state.totalQuantity =0
           existingBasketItem.count = 0;
           state.items.map((item) => {
             // Check if the item's eventId and ticketId match the ones to be deleted
@@ -201,7 +202,7 @@ const basketSlice = createSlice({
                 state.items = state.items.filter(
                   (event) => event.eventId !== item.eventId
                 );
-                console.log("State before:here");
+                // console.log("State before:here");
               }
             }
             return item;

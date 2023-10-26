@@ -161,7 +161,7 @@ const Checkout = () => {
                       value={state.userFullName}
                       onChange={handleInputChange}
                       placeholder="نام ونام خانوادگی خود را وارد کنید"
-                      style={{ height: "38px" }}
+                      style={{ height: "38px", maxWidth: "300px" }}
                     />
 
                     {checkoutWarning && (
@@ -201,7 +201,11 @@ const Checkout = () => {
                       value={state.mobile}
                       onChange={handleInputChange}
                       placeholder="شماره موبایل خود را وارد کنید"
-                      style={{ height: "38px" }}
+                      style={{
+                        height: "38px",
+                        maxWidth: "300px",
+                        textAlign: "center",
+                      }}
                     />
                     {checkoutWarning && (
                       <p
@@ -219,8 +223,8 @@ const Checkout = () => {
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
-                  justifyContent: "space-between",
-                  paddingTop: "6px",
+                  justifyContent: "center",
+                  paddingTop: "12px",
                 }}
               >
                 <button

@@ -10,9 +10,7 @@ function BasketTab() {
   const totalDiscountedPrice = useSelector(
     (state) => state.basket.totalDiscountedPrice
   );
-  console.log("basketItems", basketItems);
 
-  console.log("all events", basketItems);
   return (
     <div className="profile-left" id="basket">
       <div className="d-flex p-2 basket-top-container">

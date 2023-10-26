@@ -51,4 +51,11 @@
   justify-content: center;
   align-items: center;
 }
+@media (max-width:760px) {
+  .body{
+     max-width: auto;
+     margin: 24px 12px;
+  }
+  
+}
 

@@ -16,7 +16,6 @@ const ShoppingBag = () => {
     history.push("/profile");
     dispatch(profileActions.selectActiveTb("basket"));
   };
-  console.log('datain nabshop items',items);
   return (
     <div
       style={{ margin: "0 10px", position: "relative" }}

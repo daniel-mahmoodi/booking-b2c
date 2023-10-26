@@ -22,7 +22,7 @@ function NavbarHeader() {
               <MainNavMenu />
             </div>
             <div className="page-header__left">
-              <NavSearch />
+              {/* <NavSearch /> */}
               {/* <HomeInMobile /> */}
               <ShoppingBag />
               <NavSignInButton />

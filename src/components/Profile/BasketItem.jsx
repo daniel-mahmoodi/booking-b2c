@@ -18,7 +18,6 @@ const BasketItem = ({ data, eventId }) => {
       basketActions.eraseItemFromBasket({ ticketId: data.ticketId, eventId })
     );
   };
-  console.log("all data in baketitems", data.count, data.discountedPrice);
   return (
     <div className={classes.dataBlock}>
       <div

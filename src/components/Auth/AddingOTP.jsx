@@ -44,7 +44,6 @@ function AddingOTP() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("sendOtp", state.OtpToken, mobileNumber);
     if (!state.OtpToken) {
       dispatch(
         authActions.showLoginWarning({ OtpToken: "این فیلد نباید خالی باشد" })

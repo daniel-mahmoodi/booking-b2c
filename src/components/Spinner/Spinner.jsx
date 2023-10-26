@@ -35,7 +35,6 @@ const Spinner = ({ discountPercentages, selectedIndex, orderId }) => {
   const [startingOption, setStartingOption] = useState(0);
   const token = useSelector((state) => state.auth.token);
 
-  console.log("spinner", discountPercentages, selectedIndex);
   useEffect(() => {
     let data = [];
     discountPercentages.map((segment, index) =>
@@ -58,15 +57,18 @@ const Spinner = ({ discountPercentages, selectedIndex, orderId }) => {
     }
   };
   const finalizeOrderHandler = () => {
-    dispatch(
-      finalizeOrder({
-        token,
-        isSpinnerTurned: true,
-        paymentMethod: 1,
-        paymentGatewayId: 1,
-        orderId,
-      })
-    );
+      if(token){
+
+        dispatch(
+          finalizeOrder({
+            token,
+            isSpinnerTurned: true,
+            paymentMethod: 1,
+            paymentGatewayId: 1,
+            orderId,
+          })
+          );
+        }
   };
 
   return (
@@ -89,17 +91,7 @@ const Spinner = ({ discountPercentages, selectedIndex, orderId }) => {
     >
       {/* <div> */}
       <div
-        style={{
-          backgroundColor: "rgba(250, 250, 250)",
-          height: "70%",
-          width: "70%",
-          padding: "0 24px 24px 24px",
-          borderRadius: "12px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
+       className="my-container"
       >
         <div
           style={{
@@ -173,7 +165,7 @@ const Spinner = ({ discountPercentages, selectedIndex, orderId }) => {
         )}
         {showPrize ? (
           <div
-            style={{ padding: "32px", fontSize: "24px", fontWeight: "bold" }}
+            style={{ padding: "32px", fontSize: "20px", fontWeight: "bold" }}
           >
             {priseNumber ? (
               <div>تبریک شما برنده {priseNumber} درصد تخفیف شدید</div>

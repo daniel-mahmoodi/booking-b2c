@@ -32,7 +32,6 @@ export const getServiceDetails = (id) => {
     })
       .then((response) => {
         dispatch(eventActions.addServiceDetails(response.data));
-        console.log('getServiceDetails', response.data);
       })
       .catch((error) => {
         console.log("error getServiceDetails", error);
@@ -69,7 +68,6 @@ export const getTicket = (serviceId, sansId) => {
       .then((response) => {
         dispatch(eventActions.toggleTicketComponent(true));
         dispatch(eventActions.toggleTicketLoading(false));
-        console.log("response", response);
         // dispatch(eventActions.toggleAcceptButtonLoading(false));
         dispatch(eventActions.addTicketDetails(response.data));
         // dispatch(eventActions.toggleSansesModal(true));

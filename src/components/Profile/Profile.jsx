@@ -7,7 +7,6 @@ import FactorTab from "./FactorTab";
 import { useSelector } from "react-redux";
 const Profile = () => {
   const activeTab = useSelector((state) => state.profile.activeTab);
-  console.log("activeTab", activeTab);
   return (
     <main className="page-main" style={{ margin: "20px 0" }}>
       <div

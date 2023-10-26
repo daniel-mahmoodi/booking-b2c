@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import NavSignInButton from "./NavSignInButton";
-
+import { Link } from "react-router-dom";
 const OffcanvasMenu = () => {
   const dispatch = useDispatch();
   const toggleSideBarHandler = () => {
@@ -45,41 +45,21 @@ const OffcanvasMenu = () => {
           </div>
           <div className="uk-margin-medium">
             <ul
+              onClick={toggleSideBarHandler}
               className="uk-nav uk-nav-default uk-nav-parent-icon"
               data-uk-nav
             >
               <li className="uk-parent">
-                <a href="#!">خانه</a>
-                <ul className="uk-nav-sub">
-                  <li>
-                    <a>زیر لیست</a>
-                  </li>
-                  <li>
-                    <a>زیر لیست</a>
-                  </li>
-                </ul>
+                <Link to="/">خانه</Link>
               </li>
               <li className="uk-parent">
-                <a href="#!">تماس با ما</a>
-                <ul className="uk-nav-sub">
-                  <li>
-                    <a>زیر لیست</a>
-                  </li>
-                  <li>
-                    <a>زیر لیست</a>
-                  </li>
-                </ul>
+                <Link to="/orders">سفارشات</Link>
               </li>
               <li className="uk-parent">
-                <a href="#!">پشتیبانی</a>
-                <ul className="uk-nav-sub">
-                  <li>
-                    <a>زیر لیست</a>
-                  </li>
-                  <li>
-                    <a>زیر لیست</a>
-                  </li>
-                </ul>
+                <Link to="/">تماس با ما</Link>
+              </li>
+              <li className="uk-parent">
+                <Link to="/">پشتیبانی</Link>
               </li>
             </ul>
           </div>

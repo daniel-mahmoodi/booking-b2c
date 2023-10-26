@@ -10,17 +10,12 @@ const IncreaseDecreaseButton = ({ data, eventId, sansSelectedTitle }) => {
   const serviceDetails = useSelector((state) => state.event.serviceDetails);
   // const checkStockHook = useCheckStock(data.id,data.capacity);
   const serviceExist = basketItems.find((event) => event.eventId === eventId);
-  // console.log("serviceExist", serviceExist);
-  console.log(" basketItems,data,eventId", basketItems, data, eventId);
   const basketItemPlusOneItem =
     serviceExist &&
     serviceExist.tickets?.find((item) => item.ticketId === data.ticketId);
-  // console.log("basketItemPlusOneItem", basketItemPlusOneItem);
-  console.log("serviceDetails", serviceDetails, data);
   // const remainedCapacity = basketItemPlusOneItem
   //   ? data.capacity - basketItemPlusOneItem.count
   //   : data.capacity;
-  // console.log("data , remainedCapacity", data, remainedCapacity);
   const addItemHandler = () => {
     // if (remainedCapacity > 0) {
     if (eventId) {

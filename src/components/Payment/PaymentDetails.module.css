@@ -50,14 +50,14 @@
 .button {
   color: white;
   border-color: transparent;
-  background-color: #e83c4d;
+  background-color: rgb(51, 170, 255);
   padding: 12px 24px;
   margin: 12px;
   border-radius: 12px;
   cursor: pointer;
 }
 .button:hover {
-  background-color: #b93441;
+  background-color: rgb(33, 110, 165);
 }
 .noData {
   font-size: 24px;

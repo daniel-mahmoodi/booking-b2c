@@ -12,10 +12,8 @@ export const Login = () => {
   const openOtpPage = useSelector((state) => state.ui.openOtpPage);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const changeRegistrationType = () => {
-    console.log("asdad");
     setByPass((prev) => !prev);
   };
-  console.log("openOtpPage", openOtpPage);
   useEffect(() => {
     if (isLoggedIn) {
       history.push("/");

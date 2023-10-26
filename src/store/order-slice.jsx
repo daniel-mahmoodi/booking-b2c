@@ -4,12 +4,15 @@ const initialState = {
   checkoutWarning: {},
   orderLoading: false,
   message: null,
+  finalMessage: null,
   orderId: null,
   url: "",
   isOrderDiscounted: false,
   discountPercentages: [],
   selectedIndex: null,
   paymentDetails: {},
+  listOfOrders: {},
+  selectedOrderDetails: {},
 };
 const orderSlice = createSlice({
   name: "order",
@@ -32,11 +35,18 @@ const orderSlice = createSlice({
     },
     sendUserToPay(state, action) {
       state.url = action.payload.url;
+      state.finalMessage = action.payload.finalMessage;
       // console.log("message", current(action.payload), current(state.message));
       // state.url = action.payload.url;
     },
     addPaymentDetails(state, action) {
       state.paymentDetails = action.payload;
+    },
+    addAllOrders(state, action) {
+      state.listOfOrders = action.payload;
+    },
+    addSelectedOrderDetails(state, action) {
+      state.selectedOrderDetails = action.payload;
     },
   },
 });

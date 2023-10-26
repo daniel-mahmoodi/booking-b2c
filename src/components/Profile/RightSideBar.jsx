@@ -6,7 +6,6 @@ function UserProfile() {
   const dispatch = useDispatch();
   const showTabHandler = (tab) => {
     dispatch(profileActions.selectActiveTb(tab));
-    console.log("tab", tab);
   };
 
   return (

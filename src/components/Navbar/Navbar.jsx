@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className={stickyNav ? classes.header : ""}>
         <NavbarHeader />
       </div>
-      <div className={stickyNav ? classes.sticky : ""}>
+      <div className={stickyNav ? classes.sticky : classes.catalog}>
         <Catalog />
       </div>
     </Fragment>

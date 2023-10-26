@@ -27,7 +27,6 @@ export const signUpRequest = (userData) => {
       .then(function (response) {
         dispatch(authActions.toggleAuthLoading(false));
         //handle success
-        console.log(response);
         if (userData.Password && userData.Email) {
           dispatch(loginRequest(userData));
         }
@@ -67,7 +66,6 @@ export const loginRequest = (userData) => {
       headers: { "Content-Type": "multipart/form-data" },
     })
       .then(function (response) {
-        console.log("response", response);
         dispatch(authActions.toggleAuthLoading(false));
         if (userData.Email) {
           //get token and login user
@@ -114,11 +112,9 @@ export const verifyOtp = ({ OtpToken, PhoneNumber }) => {
       .then(function (response) {
         //handle success
         //    dispatch(authActions.login(response.data.token));
-        console.log("response", response);
         dispatch(authActions.toggleAuthLoading(false));
         dispatch(authActions.sendUserToMainPage(true));
         // if (response.response?.status === 200) {
-        // console.log("status", response.response.status, response.data.token);
         dispatch(authActions.login(response.data.token));
         // }
         //  dispatch(

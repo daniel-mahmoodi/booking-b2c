@@ -10,7 +10,6 @@ function Filter({ data }) {
   const showCatalogDetailsError = useSelector(
     (state) => state.catalog.showCatalogDetailsError
   );
-  console.log("filter", myCatalogDetailsLoader, showCatalogDetailsError);
   return (
     <div className="uk-container" style={{ padding: "30px 0" }}>
       {!showCatalogDetailsError && (

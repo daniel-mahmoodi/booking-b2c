@@ -1,0 +1,65 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: 992px;
+  flex-wrap: wrap;
+}
+.item {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 40%;
+  padding: 12px;
+  margin: 6px 12px;
+}
+.mainTitle {
+  padding: 12px;
+  margin: 12px;
+}
+.orderItems {
+  margin: 24px 0;
+  font-size: 18px;
+  width: 100%;
+  max-width: 992px;
+}
+.ticketsTitle {
+  background-color: #ee395b;
+  color: aliceblue;
+  border-radius: 6px 6px 0 0;
+  margin: 12px;
+  padding: 6px 12px;
+}
+.title {
+  font-size: 12px;
+}
+.data {
+  padding-right: 3px;
+  font-size: 16px;
+}
+.isPayed {
+  color: forestgreen;
+}
+.notPayed {
+  color: #ee395b;
+}
+@media screen and (max-width: 760px) {
+  .body {
+    flex-direction: column;
+    padding: 0 6px;
+    margin: 0 12px;
+  }
+  .item {
+    width: 100%;
+    justify-content: start;
+    padding: 6px;
+  }
+}

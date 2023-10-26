@@ -1,23 +1,26 @@
 import React from "react";
 import classes from "./PaymentTable.module.css";
-import useDateConverter from "../Hook/useDateConverter";
+import moment from "jalali-moment";
 const paymentsType = ["پرداخت آنلاین", "پرداخت با چک", "پرداخت از اعتبار"];
 
 const PaymentTable = ({ paymentDetails }) => {
-  //paymentDate
-  const { Year, MonthNum, DayOfMonth } = useDateConverter(
-    "2001-01-01T00:00:00"
-  );
-  // const { Year, Month } = useDateConverter(paymentDetails.paymentDate);
-
   return (
     <div className={classes.body}>
       <div className={classes.bodyTop}>
         <div className={classes.date}>
           <div className={classes.title}>تاریخ</div>
-          <div
-            className={classes.desc}
-          >{`${Year}/${MonthNum}/${DayOfMonth}`}</div>
+          <div className={classes.desc}>
+            <p>
+              {paymentDetails.paymentDateTime &&
+                moment(
+                  paymentDetails.paymentDateTime.split("T")[0],
+                  "YYYY/MM/DD"
+                )
+                  .locale("fa")
+                  .format("YYYY/MM/DD")}
+            </p>
+            {/* {`${Year}/${MonthNum}/${DayOfMonth}`} */}
+          </div>
         </div>
         <div className={classes.price}>
           <div className={classes.title}>مبلغ پرداختی</div>

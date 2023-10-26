@@ -1,0 +1,109 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+.body:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.row {
+  width: 100%;
+  margin: 2px;
+  padding: 2px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.header {
+  display: none;
+}
+
+.item {
+  width: 20%;
+}
+.itemTitle {
+  display: none;
+}
+.isPayed {
+  color: forestgreen;
+}
+.notPayed {
+  color: #ee395b;
+}
+.desc {
+  font-size: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+.more {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+}
+.button {
+  display: flex;
+  justify-content: end;
+
+  background-color: rgb(238, 57, 91);
+  color: aliceblue;
+  font-size: 8px;
+  padding: 3px 6px;
+  border: 0px;
+  border-radius: 12px;
+}
+.button:hover {
+  background-color: rgb(174, 42, 66);
+}
+p {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+@media screen and (max-width: 760px) {
+  .body {
+    padding: 0;
+    margin: 6px 12px;
+  }
+  .itemTitle {
+    display: block;
+    padding-left: 3px;
+  }
+  .item {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 6px;
+    width: 50%;
+  }
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .payingSituation {
+    display: none;
+  }
+  .header {
+    display: block;
+    width: 100%;
+  }
+  .isPayed {
+    background-color: #2cbd4c;
+    border-radius: 6px 6px 0 0;
+    color: white;
+    padding: 6px !important;
+  }
+  .notPayed {
+    border-radius: 6px 6px 0 0;
+    background-color: #ee395b;
+    color: white;
+    padding: 6px !important;
+  }
+}

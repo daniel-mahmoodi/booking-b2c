@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import NavShoppingItem from "./NavShoppingItem";
 
 const NavShoppingItems = ({ data }) => {
-  console.log("datain nabshop NavShoppingItems", data);
 
   return (
     <Fragment>

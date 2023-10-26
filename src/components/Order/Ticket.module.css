@@ -1,0 +1,46 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+  margin: 12px 24px;
+  cursor: pointer;
+  border-bottom: 1px solid gray;
+}
+
+.body:hover {
+  background-color: rgb(142, 141, 141, 0.3);
+  border-radius: 3px;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+.ticketName {
+  width: 50%;
+}
+.title {
+  font-size: 14px;
+}
+.data {
+  font-size: 16px;
+  padding-right: 3px;
+}
+@media screen and (max-width: 760px) {
+  .body {
+    flex-direction: column;
+    padding: 0 6px;
+    margin: 0 12px;
+  }
+  .item {
+    width: 100%;
+    justify-content: start;
+    padding: 6px;
+  }
+  .ticketName {
+    width: 100%;
+  }
+}

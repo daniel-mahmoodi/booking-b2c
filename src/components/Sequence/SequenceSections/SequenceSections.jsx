@@ -36,7 +36,6 @@ const SansesType = () => {
       setUserSelectedSanses([]);
     }
   };
-  console.log("serviceDetails", serviceDetails);
   const handleSansSelected = (item) => {
     setSansSelectedTitle(item.title);
     setSansSelectedeventId(item.eventId);

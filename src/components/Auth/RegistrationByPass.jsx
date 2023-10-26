@@ -45,7 +45,6 @@ const RegistrationByPass = ({ changeRegistrationType }) => {
       payload: value,
     });
   };
-  console.log("state", state);
   const sendUserToLoginPageHandler = () => {
     history.push("/login");
   };
@@ -82,7 +81,6 @@ const RegistrationByPass = ({ changeRegistrationType }) => {
       }
     }
   };
-  console.log("signUpWarning", signUpWarning);
   return (
     <div className="card-login" style={{ marginTop: "-300px" }}>
       <div className="header">

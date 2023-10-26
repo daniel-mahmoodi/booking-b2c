@@ -8,4 +8,16 @@
   right: 0;
   margin: auto;
   z-index: 10;
+  min-height: 84px;
+}
+.catalog {
+  min-height: 84px;
+}
+@media screen and (max-width: 760px) {
+  .header {
+    padding-bottom: 168px;
+  }
+  .catalog {
+    min-height: 168px;
+  }
 }

@@ -17,7 +17,6 @@ export const sendOrder = (token) => {
         dispatch(orderActions.toggleOrderLoading(false));
         //handle success
         if (response.status === 200) {
-          console.log("200");
           dispatch(basketActions.eraseAllBasket());
           dispatch(uiActions.toggleCheckoutModal(false));
           dispatch(
@@ -55,7 +54,6 @@ export const calculateDiscount = (token, orderId) => {
       headers: { Authorization: token },
     })
       .then(function (response) {
-        console.log("response CalculateDiscount", response);
         if (response.status === 200) {
           dispatch(
             orderActions.addSpinnerData({
@@ -95,9 +93,13 @@ export const finalizeOrder = ({
       headers: { Authorization: token, "Content-Type": "application/json" },
     })
       .then(function (response) {
-        console.log("response finalizeOrder", response);
         if (response.status === 200) {
-          dispatch(orderActions.sendUserToPay(response));
+          dispatch(
+            orderActions.sendUserToPay({
+              url: response.data.url,
+              message: response.data.message,
+            })
+          );
         }
         //   dispatch(
         //     orderActions.addSpinnerData({
@@ -130,14 +132,47 @@ export const getPaymentDetails = (token, id) => {
       headers: { Authorization: token },
     })
       .then((response) => {
-        console.log("response getPayment", response);
         if (response.status === 200) {
           dispatch(orderActions.addPaymentDetails(response.data));
         }
-        // dispatch()
       })
       .catch((error) => {
         console.log("error getPayment", error);
+      });
+  };
+};
+
+export const getAllOrders = (token) => {
+  return (dispatch) => {
+    axios({
+      method: "GET",
+      url: `${apiUrl}/Order/All`,
+      headers: { Authorization: token },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(orderActions.addAllOrders(response.data));
+        }
+      })
+      .catch((error) => {
+        console.log("error getAllOrders", error);
+      });
+  };
+};
+export const getOrderDetails = (token, id) => {
+  return (dispatch) => {
+    axios({
+      method: "GET",
+      url: `${apiUrl}/Order/Detail?OrderRefrence=${id}`,
+      headers: { Authorization: token },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(orderActions.addSelectedOrderDetails(response.data));
+        }
+      })
+      .catch((error) => {
+        console.log("error getAllOrders", error);
       });
   };
 };

@@ -9,8 +9,7 @@ const Card = ({ data }) => {
 
   const history = useHistory();
   const selectCardHandler = () => {
-    dispatch(getServiceDetails(data.id));
-    history.push("/service-details");
+    history.push(`/service-details/${data.id}`);
   };
 
   return (
