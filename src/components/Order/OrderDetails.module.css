@@ -4,13 +4,14 @@
   justify-content: center;
   align-items: center;
   width: auto;
+  margin-bottom: 48px;
 }
 .details {
   display: flex;
+  justify-content: start;
   align-items: center;
-  justify-content: center;
   width: auto;
-  max-width: 992px;
+  max-width: 769px;
   flex-wrap: wrap;
 }
 .item {
@@ -23,7 +24,8 @@
 }
 .mainTitle {
   padding: 12px;
-  margin: 12px;
+  margin: 12px 12px 32px 12px;
+  border-bottom: 1px solid rgba(44, 113, 250, 0.58);
 }
 .orderItems {
   margin: 24px 0;

@@ -13,6 +13,7 @@ const initialState = {
   paymentDetails: {},
   listOfOrders: {},
   selectedOrderDetails: {},
+  orderTicketsDetails: {},
 };
 const orderSlice = createSlice({
   name: "order",
@@ -47,6 +48,9 @@ const orderSlice = createSlice({
     },
     addSelectedOrderDetails(state, action) {
       state.selectedOrderDetails = action.payload;
+    },
+    addOrderTicketsDetails(state, action) {
+      state.orderTicketsDetails = action.payload;
     },
   },
 });

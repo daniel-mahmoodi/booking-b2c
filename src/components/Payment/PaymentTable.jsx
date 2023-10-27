@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./PaymentTable.module.css";
 import moment from "jalali-moment";
-const paymentsType = ["پرداخت آنلاین", "پرداخت با چک", "پرداخت از اعتبار"];
+import { paymentsType } from "../Utilities/Utils";
 
 const PaymentTable = ({ paymentDetails }) => {
   return (
@@ -46,10 +46,7 @@ const PaymentTable = ({ paymentDetails }) => {
             {paymentDetails.description === "Payment is successful." ? (
               <div className={classes.detailsChild}>
                 <p>پرداخت موفقیت آمیز</p>
-                <p>
-                  {" "}
-                  می توانید از طریق دکمه ی زیر بلیط های خود را دریافت کنید.
-                </p>
+                <p>می توانید از طریق دکمه ی زیر بلیط های خود را دریافت کنید.</p>
               </div>
             ) : (
               paymentDetails.description

@@ -16,6 +16,17 @@ const MainNavMenu = () => {
               خانه
             </NavLink>
           </li>
+          <li className={classes.divider}></li>
+          <li>
+            <NavLink
+              to="/orders"
+              className={classes.menuItem}
+              activeClassName={classes.active}
+              style={{ fontFamily: "iransans" }}
+            >
+              سفارشات
+            </NavLink>
+          </li>
 
           <li className={classes.divider}></li>
           <li>

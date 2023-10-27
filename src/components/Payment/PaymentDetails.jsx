@@ -2,19 +2,27 @@ import React, { Fragment, useEffect } from "react";
 import classes from "./PaymentDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { getPaymentDetails } from "../../store/order-action";
+import {
+  getOrderTicketsDetails,
+  getPaymentDetails,
+} from "../../store/order-action";
 import PaymentTable from "./PaymentTable";
 import MyLoading from "../Layout/MyLoading";
+
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const PaymentDetails = () => {
   const { paymentId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const token = useSelector((state) => state.auth.token);
   const paymentDetails = useSelector((state) => state.order.paymentDetails);
   useEffect(() => {
     if (paymentId) dispatch(getPaymentDetails(token, paymentId));
   }, [dispatch, paymentId, token]);
-  
+
   const ticketPrintHandler = () => {
+    dispatch(getOrderTicketsDetails(token, paymentDetails.orderId));
+    history.push("/print-tickets");
   };
   return (
     <Fragment>

@@ -1,5 +1,10 @@
 export const submitOrderHandler = (event) => {
   event.stopPropagation();
 };
-export const ticketStatus = ["", "لغو", "", "رزرو", "", ""];
+export const ticketStatus = ["تایید شده", "کنسل شده", "درخواست کنسل داده شده", "باطل شده"];
 export const paymentMethod = ["آنلاین", "کیف پول"];
+export const paymentsType = [
+  "پرداخت آنلاین",
+  "پرداخت با چک",
+  "پرداخت از اعتبار",
+];

@@ -176,3 +176,21 @@ export const getOrderDetails = (token, id) => {
       });
   };
 };
+export const getOrderTicketsDetails = (token, orderId) => {
+  return (dispatch) => {
+    axios({
+      method: "GET",
+      url: `${apiUrl}/Order/GetOrderTicketsDetails?OrderId=${orderId}`,
+      headers: { Authorization: token },
+    })
+      .then((response) => {
+        console.log("orderTicketsDetails", response);
+        // if (response.status === 200) {
+          dispatch(orderActions.addOrderTicketsDetails(response.data));
+        // }
+      })
+      .catch((error) => {
+        console.log("error getAllOrders", error);
+      });
+  };
+};

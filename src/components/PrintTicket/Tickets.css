@@ -1,0 +1,79 @@
+.all {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img{
+  margin: 0 2px;
+}
+span{
+  margin-left: 3px;
+}
+.ticketItem::after {
+  content: "";
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: calc(50% - 20px);
+  left: -20px;
+  border: 1px solid gray;
+  z-index: 1;
+}
+.ticketItem::before {
+  content: "";
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: calc(50% - 20px);
+  right: -20px;
+  border: 1px solid gray;
+  z-index: 1;
+}
+@media screen and (max-width: 700px) {
+  .resp-header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .resp-header .item2 {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .resp-header .details > div {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 700px) {
+  .descriptions > div {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 700px) {
+  .ticket > div {
+    width: 100% !important;
+  }
+
+  .ticket > div:last-child img {
+    max-width: 200px;
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ticket > div:first-child > div {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .mohr > div {
+    width: 100% !important;
+  }
+}

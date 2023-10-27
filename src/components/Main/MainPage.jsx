@@ -15,11 +15,13 @@ import { basketActions } from "../../store/basket-slice";
 import PaymentDetails from "../Payment/PaymentDetails";
 import ListOfOrders from "../Order/ListOfOrders";
 import OrderDetails from "../Order/OrderDetails";
+import PrintTicketsList from "../PrintTicket/PrintTicketsList";
 const MainPage = () => {
   const dispatch = useDispatch();
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
   const token = useSelector((state) => state.auth.token);
+  console.log("token", token);
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {
@@ -72,6 +74,9 @@ const MainPage = () => {
             </Route>
             <Route path="/order-details/:orderRefrence" exact>
               <OrderDetails />
+            </Route>
+            <Route path="/print-tickets" exact>
+              <PrintTicketsList />
             </Route>
             <Route path="/login" exact>
               <Login />
