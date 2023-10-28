@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Ticket.module.css";
 import IncreaseDecreaseButton from "../Layout/IncreaseDecreaseButton";
+import TicketPricing from "./TicketPricing";
 const Ticket = ({ ticketDetails, eventId, sansSelectedTitle }) => {
   return (
     <div className={classes.body}>
@@ -13,25 +14,7 @@ const Ticket = ({ ticketDetails, eventId, sansSelectedTitle }) => {
               sansSelectedTitle={sansSelectedTitle}
             />
           </div>
-          <div className={classes.desc}>
-            {ticketDetails.discountedPrice === ticketDetails.price ? (
-              <div>
-                <p>{`${"قیمت"}:`}</p>
-                <p>{` ${ticketDetails.price}`}</p>
-              </div>
-            ) : (
-              <>
-                <div className={classes.oldPrice}>
-                  <p>{`قیمت:`}</p>
-                  <p>{` ${ticketDetails.price}`}</p>
-                </div>
-                <div>
-                  <p>{`قیمت با تخفیف:`}</p>
-                  <p>{`${ticketDetails.discountedPrice}`}</p>
-                </div>
-              </>
-            )}
-          </div>
+          <TicketPricing ticketDetails={ticketDetails} />
         </>
       )}
     </div>

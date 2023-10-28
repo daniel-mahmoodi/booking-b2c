@@ -8,6 +8,7 @@ import Checkout from "./components/Order/Checkout";
 import Spinner from "./components/Spinner/Spinner";
 import BasicDocument from "./BasicDocument";
 import PrintTicketsList from "./components/PrintTicket/PrintTicketsList";
+import Printer from "./components/Utilities/Printer";
 function App() {
   const showSideBar = useSelector((state) => state.ui.showSideBar);
   const showSequencesModal = useSelector(
@@ -53,6 +54,7 @@ function App() {
         />
       )}
       {/* <BasicDocument /> */}
+      <Printer />
       {showSideBar && <OffcanvasMenu />}
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}

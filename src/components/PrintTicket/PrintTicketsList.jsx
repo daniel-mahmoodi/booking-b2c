@@ -1,29 +1,31 @@
 import React from "react";
-import Descriptions from "./Descriptions";
-import TicketDescriptions from "./TicketsDescriptions";
-import Stump from "./Stump";
-import AdditionalInfo from "./AdditionalInfo";
-import Tickets from "./Tickets";
-import "./Tickets.css";
-import Pagination from "./Pagination";
-import { useSelector } from "react-redux";
-
+import classes from "./Tickets.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { getOrderTicketsDetails } from "../../store/order-action";
+import { useEffect } from "react";
+import ClientOrderDetails from "./ClientOrderDetails";
 const PrintTicketsList = () => {
+  const { orderId } = useParams();
+  const dispatch = useDispatch();
   const orderTicketsDetails = useSelector(
     (state) => state.order.orderTicketsDetails
   );
+  const token = useSelector((state) => state.auth.token);
+  useEffect(() => {
+    dispatch(getOrderTicketsDetails(token, orderId));
+  }, [dispatch, orderId, token]);
   console.log("orderTicketsDetails", orderTicketsDetails);
+
   return (
-    <div
-      className="all"
-      style={{ maxWidth: "1000px", margin: "10px auto", padding: "0 10px" }}
-    >
-      <TicketDescriptions />
-      <Descriptions />
-      <Tickets />
-      <AdditionalInfo />
-      <Stump />
-      <Pagination />
+    <div className={classes.body}>
+      {orderTicketsDetails ? (
+        orderTicketsDetails.map((order) => (
+          <ClientOrderDetails key={order.orderRefernce} data={order} />
+        ))
+      ) : (
+        <div>اطلاعاتی دریافت نشد.</div>
+      )}
     </div>
   );
 };

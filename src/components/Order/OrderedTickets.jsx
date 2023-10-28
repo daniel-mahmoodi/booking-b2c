@@ -1,5 +1,5 @@
 import React from "react";
-import Ticket from "./Ticket";
+import Ticket from "./OrderedTicket";
 import classes from './OrderedTickets.module.css'
 const OrderedTickets = ({ data }) => {
   return (

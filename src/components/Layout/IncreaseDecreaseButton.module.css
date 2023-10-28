@@ -1,15 +1,54 @@
-.capacity {
-     position: absolute;
-     top: 100%;
-     /* bottom:0; */
-     left:25%;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     text-align: center;
-     color: red !important; /* Override Bootstrap text color */
-     /* height: 12px; */
-     margin: 0;
-     padding: 0px;
-     font-size: 12px;
-   }
+.dateContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.wrapper {
+  position: relative;
+  height: 40px;
+  width: 120px;
+  margin: 0 auto;
+}
+
+.wrapper > div {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.wrapper .btn {
+  background-color: #f44153;
+  display: inline-block;
+  border-radius: 5px;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.countContainer .wrapper .btn .item {
+  font-size: 25px;
+  display: inline-block;
+  color: white;
+  position: absolute;
+}
+
+.wrapper .display {
+  background-color: white;
+  display: inline-block;
+}
+
+.wrapper .display .item {
+  font-size: 14px;
+  padding: 0 10px;
+  display: inline-block;
+  color: black;
+}

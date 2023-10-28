@@ -44,19 +44,19 @@ const IncreaseDecreaseButton = ({ data, eventId, sansSelectedTitle }) => {
     }
   };
   return (
-    <div className="count-container mt-2">
-      <div className="wrapper">
+    <div className={`${classes.countContainer} mt-2`}>
+      <div className={classes.wrapper}>
         <div>
-          <span onClick={removeItemHandler} className="btn">
-            <span className="item">-</span>
+          <span onClick={removeItemHandler} className={classes.btn}>
+            <span className={classes.item}>-</span>
           </span>
-          <span className="display">
-            <span data-id="9" data-cart-count="" className="item">
+          <span className={classes.display}>
+            <span data-id="9" data-cart-count="" className={classes.item}>
               {basketItemPlusOneItem ? basketItemPlusOneItem.count : 0}
             </span>
           </span>
-          <span onClick={addItemHandler} className="btn">
-            <span className="item">+</span>
+          <span onClick={addItemHandler} className={classes.btn}>
+            <span className={classes.item}>+</span>
           </span>
         </div>
         {/* <p className={classes.capacity}>{`ظرفیت: ${remainedCapacity}`}</p> */}

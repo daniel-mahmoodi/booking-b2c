@@ -21,8 +21,8 @@ const PaymentDetails = () => {
   }, [dispatch, paymentId, token]);
 
   const ticketPrintHandler = () => {
-    dispatch(getOrderTicketsDetails(token, paymentDetails.orderId));
-    history.push("/print-tickets");
+    
+    history.push(`/print-tickets/${paymentDetails.orderId}`);
   };
   return (
     <Fragment>

@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Ticket.module.css";
+import classes from "./OrderedTicket.module.css";
 import { ticketStatus } from "../Utilities/Utils";
-const Ticket = ({ ticket }) => {
+const OrderedTicket = ({ ticket }) => {
  
   return (
     <div className={classes.body}>
@@ -32,4 +32,4 @@ const Ticket = ({ ticket }) => {
   );
 };
 
-export default Ticket;
+export default OrderedTicket;

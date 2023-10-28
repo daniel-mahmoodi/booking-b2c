@@ -1,7 +1,12 @@
 import React from "react";
-import "./Tickets.css";
-const Tickets = () => {
- 
+import classes from "./Tickets.module.css";
+import moment from "jalali-moment";
+const ClientTicket = ({
+  data,
+  eventExcecuteDateTime,
+  eventExcecuteTime,
+  clientMobile,
+}) => {
   return (
     <div style={{ marginTop: "10px" }}>
       <div style={{ overflow: "hidden" }}>
@@ -14,7 +19,7 @@ const Tickets = () => {
             display: "flex",
             flexWrap: "wrap",
           }}
-          className="ticketItem ticket"
+          className={`${classes.ticketItem} ${classes.ticket}`}
         >
           <div
             style={{
@@ -50,7 +55,7 @@ const Tickets = () => {
               <span
                 style={{ fontSize: "14px", margin: "0 4px", color: "gray" }}
               >
-                شریعتمداری
+                {data.clientFullName}
               </span>
             </div>
             <div
@@ -78,7 +83,7 @@ const Tickets = () => {
               <span
                 style={{ fontSize: "14px", margin: "0 4px", color: "gray" }}
               >
-                ۰۹۱۰۰۹۶۶۶۸۸
+                {clientMobile}
               </span>
             </div>
             <div
@@ -106,7 +111,12 @@ const Tickets = () => {
               <span
                 style={{ fontSize: "14px", margin: "0 4px", color: "gray" }}
               >
-                ۱۴۰۲/۰۷/۰۸
+                <p>
+                  {eventExcecuteDateTime &&
+                    moment(eventExcecuteDateTime.split("T")[0], "YYYY/MM/DD")
+                      .locale("fa")
+                      .format("YYYY/MM/DD")}
+                </p>
               </span>
             </div>
             <div
@@ -134,7 +144,7 @@ const Tickets = () => {
               <span
                 style={{ fontSize: "14px", margin: "0 4px", color: "gray" }}
               >
-                ۲۱:۳۰ - ۲۲:۳۰
+                {eventExcecuteTime}
               </span>
             </div>
             <div
@@ -162,7 +172,7 @@ const Tickets = () => {
               <span
                 style={{ fontSize: "14px", margin: "0 4px", color: "gray" }}
               >
-                ۱۴۰۲/۰۷/۰۸
+                ندارد
               </span>
             </div>
             <div
@@ -190,7 +200,7 @@ const Tickets = () => {
               <span
                 style={{ fontSize: "14px", margin: "0 4px", color: "gray" }}
               >
-                ۲۱:۳۰ - ۲۲:۳۰
+                ندارد
               </span>
             </div>
           </div>
@@ -217,4 +227,4 @@ const Tickets = () => {
   );
 };
 
-export default Tickets;
+export default ClientTicket;

@@ -1,5 +1,4 @@
 import React from "react";
-import "./Tickets.css";
 const AdditionalInfo = () => {
   return (
     <div

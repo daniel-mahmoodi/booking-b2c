@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllOrders } from "../../store/order-action";
 import OrderItem from "./OrderItem";
 import TableTitles from "./TableTitles";
+import MyLoadnig from "../Layout/MyLoading";
 import classes from "./ListOfOrder.module.css";
 const ListOfOrders = () => {
   const dispatch = useDispatch();
   const listOfOrders = useSelector((state) => state.order.listOfOrders);
+  const allOrdersLoading = useSelector((state) => state.order.allOrdersLoading);
   const token = useSelector((state) => state.auth.token);
   useEffect(() => {
     dispatch(getAllOrders(token));
@@ -23,7 +25,13 @@ const ListOfOrders = () => {
           ))}
         </>
       ) : (
-        <div>لیست سفارشات یافت نشد. لطفا مجددا اقدام فرمایید.</div>
+        <div>
+          {allOrdersLoading ? (
+            <MyLoadnig color={"#ee395b"} />
+          ) : (
+            <div>لیست سفارشات یافت نشد. لطفا مجددا اقدام فرمایید.</div>
+          )}
+        </div>
       )}
     </div>
   );

@@ -5745,7 +5745,7 @@ color: #F44153 !important;
 }
 
 .basket .count-container .wrapper > div {
-  position: absolute;
+  /* position: absolute; */
   left: 5px;
   bottom: 5px;
   display: flex;

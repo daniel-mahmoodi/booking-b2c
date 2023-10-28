@@ -1,17 +1,21 @@
 import React from "react";
 
-const TicketsDescriptions = () => {
+const TicketsDescriptions = ({ eventTitle, clientName, clientMobile }) => {
   return (
     <div
       style={{ display: "flex", justifyContent: "space-between" }}
       className="resp-header"
     >
       <div style={{ width: "120px" }} className="item1">
-        <img src="/assets/img/printTickets/img_top1.png" style={{ width: "100%" }} alt="" />
+        <img
+          src="/assets/img/printTickets/img_top1.png"
+          style={{ width: "100%" }}
+          alt=""
+        />
       </div>
       <div style={{ width: "calc(100% - 240px)" }} className="item2">
         <h1 style={{ fontSize: "16px", textAlign: "center" }}>
-          کشتی تفریحی آرتمیس
+          {eventTitle}
         </h1>
         <div
           style={{
@@ -48,7 +52,7 @@ const TicketsDescriptions = () => {
             <span
               style={{ fontSize: "14px", marginRight: "4px", color: "gray" }}
             >
-              شریعتمداری
+              {clientName}
             </span>
           </div>
           <div
@@ -76,14 +80,18 @@ const TicketsDescriptions = () => {
             <span
               style={{ fontSize: "14px", marginRight: "4px", color: "gray" }}
             >
-              ۰۹۱۰۰۹۶۶۶۸۸
+              {clientMobile}
             </span>
           </div>
           {/* Repeat this structure for other content within the "details" section */}
         </div>
       </div>
       <div style={{ width: "120px" }} className="item3">
-        <img src="/assets/img/printTickets/img_top2.png" style={{ width: "100%" }} alt="" />
+        <img
+          src="/assets/img/printTickets/img_top2.png"
+          style={{ width: "100%" }}
+          alt=""
+        />
       </div>
     </div>
   );

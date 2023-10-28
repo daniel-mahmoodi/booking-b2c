@@ -144,34 +144,40 @@ export const getPaymentDetails = (token, id) => {
 
 export const getAllOrders = (token) => {
   return (dispatch) => {
+    dispatch(orderActions.getAllOrdersLoading(true))
     axios({
       method: "GET",
       url: `${apiUrl}/Order/All`,
       headers: { Authorization: token },
     })
-      .then((response) => {
-        if (response.status === 200) {
-          dispatch(orderActions.addAllOrders(response.data));
-        }
-      })
-      .catch((error) => {
+    .then((response) => {
+      dispatch(orderActions.getAllOrdersLoading(false))
+      if (response.status === 200) {
+        dispatch(orderActions.addAllOrders(response.data));
+      }
+    })
+    .catch((error) => {
+        dispatch(orderActions.getAllOrdersLoading(false))
         console.log("error getAllOrders", error);
       });
   };
 };
 export const getOrderDetails = (token, id) => {
   return (dispatch) => {
+    dispatch(orderActions.getOrderDetailsLoading(true))
     axios({
       method: "GET",
       url: `${apiUrl}/Order/Detail?OrderRefrence=${id}`,
       headers: { Authorization: token },
     })
-      .then((response) => {
+    .then((response) => {
+        dispatch(orderActions.getOrderDetailsLoading(false))
         if (response.status === 200) {
           dispatch(orderActions.addSelectedOrderDetails(response.data));
         }
       })
       .catch((error) => {
+        dispatch(orderActions.getOrderDetailsLoading(false))
         console.log("error getAllOrders", error);
       });
   };
