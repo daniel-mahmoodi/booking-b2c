@@ -9,6 +9,8 @@ import Spinner from "./components/Spinner/Spinner";
 import BasicDocument from "./BasicDocument";
 import PrintTicketsList from "./components/PrintTicket/PrintTicketsList";
 import Printer from "./components/Utilities/Printer";
+import ReactPrintHtml from "./components/Utilities/ReactPrintHtml";
+import ReactToPdf from "./components/Utilities/ReactToPdf";
 function App() {
   const showSideBar = useSelector((state) => state.ui.showSideBar);
   const showSequencesModal = useSelector(
@@ -54,7 +56,9 @@ function App() {
         />
       )}
       {/* <BasicDocument /> */}
-      <Printer />
+      {/* <ReactPrintHtml /> */}
+      {/* <ReactToPdf /> */}
+      {/* <Printer /> */}
       {showSideBar && <OffcanvasMenu />}
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}

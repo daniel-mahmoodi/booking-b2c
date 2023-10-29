@@ -16,6 +16,7 @@ import PaymentDetails from "../Payment/PaymentDetails";
 import ListOfOrders from "../Order/ListOfOrders";
 import OrderDetails from "../Order/OrderDetails";
 import PrintTicketsList from "../PrintTicket/PrintTicketsList";
+import PrintPage from "../PrintTicket/PrintPage";
 const MainPage = () => {
   const dispatch = useDispatch();
   const basketChanged = useSelector((state) => state.basket.basketChanged);
@@ -30,9 +31,10 @@ const MainPage = () => {
   }, [dispatch, token]);
   // prevent footer component shows in login and signin pages
   const location = useLocation();
-  const excludeFooterRoutes = ["/login", "/signup"];
+  const excludeFooterRoutes = ["/login", "/signup", "/print-page"];
   const shouldShowFooter = !excludeFooterRoutes.includes(location.pathname);
-
+  const excludeNavbarRoutes = ["/print-page"];
+  const shouldShowNavbar = !excludeNavbarRoutes.includes(location.pathname);
   useEffect(() => {
     if (basketChanged && token) {
       const timer = setTimeout(() => {
@@ -49,7 +51,7 @@ const MainPage = () => {
     <div className="page-home">
       <div className="page-wrapper">
         <main className="page-main">
-          <Navbar />
+          {shouldShowNavbar && <Navbar />}
           <Switch>
             <Route path="/" exact>
               <Redirect to="/home" />
@@ -83,6 +85,9 @@ const MainPage = () => {
             </Route>
             <Route path="/signup" exact>
               <Registration />
+            </Route>
+            <Route path="/print-page" exact>
+              <PrintPage />
             </Route>
             <Route path="*">
               <Redirect to="/home" />

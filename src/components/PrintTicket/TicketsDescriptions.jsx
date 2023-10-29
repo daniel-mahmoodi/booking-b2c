@@ -14,9 +14,7 @@ const TicketsDescriptions = ({ eventTitle, clientName, clientMobile }) => {
         />
       </div>
       <div style={{ width: "calc(100% - 240px)" }} className="item2">
-        <h1 style={{ fontSize: "16px", textAlign: "center" }}>
-          {eventTitle}
-        </h1>
+        <h1 style={{ fontSize: "16px", textAlign: "center" }}>{eventTitle}</h1>
         <div
           style={{
             width: "100%",
@@ -46,7 +44,13 @@ const TicketsDescriptions = ({ eventTitle, clientName, clientMobile }) => {
                 left: "4px",
               }}
             />
-            <span style={{ fontSize: "16px", color: "darkblue" }}>
+            <span
+              style={{
+                fontSize: "16px",
+                color: "darkblue",
+                wordWrap: "normal",
+              }}
+            >
               نام مشتری:
             </span>
             <span

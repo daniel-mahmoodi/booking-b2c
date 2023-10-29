@@ -28,6 +28,7 @@ const ClientOrderDetails = ({ data }) => {
       <Stump />
       <AdditionalInfo />
       <Pagination />
+      
     </Fragment>
   );
 };

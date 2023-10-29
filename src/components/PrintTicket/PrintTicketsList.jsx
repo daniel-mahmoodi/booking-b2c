@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getOrderTicketsDetails } from "../../store/order-action";
 import { useEffect } from "react";
 import ClientOrderDetails from "./ClientOrderDetails";
+import GoForPrint from "./GoForPrint";
 const PrintTicketsList = () => {
   const { orderId } = useParams();
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const PrintTicketsList = () => {
       ) : (
         <div>اطلاعاتی دریافت نشد.</div>
       )}
+      <GoForPrint />
     </div>
   );
 };
