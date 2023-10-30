@@ -59,3 +59,38 @@ export const fetchCatalogDetails = (parentId) => {
       });
   };
 };
+export const getFilters = () => {
+  return async (dispatch) => {
+    axios({
+      method: "GET",
+      url: `${apiUrl}/Car/GetFilters`,
+    })
+      .then((response) => {
+        console.log("response", response);
+        dispatch(catalogActions.addListOfFilters(response.data));
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+};
+export const GetCars = ({ data, pageNumber, pageSize }) => {
+  return async (dispatch) => {
+    const dataNeeded = `${data.classId ? `&ClassIds=${data.classId}` : ""}${
+      data.fuelType ? `&FuelType=${data.fuelType}` : ""
+    }${data.isGearAutomatic ? `&IsGearAutomatic=${data.isGearAutomatic}` : ""}${
+      data.peopleCapacity ? `&PeopleCapacity=${data.peopleCapacity}` : ""
+    }${data.loadCapacity ? `&LoadCapacity=${data.loadCapacity}` : ""}`;
+    axios({
+      method: "GET",
+      url: `${apiUrl}/Car/GetCars?PageNumber=${pageNumber}&PageSize=${pageSize}${dataNeeded}`,
+    })
+      .then((response) => {
+        console.log("response", response);
+        dispatch(catalogActions.addListOfFilteredCars(response.data));
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+};

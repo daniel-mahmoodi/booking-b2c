@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialCatalogState = {
   listOfCatalogs: [],
+  listOfCars: [],
+  listOfFilteredCars: [],
+  userCarFilters: [],
   catalogDetails: [],
   filterSelectedId: 0,
   selectedCatalogName: "",
@@ -15,6 +18,15 @@ const catalogSlice = createSlice({
   reducers: {
     addCatalogsList(state, action) {
       state.listOfCatalogs = action.payload;
+    },
+    addListOfFilters(state, action) {
+      state.listOfCars = action.payload;
+    },
+    addUserCarFilters(state, action) {
+      state.userCarFilters = action.payload;
+    },
+    addListOfFilteredCars(state, action) {
+      state.listOfFilteredCars = action.payload;
     },
     addSelectedCatalogDetails(state, action) {
       state.catalogDetails = action.payload;
