@@ -37,6 +37,7 @@
   margin: 6px 0px;
   padding: 24px;
   width: 100%;
+  display: flex;
 }
 
 /* Close button */
@@ -60,23 +61,26 @@
   text-decoration: none;
   cursor: pointer;
 }
-.call {
-  background-color: #415ff4;
+.items {
   border-radius: 30px;
   color: #ffffff;
   padding: 12px 24px;
   margin: 12px auto;
-  max-width: 200px;
+  width: max-content;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.items p {
+  padding: 2px !important;
+  margin: 2px !important;
+}
+.call {
+  background-color: #415ff4;
 }
 .massege {
   background-color: #26d075;
-  border-radius: 30px;
-  color: #ffffff;
-  padding: 12px 24px;
-  margin: 12px auto;
-  max-width: 200px;
-  cursor: pointer;
 }
 
 .accept {

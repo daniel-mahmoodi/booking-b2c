@@ -5,11 +5,23 @@ import { uiActions } from "../../../store/ui-slice";
 const Counseling = () => {
   const dispatch = useDispatch();
   const selectedCarId = useSelector((state) => state.catalog.selectedCarId);
+  const listOfFilteredCars = useSelector(
+    (state) => state.catalog.listOfFilteredCars
+  );
+  const selectedCarPhoneNumber = listOfFilteredCars.data.find(
+    (item) => item.id === selectedCarId
+  ).companyPhoneNumber;
   const toggleModal = () => {
     dispatch(uiActions.toggleShowCounselingModal(false));
   };
-  console.log("selectedCarId", selectedCarId);
-//   
+  const handleCallClick = () => {
+    window.location.href = `tel:${selectedCarPhoneNumber}`;
+  };
+  const openWhatsAppChat = () => {
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${selectedCarPhoneNumber}`;
+    window.open(whatsappURL, "_blank");
+    dispatch(uiActions.toggleShowCounselingModal(false));
+  };
   return (
     <div className={classes.modal}>
       <div className={classes.modalContent}>
@@ -22,15 +34,21 @@ const Counseling = () => {
           <p>برای دریافت مشاوره یکی از راه های زیر را انتخاب کنید</p>
         </div>
         <div className={classes.details}>
-          <div className={classes.call}>
+          <div
+            onClick={handleCallClick}
+            className={`${classes.call} ${classes.items}`}
+          >
             <ion-icon name="call-outline"></ion-icon>
             <p>تماس تلفنی</p>
-            <p>{DataTransfer.companyPhoneNumber}</p>
+            <p>{selectedCarPhoneNumber}</p>
           </div>
-          <div className={classes.massege}>
+          <div
+            onClick={openWhatsAppChat}
+            className={`${classes.massege} ${classes.items}`}
+          >
             <ion-icon name="logo-whatsapp"></ion-icon>
             <p>واتساپ</p>
-            <p>{DataTransfer.companyPhoneNumber}</p>
+            <p>{selectedCarPhoneNumber}</p>
           </div>
         </div>
       </div>
