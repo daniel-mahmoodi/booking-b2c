@@ -1,0 +1,27 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carItems {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Adjust the gap to your liking */
+  max-width: 1200px;
+  margin: 12px auto;
+}
+@media screen and (max-width: 1200px) {
+  .carItems {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 992px) {
+  .carItems {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .carItems {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

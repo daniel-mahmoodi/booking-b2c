@@ -1,10 +1,28 @@
 .body {
+  border: 1px solid rgb(218, 218, 218);
+  background-color: rgb(255, 255, 255);
+  margin: 12px auto;
+  max-width: 1400px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 1px solid rgb(218, 218, 218);
   border-radius: 12px;
-  margin: 12px auto;
-  max-width: 90%;
+  /* background-color: ; */
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 12px;
+}
+.searchBtn {
+  padding: 12px 24px;
+  margin: 12px;
+  border-radius: 6px;
+  border: 0px;
+  background-color: #ee395b;
+  color: white;
 }

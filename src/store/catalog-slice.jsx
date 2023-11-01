@@ -6,6 +6,7 @@ const initialCatalogState = {
   userCarFilters: [],
   catalogDetails: [],
   filterSelectedId: 0,
+  selectedCarId: null,
   selectedCatalogName: "",
   myCatalogLoader: false,
   showCatalogError: false,
@@ -36,6 +37,9 @@ const catalogSlice = createSlice({
     },
     addSelectedCatalogName(state, action) {
       state.selectedCatalogName = action.payload;
+    },
+    addSelectedCarId(state, action) {
+      state.selectedCarId = action.payload;
     },
     toggleMyCatalogLoader(state, action) {
       state.myCatalogLoader = action.payload;

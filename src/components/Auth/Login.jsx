@@ -21,7 +21,7 @@ export const Login = () => {
   }, []);
   return (
     <Fragment>
-      {byPass ? (
+      {!byPass ? (
         <LoginByPass changeRegistrationType={changeRegistrationType} />
       ) : openOtpPage ? (
         <AddingOTP />

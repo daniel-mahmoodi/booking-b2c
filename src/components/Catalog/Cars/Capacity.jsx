@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./DropDown.module.css";
 
-const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
+function Capacity({ data, filterSelected, itemType, ItemsName }) {
   const [isOpen, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -9,11 +9,9 @@ const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
   const shwoDropdown = () => setOpen(true);
 
   const handleItemClick = (item) => {
-    selectedItem == item.id
-      ? setSelectedItem(null)
-      : setSelectedItem(item.id);
+    selectedItem == item ? setSelectedItem(null) : setSelectedItem(item);
     hideDropdown();
-    filterSelected(itemType, item.id);
+    filterSelected(itemType, item);
   };
 
   return (
@@ -25,41 +23,32 @@ const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
       <div className={classes.dropdown}>
         <div className={classes.dropdownHeader} onClick={hideDropdown}>
           {selectedItem
-            ? data.find((item) => item.id == selectedItem).gearTitle
+            ? data.find((item) => item == selectedItem)
             : ItemsName}
-
           <i
             className={`fa fa-chevron-right ${classes.icon} ${
               isOpen && classes.open
             }`}
           ></i>
         </div>
-        <div className={`${classes.dropdownBody} ${isOpen && classes.open}`}>
-          {Object.keys(data).length ? (
-            data.map((item) => (
+        {isOpen && (
+          <div className={`${classes.dropdownBody} ${isOpen && classes.open}`}>
+            {data.map((item) => (
               <div
-                key={item.id}
+                key={item}
                 className={`${classes.dropdownItem} ${
-                  item.id == selectedItem && classes.selected
+                  item == selectedItem && classes.selected
                 }`}
                 onClick={() => handleItemClick(item)}
-                id={item.id}
               >
-                {/* <span
-                className={`${classes.dropdownItemDot} ${
-                  item.id == selectedItem && classes.selected
-                }`}
-              ></span> */}
-                {item.gearTitle}
+                {item}
               </div>
-            ))
-          ) : (
-            <div className={classes.dropdownItem}>بدون آیتم</div>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
-};
+}
 
-export default GearTypes;
+export default Capacity;

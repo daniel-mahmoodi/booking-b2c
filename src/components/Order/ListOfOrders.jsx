@@ -11,9 +11,10 @@ const ListOfOrders = () => {
   const listOfOrders = useSelector((state) => state.order.listOfOrders);
   const allOrdersLoading = useSelector((state) => state.order.allOrdersLoading);
   const token = useSelector((state) => state.auth.token);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   useEffect(() => {
-    dispatch(getAllOrders(token));
-  }, [dispatch, token]);
+    token && dispatch(getAllOrders(token));
+  }, [dispatch, isLoggedIn, token]);
   return (
     <div className={classes.body}>
       {Object.keys(listOfOrders).length ? (
@@ -29,7 +30,13 @@ const ListOfOrders = () => {
           {allOrdersLoading ? (
             <MyLoadnig color={"#ee395b"} />
           ) : (
-            <div>لیست سفارشات یافت نشد. لطفا مجددا اقدام فرمایید.</div>
+            <div className={classes.body}>
+              {token ? (
+                <p> لیست سفارشات یافت نشد. لطفا مجددا اقدام فرمایید.</p>
+              ) : (
+                <p> لطفا ابتدا وارد حساب کاربری خود شوید</p>
+              )}
+            </div>
           )}
         </div>
       )}

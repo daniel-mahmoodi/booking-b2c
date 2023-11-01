@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classes from "./DropDown.module.css";
-const DropDown = ({ filterSelected, itemType, data, ItemsName }) => {
+const FuelType = ({ filterSelected, itemType, data, ItemsName, field }) => {
+  console.log("data", data);
   const [isOpen, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -23,8 +24,12 @@ const DropDown = ({ filterSelected, itemType, data, ItemsName }) => {
     >
       <div className={classes.dropdown}>
         <div className={classes.dropdownHeader} onClick={hideDropdown}>
-          {selectedItem
-            ? data.find((item) => item.id == selectedItem).fuelName
+          {field
+            ? selectedItem
+              ? data.find((item) => item.id == selectedItem)[field]
+              : ItemsName
+            : selectedItem
+            ? data.find((item) => item == selectedItem)
             : ItemsName}
           <i
             className={`fa fa-chevron-right ${classes.icon} ${
@@ -33,24 +38,42 @@ const DropDown = ({ filterSelected, itemType, data, ItemsName }) => {
           ></i>
         </div>
         <div className={`${classes.dropdownBody} ${isOpen && classes.open}`}>
-          {data && Object.keys(data).length ? (
-            data?.map((item) => (
-              <div
-                key={item.id}
-                className={`${classes.dropdownItem} ${
-                  item.id == selectedItem && classes.selected
-                }`}
-                onClick={(e) => handleItemClick(item, e.target)}
-                id={item.id}
-              >
-                {/* <span
+          {Object.keys(data).length ? (
+            data.map((item) =>
+              field ? (
+                <div
+                  key={item.id}
+                  className={`${classes.dropdownItem} ${
+                    item.id == selectedItem && classes.selected
+                  }`}
+                  onClick={(e) => handleItemClick(item, e.target)}
+                  id={item.id}
+                >
+                  {/* <span
                 className={`${classes.dropdownItemDot} ${
                   item.id == selectedItem && classes.selected
                 }`}
               ></span> */}
-                {item.fuelName}
-              </div>
-            ))
+                  {item[field]}
+                </div>
+              ) : (
+                <div
+                  key={item}
+                  className={`${classes.dropdownItem} ${
+                    item == selectedItem && classes.selected
+                  }`}
+                  onClick={(e) => handleItemClick(item, e.target)}
+                  id={item}
+                >
+                  {/* <span
+                className={`${classes.dropdownItemDot} ${
+                  item.id == selectedItem && classes.selected
+                }`}
+              ></span> */}
+                  {item}
+                </div>
+              )
+            )
           ) : (
             <div className={classes.dropdownItem}>بدون آیتم</div>
           )}
@@ -60,7 +83,7 @@ const DropDown = ({ filterSelected, itemType, data, ItemsName }) => {
   );
 };
 
-export default DropDown;
+export default FuelType;
 // return (
 //      <div>
 //        <div className={classes.dropdown}>

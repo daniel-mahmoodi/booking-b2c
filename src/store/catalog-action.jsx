@@ -76,11 +76,13 @@ export const getFilters = () => {
 };
 export const GetCars = ({ data, pageNumber, pageSize }) => {
   return async (dispatch) => {
-    const dataNeeded = `${data.classId ? `&ClassIds=${data.classId}` : ""}${
-      data.fuelType ? `&FuelType=${data.fuelType}` : ""
-    }${data.isGearAutomatic ? `&IsGearAutomatic=${data.isGearAutomatic}` : ""}${
-      data.peopleCapacity ? `&PeopleCapacity=${data.peopleCapacity}` : ""
-    }${data.loadCapacity ? `&LoadCapacity=${data.loadCapacity}` : ""}`;
+    const dataNeeded = `${data.classIds ? `&ClassIds=${data.classIds}` : ""}${
+      data.modelId ? `&ModelId=${data.modelId}` : ""
+    }${data.fuelType ? `&FuelType=${data.fuelType}` : ""}${
+      data.isGearAutomatic ? `&IsGearAutomatic=${data.isGearAutomatic}` : ""
+    }${data.peopleCapacity ? `&PeopleCapacity=${data.peopleCapacity}` : ""}${
+      data.loadCapacity ? `&LoadCapacity=${data.loadCapacity}` : ""
+    }`;
     axios({
       method: "GET",
       url: `${apiUrl}/Car/GetCars?PageNumber=${pageNumber}&PageSize=${pageSize}${dataNeeded}`,

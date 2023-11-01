@@ -6,6 +6,7 @@ const initialUiState = {
   showSpinnerModal: false,
   showSequencesModal: false,
   showCheckoutModal: false,
+  showCounselingModal: false,
 };
 const uiSlice = createSlice({
   name: "ui",
@@ -25,6 +26,9 @@ const uiSlice = createSlice({
     },
     toggleSpinnerModal(state, action) {
       state.showSpinnerModal = action.payload;
+    },
+    toggleShowCounselingModal(state, action) {
+      state.showCounselingModal = action.payload;
     },
   },
 });

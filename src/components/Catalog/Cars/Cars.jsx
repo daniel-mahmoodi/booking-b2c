@@ -6,13 +6,17 @@ import Models from "./Models";
 import GearTypes from "./GearTypes";
 import FuelTypes from "./FuelTypes";
 import LoadCapacity from "./LoadCapacity";
-import PeopleCapacity from "./DropDown";
-import styles from "./Cars.module.css";
-import DropDown from "./DropDown";
+import PeopleCapacity from "./FuelType";
+import classes from "./Cars.module.css";
+import DropDown from "./FuelType";
 import ListOfCarsItem from "./ListOfCarsItem";
 import { catalogActions } from "../../../store/catalog-slice";
+import Capacity from "./Capacity";
+import FuelType from "./FuelType";
+
 const initialState = {
-  classId: null,
+  classIds: [],
+  modelId: null,
   fuelType: null,
   isGearAutomatic: null,
   peopleCapacity: null,
@@ -33,8 +37,7 @@ const Cars = () => {
   const dispatch = useDispatch();
   const listOfCars = useSelector((state) => state.catalog.listOfCars);
   const [state, localDispatch] = useReducer(reducer, initialState);
-
-  //   console.log("listOfCars", listOfCars);
+  console.log("state", state);
   useEffect(() => {
     dispatch(getFilters());
   }, [dispatch]);
@@ -43,8 +46,6 @@ const Cars = () => {
     dispatch(catalogActions.addUserCarFilters(state));
   };
   const handleFilterSelected = (name, value) => {
-    //     const { name, value } = event.target;
-    //     const file = event.target.files[0];
     localDispatch({
       type: "UPDATE_FILTER",
       filterName: name,
@@ -53,47 +54,68 @@ const Cars = () => {
   };
   return (
     <div>
-      <div>
-        <div className={styles.body}>
-          <DropDown
-            filterSelected={handleFilterSelected}
-            itemType={"classId"}
-            data={listOfCars.classes}
-            ItemsName={"سبک"}
-          />
-          {/* <DropDown
+      {Object.keys(listOfCars).length ? (
+        <div className={classes.body}>
+          <div className={classes.items}>
+            <Classes
+              filterSelected={handleFilterSelected}
+              itemType={"classIds"}
+              data={listOfCars.classes}
+              ItemsName={"کلاس کاری"}
+            />
+            {/* <DropDown
+            field=""
             filterSelected={handleFilterSelected}
             itemType={''}
             data={listOfCars.models}
             ItemsName={"مدل "}
           /> */}
-          <DropDown
-            filterSelected={handleFilterSelected}
-            itemType={"isGearAutomatic"}
-            data={listOfCars.gearTypes}
-            ItemsName={"مدل دنده"}
-          />
-          <DropDown
-            filterSelected={handleFilterSelected}
-            itemType={"peopleCapacity"}
-            data={listOfCars.peopleCapacity}
-            ItemsName={"ظرفیت"}
-          />
-          <DropDown
-            filterSelected={handleFilterSelected}
-            itemType={"loadCapacity"}
-            data={listOfCars.loadCapacity}
-            ItemsName={"ظرفیت بار"}
-          />
-          <DropDown
-            filterSelected={handleFilterSelected}
-            itemType={"fuelType"}
-            data={listOfCars.fuelTypes}
-            ItemsName={"نوع موتور"}
-          />
+            <GearTypes
+              filterSelected={handleFilterSelected}
+              itemType={"isGearAutomatic"}
+              data={listOfCars.gearTypes}
+              ItemsName={"مدل دنده"}
+            />
+            {/* <DropDown
+            field="gearTitle"
+              filterSelected={handleFilterSelected}
+              itemType={"isGearAutomatic"}
+              data={listOfCars.gearTypes}
+              ItemsName={"مدل دنده"}
+            /> */}
+            <Models
+              filterSelected={handleFilterSelected}
+              itemType={"modelId"}
+              data={listOfCars.models}
+              ItemsName={"مدل و برند"}
+            />
+            <Capacity
+              filterSelected={handleFilterSelected}
+              itemType={"peopleCapacity"}
+              data={listOfCars.peopleCapacity}
+              ItemsName={"ظرفیت مسافر"}
+            />
+            <Capacity
+              filterSelected={handleFilterSelected}
+              itemType={"loadCapacity"}
+              data={listOfCars.loadCapacity}
+              ItemsName={"ظرفیت بار"}
+            />
+            <FuelType
+              field="fuelName"
+              filterSelected={handleFilterSelected}
+              itemType={"fuelType"}
+              data={listOfCars.fuelTypes}
+              ItemsName={"نوع موتور"}
+            />
+          </div>
+          <button className={classes.searchBtn} onClick={addUserFiltersHandler}>
+            جستوجو
+          </button>
         </div>
-        <button onClick={addUserFiltersHandler}>اعمال فیلتر</button>
-      </div>
+      ) : (
+        ""
+      )}
       <ListOfCarsItem />
     </div>
   );
