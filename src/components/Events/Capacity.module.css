@@ -1,0 +1,16 @@
+.body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     padding: 0;
+     margin: 0;
+}
+.title{
+     font-weight: bold;
+     padding-left: 2px;
+     font-size: 12px;
+}
+.capacity{
+     color: rgb(0, 101, 25);
+}

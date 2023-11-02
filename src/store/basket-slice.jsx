@@ -31,6 +31,7 @@ const basketSlice = createSlice({
       state.mobile = action.payload.basketState.basketData.mobile;
       state.userFullName = action.payload.basketState.basketData.userFullName;
       state.totalDiscountedPrice = action.payload.basketState.totalPrice;
+      state.totalQuantity = action.payload.basketState.totalQuantity;
       // console.log("current", current(state));
       // console.log("current State before:", state, action.payload);
     },
@@ -70,7 +71,7 @@ const basketSlice = createSlice({
         } else {
           if (existingService.tickets) {
             existingService.tickets?.push({ ...newItem.tickets });
-            
+
             // console.log(
             //   "State before:here",
             //   existingBasketItem,
@@ -80,7 +81,6 @@ const basketSlice = createSlice({
             // );
           } else {
             existingService.push({ tickets: [{ ...newItem.tickets }] });
-            
           }
         }
       } else {
@@ -189,7 +189,7 @@ const basketSlice = createSlice({
           (item) => item.ticketId === ticketId
         );
         if (existingBasketItem) {
-          state.totalQuantity =0
+          state.totalQuantity = 0;
           existingBasketItem.count = 0;
           state.items.map((item) => {
             // Check if the item's eventId and ticketId match the ones to be deleted

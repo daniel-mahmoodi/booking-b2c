@@ -66,16 +66,16 @@
   padding: 0;
   margin: 0;
 }
-.desc div :first-child {
+.desc div .firstChild {
   font-weight: bold;
   padding-left: 2px;
 }
-.desc :first-child :last-child {
-  color: rgb(123, 12, 8);
+.desc .firstChild .lastChild {
+  color: rgb(0, 101, 25);
 }
 
-.desc :last-child :last-child {
-  color: rgb(0, 101, 25);
+.desc .lastChild .lastChild {
+  color: rgb(123, 12, 8);
 }
 .oldPrice {
   text-decoration: line-through red;

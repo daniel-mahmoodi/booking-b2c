@@ -55,7 +55,7 @@ const Card = ({ data }) => {
                 height: "24px",
               }}
             >
-              <span>{data.price}تومان</span>
+              <span>{Number(data.price).toLocaleString()}تومان</span>
             </div>
             <SubmitButton id={data.id} />
           </div>

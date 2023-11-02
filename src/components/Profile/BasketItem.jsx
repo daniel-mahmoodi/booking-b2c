@@ -3,6 +3,8 @@ import classes from "./BasketItem.module.css";
 import { useDispatch } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
 import IncreaseDecreaseButton from "../Layout/IncreaseDecreaseButton";
+import TicketPricing from "../Events/TicketPricing";
+import Capacity from "../Events/Capacity";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 // const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const BasketItem = ({ data, eventId }) => {
@@ -52,11 +54,15 @@ const BasketItem = ({ data, eventId }) => {
         <div>
           {data.price !== data.discountedPrice ? (
             <>
-              <span className="without-off-price">{data.price} تومان</span>
+              <span className="without-off-price">
+                {Number(data.price).toLocaleString()} تومان
+              </span>
               <br />
             </>
           ) : (
-            <span className="off-price">{data.discountedPrice} تومان</span>
+            <span className="off-price">
+              {Number(data.discountedPrice).toLocaleString()} تومان
+            </span>
           )}
         </div>
       </div>
@@ -64,7 +70,9 @@ const BasketItem = ({ data, eventId }) => {
       <div className={`${classes.column} total-price-container`}>
         <div className={`"title" ${classes.title}`}>قیمت کل : </div>
         <div>
-          <span className="price">{data.count * data.discountedPrice}</span>
+          <span className="price">
+            {Number(data.count * data.discountedPrice).toLocaleString()}
+          </span>
         </div>
       </div>
     </div>

@@ -30,14 +30,14 @@ function BasketTab() {
           <span className="sequesnce">۲</span>
           <span>پرداخت</span>
         </a>
-        <a
+        {/* <a
           href="/factor.html?element=basket&step=3"
           className="basket-top-item"
           data-basket-title-step="3"
         >
           <span className="sequesnce">۳</span>
           <span>دریافت کدها</span>
-        </a>
+        </a> */}
       </div>
 
       <div className="basket-contaienr" data-basket-detail-step="1">
@@ -57,7 +57,7 @@ function BasketTab() {
           <div className="basket-footer d-flex justify-between align-center px-3">
             <div>
               <span>مجموع قیمت :</span>
-              <span>{totalDiscountedPrice} تومان</span>
+              <span>{Number(totalDiscountedPrice).toLocaleString()} تومان</span>
             </div>
             {/* <div className="discount-container">
               <button>اعمال</button>
@@ -84,7 +84,9 @@ function BasketTab() {
         <div className="d-flex justify-content-between">
           <div className="basket-step2-price-show">
             <p className="my-0 fw-md">مبلغ قابل پرداخت</p>
-            <p className="my-0">{totalDiscountedPrice} تومان</p>
+            <p className="my-0">
+              {Number(totalDiscountedPrice).toLocaleString()} تومان
+            </p>
           </div>
           <PaymentButton />
         </div>

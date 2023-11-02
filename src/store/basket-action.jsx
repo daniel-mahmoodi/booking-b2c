@@ -35,20 +35,23 @@ export const getCartData = (token) => {
             : (totalPrice = totalPrice + item.discountedPrice * item.count)
         )
       );
-      // let totalQuantity = 0;
-      // basketData.items.map(
-      //   (item) => (totalQuantity = totalQuantity + item.quantity)
-      // );
-      // const totalDiscountedPrice = basketData.totalDiscountedAmount;
+      let totalQuantity = 0;
+      basketData.basketItems.flatMap((event) =>
+        event.tickets.map(
+          (item) => (totalQuantity = totalQuantity + item.count)
+        )
+      );
 
       dispatch(
         basketActions.replaceBasket({
           basketState: {
             basketData,
             totalPrice,
+            totalQuantity,
           } || {
             basketData: {},
             totalPrice: 0,
+            totalQuantity: 0,
           },
         })
       );

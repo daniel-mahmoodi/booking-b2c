@@ -41,7 +41,7 @@ const ShoppingBag = () => {
             <p className="total-price-box">
               <span>مبلغ قابل پرداخت</span>
               <span className="text-green fw-md">
-                {totalDiscountedPrice} تومان
+              {Number(totalDiscountedPrice).toLocaleString()} تومان
               </span>
             </p>
           </>

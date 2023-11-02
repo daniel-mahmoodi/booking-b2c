@@ -81,7 +81,7 @@ const MainPage = () => {
             <Route path="/print-tickets/:orderId" exact>
               <PrintTicketsList />
             </Route>
-            <Route path="/cars-item" exact>
+            <Route path="/cars" exact>
               <Cars />
             </Route>
             <Route path="/login" exact>
