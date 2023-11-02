@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -14,4 +14,23 @@ code {
 
 .disable-scroll {
   overflow-y: hidden !important;
+} */
+
+@font-face {
+  font-family: IRANSansX;
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/Woff/IRANSansXFaNum-Bold.woff") format("woff"),
+    url("./fonts/Woff2/IRANSansXFaNum-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: IRANSansX;
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Woff/IRANSansXFaNum-Regular.woff") format("woff"),
+    url("./fonts/Woff2/IRANSansXFaNum-Regular.woff2") format("woff2");
+}
+* {
+  font-family: IRANSansX;
 }
