@@ -4,11 +4,16 @@ import { useDispatch } from "react-redux";
 import classes from "./OrderItem.module.css";
 import moment from "jalali-moment";
 import { paymentMethod } from "../Utilities/Utils";
+import { orderActions } from "../../store/order-slice";
+import { profileActions } from "../../store/profile-slice";
 const OrderItem = ({ data }) => {
-  const history = useHistory();
+  // const history = useHistory();
+  const dispatch = useDispatch();
   const seeMoreHandler = () => {
     if (data) {
-      history.push(`/order-details/${data.orderRefrence}`);
+      // history.push(`/profile/${data.orderRefrence}`);
+      dispatch(orderActions.setOrderRefrence(data.orderRefrence));
+      dispatch(profileActions.selectActiveTab("orderDetails"));
     }
   };
   return (

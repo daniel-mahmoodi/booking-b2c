@@ -3,17 +3,30 @@
   flex-direction: column;
   justify-content: center;
   margin: 24px auto;
-  max-width: 992px;
+  width: 780px;
 }
+
 .title {
   margin: 24px 0px 48px 0px;
   font-size: 24px !important;
 }
 
-.noContentIcon{
+.noContentIcon {
   width: 200px;
   margin: 0 auto;
 }
-.noCotentTitle{
+.noCotentTitle {
   color: darkred;
+}
+
+@media screen and (max-width:1200px){
+  .body{
+    width: 680px;
+  }
+}
+
+@media screen and (max-width:1000px){
+  .body{
+    width: 460px;
+  }
 }

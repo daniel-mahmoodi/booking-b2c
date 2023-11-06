@@ -67,7 +67,7 @@ p {
   padding: 0 !important;
   margin: 0 !important;
 }
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 800px) {
   .body {
     padding: 0;
     margin: 6px 12px;

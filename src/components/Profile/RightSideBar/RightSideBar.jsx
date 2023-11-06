@@ -1,9 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { profileActions } from "../../store/profile-slice";
-
-function UserProfile() {
+import { profileActions } from "../../../store/profile-slice";
+import classes from "./RightSideBar.module.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+function RightSideBar() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const showTabHandler = (tab) => {
     dispatch(profileActions.selectActiveTab(tab));
   };
@@ -15,25 +17,25 @@ function UserProfile() {
         <img src="/assets/img/avatar-2.png" alt="" className="avatar" />
         <p className="title">نام کاربری</p>
       </div>
-      <div className="profile-sidenav">
+      <div className={classes.profileSidenav}>
         <ul>
           <li onClick={() => showTabHandler("dashboard")}>
-            <a>داشبورد</a>
+            <a className={classes.link}>داشبورد</a>
           </li>
           <li onClick={() => showTabHandler("editProfile")}>
-            <a>ویرایش حساب کاربری</a>
+            <a className={classes.link}>ویرایش حساب کاربری</a>
           </li>
           <li onClick={() => showTabHandler("basket")}>
-            <a>سبد خرید</a>
+            <a className={classes.link}>سبد خرید</a>
           </li>
           <li onClick={() => showTabHandler("factor")}>
-            <a>پوشش بیمه نامه</a>
+            <a className={classes.link}>پوشش بیمه نامه</a>
           </li>
           <li onClick={() => showTabHandler("order")}>
-            <a>سفارش ها</a>
+            <a className={classes.link}>سفارش ها</a>
           </li>
           <li onClick={() => showTabHandler("exit")}>
-            <a>خروج از حساب کاربری</a>
+            <a className={classes.link}>خروج از حساب کاربری</a>
           </li>
         </ul>
       </div>
@@ -41,4 +43,4 @@ function UserProfile() {
   );
 }
 
-export default UserProfile;
+export default RightSideBar;

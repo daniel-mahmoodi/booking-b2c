@@ -1,7 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MainNavMenu.module.css";
+import { useDispatch } from "react-redux";
+import { profileActions } from "../../../store/profile-slice";
 const MainNavMenu = () => {
+  const dispatch = useDispatch();
+  const changeProfileTabHandler = () => {
+    dispatch(profileActions.selectActiveTab("order"));
+  };
   return (
     <div className="page-header__mainmenu">
       <nav className="mainmenu" data-uk-navbar="">
@@ -17,9 +23,9 @@ const MainNavMenu = () => {
             </NavLink>
           </li>
           <li className={classes.divider}></li>
-          <li>
+          <li onClick={changeProfileTabHandler}>
             <NavLink
-              to="/orders"
+              to="/profile"
               className={classes.menuItem}
               activeClassName={classes.active}
               style={{ fontFamily: "iransans" }}

@@ -25,17 +25,36 @@ const fontSize = 20;
 const textDistance = 60;
 const spinDuration = 1.0;
 
-const Spinner = ({ discountPercentages, selectedIndex, orderId }) => {
+let isInitial = true;
+const Spinner = () => {
   const dispatch = useDispatch();
   const [receivedData, setReceivedData] = useState([]);
   const [mustSpin, setMustSpin] = useState(false);
   const [showPrize, setShowPrize] = useState(false);
   const [priseNumber, setPriseNumber] = useState(0);
-  const [showConfetti, setShowConfetti] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
   const [startingOption, setStartingOption] = useState(0);
   const token = useSelector((state) => state.auth.token);
-
+  const selectedIndex = useSelector((state) => state.order.selectedIndex);
+  const orderId = useSelector((state) => state.order.orderId);
+  const discountPercentages = useSelector(
+    (state) => state.order.discountPercentages
+  );
+  console.log(
+    "spinner",
+    discountPercentages,
+    orderId,
+    selectedIndex,
+    startingOption,
+    showConfetti,
+    priseNumber,
+    showPrize,
+    mustSpin,
+    receivedData,
+    isInitial
+  );
   useEffect(() => {
+    console.log("spinner useEffect");
     let data = [];
     discountPercentages.map((segment, index) =>
       data.push({
@@ -51,24 +70,26 @@ const Spinner = ({ discountPercentages, selectedIndex, orderId }) => {
 
   const handleSpinClick = () => {
     if (!mustSpin) {
-      // const newPrizeNumber = Math.floor(Math.random() * data.length);
-      // setPrizeNumber(newPrizeNumber);
-      setMustSpin(true);
+      if (isInitial) {
+        // const newPrizeNumber = Math.floor(Math.random() * data.length);
+        // setPrizeNumber(newPrizeNumber);
+        setMustSpin(true);
+        isInitial = false;
+      }
     }
   };
   const finalizeOrderHandler = () => {
-      if(token){
-
-        dispatch(
-          finalizeOrder({
-            token,
-            isSpinnerTurned: true,
-            paymentMethod: 1,
-            paymentGatewayId: 1,
-            orderId,
-          })
-          );
-        }
+    if (token) {
+      dispatch(
+        finalizeOrder({
+          token,
+          isSpinnerTurned: true,
+          paymentMethod: 1,
+          paymentGatewayId: 1,
+          orderId,
+        })
+      );
+    }
   };
 
   return (
@@ -90,9 +111,7 @@ const Spinner = ({ discountPercentages, selectedIndex, orderId }) => {
       id="modal-next"
     >
       {/* <div> */}
-      <div
-       className="my-container"
-      >
+      <div className="my-container">
         <div
           style={{
             backgroundColor: "rgb(130, 0, 0)",

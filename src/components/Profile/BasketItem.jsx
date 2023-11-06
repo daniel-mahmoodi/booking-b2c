@@ -5,6 +5,7 @@ import { basketActions } from "../../store/basket-slice";
 import IncreaseDecreaseButton from "../Layout/IncreaseDecreaseButton";
 import TicketPricing from "../Events/TicketPricing";
 import Capacity from "../Events/Capacity";
+import moment from "jalali-moment";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 // const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const BasketItem = ({ data, eventId }) => {
@@ -20,29 +21,57 @@ const BasketItem = ({ data, eventId }) => {
       basketActions.eraseItemFromBasket({ ticketId: data.ticketId, eventId })
     );
   };
+  // Input time in UTC format
+  const inputTime = data.executeDate;
+
+  // Create a Date object from the input time
+  const date = new Date(inputTime);
+
+  // Convert the time to the local time
+  // const localTime = date.toLocaleString();
+  const options = {
+    // year: "numeric",
+    // month: "long",
+    // day: "numeric",
+    // timeZoneName: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+
+  const localTime = date.toLocaleString(undefined, options);
+
   return (
     <div className={classes.dataBlock}>
       <div
-        className={`${classes.firstColumn} row justify-center mb-2`}
+        className={`${classes.firstColumn} justify-center mb-2 ${classes.row}`}
         style={{ position: "relative" }}
       >
-        <div className="col-auto">
+        <div className={classes.colAuto}>
           <div onClick={eraseItemHandler} className="close">
             <i className="fa fa-times" aria-hidden="true"></i>
           </div>
         </div>
-        <div className="col-auto">
+        <div className={classes.colAuto}>
           <div
             style={{
               backgroundImage: `url(${imageUrl})`,
             }}
-            className="img"
+            className={classes.img}
           ></div>
         </div>
-        <div className="col-auto">
-          <div className="d-flex flex-column justify-center">
-            <a className="title">{data.ticketTitle}</a>
-            <a className="title">{data.sansTitle}</a>
+        <div className={classes.colAuto}>
+          <div className={classes.desc}>
+            <div className={classes.descTitle}>{data.ticketTitle}</div>
+            <div className={classes.descTitle}>{data.sansTitle}</div>
+            <div className={classes.descTitle}>
+              {data.executeDate &&
+                moment(data.executeDate.split(" ")[0], "MM/DD/YYYY")
+                  .locale("fa")
+                  .format("YYYY/MM/DD")}
+            </div>
+            <div className={classes.descTitle}> {localTime}</div>
           </div>
           {/* <div className="d-flex justify-center">
             <p>تاریخ رزرو : ۱۳۹۷/۰۱/۰۲</p>

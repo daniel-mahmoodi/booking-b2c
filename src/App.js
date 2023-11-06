@@ -19,14 +19,10 @@ function App() {
   );
   const showSpinnerModal = useSelector((state) => state.ui.showSpinnerModal);
   const showCheckoutModal = useSelector((state) => state.ui.showCheckoutModal);
-  const showCounselingModal = useSelector((state) => state.ui.showCounselingModal);
-  const urlToPay = useSelector((state) => state.order.url);
-
-  const discountPercentages = useSelector(
-    (state) => state.order.discountPercentages
+  const showCounselingModal = useSelector(
+    (state) => state.ui.showCounselingModal
   );
-  const selectedIndex = useSelector((state) => state.order.selectedIndex);
-  const orderId = useSelector((state) => state.order.orderId);
+  const urlToPay = useSelector((state) => state.order.url);
 
   useEffect(() => {
     if (urlToPay) {
@@ -41,28 +37,28 @@ function App() {
       showSideBar ||
       showSequencesModal ||
       showCheckoutModal ||
-      showSpinnerModal||
+      showSpinnerModal ||
       showCounselingModal
     ) {
       document.body.classList.add("disable-scroll");
     } else {
       document.body.classList.remove("disable-scroll");
     }
-  }, [showCheckoutModal, showCounselingModal, showSequencesModal, showSideBar, showSpinnerModal]);
+  }, [
+    showCheckoutModal,
+    showCounselingModal,
+    showSequencesModal,
+    showSideBar,
+    showSpinnerModal,
+  ]);
   return (
     <div className="App" dir="rtl">
-      {showSpinnerModal && discountPercentages && selectedIndex && orderId && (
-        <Spinner
-          discountPercentages={discountPercentages}
-          selectedIndex={selectedIndex}
-          orderId={orderId}
-        />
-      )}
+      {showSpinnerModal && <Spinner />}
       {/* <BasicDocument /> */}
       {/* <ReactPrintHtml /> */}
       {/* <ReactToPdf /> */}
       {/* <Printer /> */}
-      {showCounselingModal && <Counseling/>}
+      {showCounselingModal && <Counseling />}
       {showSideBar && <OffcanvasMenu />}
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}

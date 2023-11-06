@@ -5,6 +5,7 @@ import EventList from "./EventList";
 import { uiActions } from "../../store/ui-slice";
 import PaymentButton from "../Layout/PaymentButton";
 import classes from "./BasketTab.module.css";
+import BreadCrumb from "../Layout/BreadCrumb";
 function BasketTab() {
   const basketItems = useSelector((state) => state.basket.items);
   console.log("basketItems", basketItems);
@@ -16,32 +17,7 @@ function BasketTab() {
     <Fragment>
       {basketItems.length ? (
         <div className="profile-left" id="basket">
-          <div className="d-flex p-2 basket-top-container">
-            <a
-              href="/factor.html?element=basket&step=1"
-              className="basket-top-item active"
-              data-basket-title-step="1"
-            >
-              <span className="sequesnce">۱</span>
-              <span>سبد خرید</span>
-            </a>
-            <a
-              href="/factor.html?element=basket&step=2"
-              className="basket-top-item"
-              data-basket-title-step="2"
-            >
-              <span className="sequesnce">۲</span>
-              <span>پرداخت</span>
-            </a>
-            {/* <a
-          href="/factor.html?element=basket&step=3"
-          className="basket-top-item"
-          data-basket-title-step="3"
-        >
-          <span className="sequesnce">۳</span>
-          <span>دریافت کدها</span>
-        </a> */}
-          </div>
+          <BreadCrumb location={'/basket'}/>
 
           <div className="basket-contaienr" data-basket-detail-step="1">
             <div className="basket">
@@ -106,7 +82,6 @@ function BasketTab() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="ionicon"
-
               viewBox="0 0 512 512"
             >
               <circle

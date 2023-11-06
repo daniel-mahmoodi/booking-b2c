@@ -72,12 +72,9 @@ const MainPage = () => {
             <Route path="/service-details/:serviceId" exact>
               <ServiceDetails />
             </Route>
-            <Route path="/orders" exact>
-              <ListOfOrders />
-            </Route>
-            <Route path="/order-details/:orderRefrence" exact>
+            {/* <Route path="/profile/:orderRefrence" exact>
               <OrderDetails />
-            </Route>
+            </Route> */}
             <Route path="/print-tickets/:orderId" exact>
               <PrintTicketsList />
             </Route>

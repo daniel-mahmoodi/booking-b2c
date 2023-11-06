@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialProfileState = {
-  activeTab: "dashboard",
+  activeTab: "basket",
 };
 const profileSlice = createSlice({
   name: "profile",

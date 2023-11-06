@@ -1,12 +1,16 @@
-import React, { Fragment } from "react";
-import RightSideBar from "./RightSideBar";
+import React, { Fragment, useEffect } from "react";
+import RightSideBar from "./RightSideBar/RightSideBar";
 import DashboardTab from "./DashboardTab";
 import EditProfileTab from "./EditProfileTab";
 import BasketTab from "./BasketTab";
 import FactorTab from "./FactorTab";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import ListOfOrders from "../Order/ListOfOrders";
+import OrderDetails from "../Order/OrderDetails";
+import { profileActions } from "../../store/profile-slice";
 const Profile = () => {
   const activeTab = useSelector((state) => state.profile.activeTab);
+ 
   return (
     <main className="page-main" style={{ margin: "20px 0" }}>
       <div
@@ -14,7 +18,9 @@ const Profile = () => {
         style={{ direction: "rtl" }}
       >
         <RightSideBar />
-        <BasketTab/>
+        {activeTab === "basket" && <BasketTab />}
+        {activeTab === "order" && <ListOfOrders />}
+        {activeTab === "orderDetails" && <OrderDetails />}
         {/* {activeTab === "dasboard" && <DashboardTab />} */}
         {/* {activeTab && <EditProfileTab />} */}
         {/* {activeTab && <BasketTab />} */}

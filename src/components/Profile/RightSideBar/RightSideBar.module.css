@@ -1,0 +1,42 @@
+.profileSidenav ul {
+  list-style-type: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.profileSidenav li {
+  margin: 5px 0;
+}
+
+.profileSidenav li .link {
+  text-decoration: none;
+  padding: 5px 15px;
+  position: relative;
+  display: block;
+  border-radius: 10px;
+  color: #686e71;
+  transition: 0.5s;
+  font-size: 14px;
+}
+
+.profileSidenav li .link.active {
+  color: #f44153;
+}
+
+.profileSidenav li .link:hover {
+  color: #f44153;
+  background-color: #f4415317;
+}
+
+.profileSidenav li .link::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #f44153;
+  border-radius: 50%;
+  position: absolute;
+  right: 4px;
+  top: 13px;
+}

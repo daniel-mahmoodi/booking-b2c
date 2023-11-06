@@ -8,10 +8,12 @@ import OrderedTickets from "./OrderedTickets";
 
 import MyLoading from "../Layout/MyLoading";
 import OrderInfo from "./OrderInfo";
+import BreadCrumb from "../Layout/BreadCrumb";
 
 const OrderDetails = () => {
   const dispatch = useDispatch();
-  const { orderRefrence } = useParams();
+  // const { orderRefrence } = useParams();
+  const orderRefrence = useSelector((state) => state.order.orderRefrence);
   const token = useSelector((state) => state.auth.token);
   const selectedOrderDetails = useSelector(
     (state) => state.order.selectedOrderDetails
@@ -24,30 +26,33 @@ const OrderDetails = () => {
   }, [dispatch, orderRefrence, token]);
 
   return (
-    <div className={classes.body}>
-      {Object.keys(selectedOrderDetails).length ? (
-        <>
-          <h2 className={classes.mainTitle}>جزئیات سفارش</h2>
-         <OrderInfo selectedOrderDetails={selectedOrderDetails} />
-          <div className={classes.orderItems}>
-            {selectedOrderDetails.orderItems &&
-              Object.keys(selectedOrderDetails.orderItems).length && (
-                <>
-                  <div className={classes.ticketsTitle}>لیست سفارشات</div>
-                  <OrderedTickets data={selectedOrderDetails.orderItems} />
-                </>
-              )}
+    <div className="profile-left" id="basket">
+      <BreadCrumb location={"/orders/details"} />
+      <div className={classes.body}>
+        {Object.keys(selectedOrderDetails).length ? (
+          <>
+            {/* <h2 className={classes.mainTitle}>جزئیات سفارش</h2> */}
+            <OrderInfo selectedOrderDetails={selectedOrderDetails} />
+            <div className={classes.orderItems}>
+              {selectedOrderDetails.orderItems &&
+                Object.keys(selectedOrderDetails.orderItems).length && (
+                  <>
+                    <div className={classes.ticketsTitle}>لیست سفارشات</div>
+                    <OrderedTickets data={selectedOrderDetails.orderItems} />
+                  </>
+                )}
+            </div>
+          </>
+        ) : (
+          <div>
+            {orderDetailsLoading ? (
+              <MyLoading color={"#ee395b"} />
+            ) : (
+              <div>اطلاعاتی یافت نشد.</div>
+            )}
           </div>
-        </>
-      ) : (
-        <div>
-          {orderDetailsLoading ? (
-            <MyLoading color={"#ee395b"} />
-          ) : (
-            <div>اطلاعاتی یافت نشد.</div>
-          )}
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
