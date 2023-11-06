@@ -40,21 +40,21 @@ const Spinner = () => {
   const discountPercentages = useSelector(
     (state) => state.order.discountPercentages
   );
-  console.log(
-    "spinner",
-    discountPercentages,
-    orderId,
-    selectedIndex,
-    startingOption,
-    showConfetti,
-    priseNumber,
-    showPrize,
-    mustSpin,
-    receivedData,
-    isInitial
-  );
+  // console.log(
+  //   "spinner",
+  //   discountPercentages,
+  //   orderId,
+  //   selectedIndex,
+  //   startingOption,
+  //   showConfetti,
+  //   priseNumber,
+  //   showPrize,
+  //   mustSpin,
+  //   receivedData,
+  //   isInitial
+  // );
   useEffect(() => {
-    console.log("spinner useEffect");
+    // console.log("spinner useEffect");
     let data = [];
     discountPercentages.map((segment, index) =>
       data.push({
@@ -169,16 +169,18 @@ const Spinner = () => {
               if (discountPercentages[selectedIndex]) {
                 setShowConfetti(true);
                 setTimeout(() => {
-                  setShowConfetti(false);
                   setShowPrize(true);
                   setPriseNumber(discountPercentages[selectedIndex]);
-                }, 12 * 1000);
+                },  100);
               } else {
                 setTimeout(() => {
                   setShowPrize(true);
                   setPriseNumber(discountPercentages[selectedIndex]);
-                }, 500);
+                }, 50);
               }
+              setTimeout(() => {
+                setShowConfetti(false);
+              },  12000);
             }}
           />
         )}
