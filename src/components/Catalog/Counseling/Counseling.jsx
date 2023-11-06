@@ -31,9 +31,10 @@ const Counseling = () => {
           </span>
         </div>
         <div className={classes.header}>
-          <p>برای دریافت مشاوره یکی از راه های زیر را انتخاب کنید</p>
+          <p>راه های ارتباطی</p>
         </div>
         <div className={classes.details}>
+          {/* <p>برای دریافت مشاوره یکی از راه های زیر را انتخاب کنید</p> */}
           <div
             onClick={handleCallClick}
             className={`${classes.call} ${classes.items}`}

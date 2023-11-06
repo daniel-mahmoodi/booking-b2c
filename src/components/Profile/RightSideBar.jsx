@@ -5,7 +5,7 @@ import { profileActions } from "../../store/profile-slice";
 function UserProfile() {
   const dispatch = useDispatch();
   const showTabHandler = (tab) => {
-    dispatch(profileActions.selectActiveTb(tab));
+    dispatch(profileActions.selectActiveTab(tab));
   };
 
   return (

@@ -1,37 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { profileActions } from "../../store/profile-slice";
 import NavShoppingItems from "./NavShoppingItems";
-
+import classes from "./ShoppingBag.module.css";
 const ShoppingBag = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.basket.items);
+  // const items = useSelector((state) => state.basket.items);
   const totalQuantity = useSelector((state) => state.basket.totalQuantity);
-  const totalDiscountedPrice = useSelector(
-    (state) => state.basket.totalDiscountedPrice
-  );
+  // const totalDiscountedPrice = useSelector(
+  //   (state) => state.basket.totalDiscountedPrice
+  // );
+
   const sendUserToBasketHandler = () => {
     history.push("/profile");
-    dispatch(profileActions.selectActiveTb("basket"));
+    dispatch(profileActions.selectActiveTab("basket"));
   };
   return (
-    <div
-      style={{ margin: "0 10px", position: "relative" }}
-      className="bag-item"
-    >
-      <a>
-        <i
-          className="fa fa-shopping-bag"
-          style={{
-            marginLeft: "5px",
-            position: "relative",
-            top: "2px",
-          }}
-        ></i>
-      </a>
-      <div className="basket-header">
+    <div onClick={sendUserToBasketHandler} className={classes.bagContainer}>
+      <div className={classes.bagItem}>
+        <ion-icon name="bag-handle-outline"></ion-icon>
+      </div>
+
+      {/* <div className="basket-header">
         {items.map((item) => (
           <NavShoppingItems key={item.id} data={item} />
         ))}
@@ -41,7 +33,7 @@ const ShoppingBag = () => {
             <p className="total-price-box">
               <span>مبلغ قابل پرداخت</span>
               <span className="text-green fw-md">
-              {Number(totalDiscountedPrice).toLocaleString()} تومان
+                {Number(totalDiscountedPrice).toLocaleString()} تومان
               </span>
             </p>
           </>
@@ -53,7 +45,7 @@ const ShoppingBag = () => {
         >
           {totalDiscountedPrice > 0 ? "مشاهده سبد خرید" : "سبد شما خالی است"}
         </a>
-      </div>
+      </div> */}
       {totalQuantity > 0 && (
         <span
           style={{

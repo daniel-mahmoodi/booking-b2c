@@ -12,6 +12,8 @@ const initialCatalogState = {
   showCatalogError: false,
   myCatalogDetailsLoader: false,
   showCatalogDetailsError: false,
+  pageNumber: 1,
+  pageSize: 9,
 };
 const catalogSlice = createSlice({
   name: "catalog",

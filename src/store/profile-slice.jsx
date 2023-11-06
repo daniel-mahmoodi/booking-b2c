@@ -7,7 +7,7 @@ const profileSlice = createSlice({
   name: "profile",
   initialState: initialProfileState,
   reducers: {
-    selectActiveTb(state, action) {
+    selectActiveTab(state, action) {
       state.activeTab = action.payload;
     },
   },

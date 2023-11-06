@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import CatalogItem from "./CatalogItem";
 import MyCatalogLoader from "../Layout/MyCategoryLoader";
 import { useHistory } from "react-router-dom";
+
+const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const Catalog = () => {
   const history = useHistory();
   const listOfCatalogs = useSelector((state) => state.catalog.listOfCatalogs);
@@ -35,7 +37,7 @@ const Catalog = () => {
                 >
                   <div className="shine svg-container">
                     <img
-                      src="https://takish724.ir//assets/img/header/69094852car.svg"
+                      src={`${IMGUrl}/Upload/IMGService/header/69094852car.svg`}
                       alt=""
                     />
                     <span>اجاره ماشین</span>

@@ -10,10 +10,12 @@ const ListOfCarsItem = () => {
     (state) => state.catalog.listOfFilteredCars
   );
   const userCarFilters = useSelector((state) => state.catalog.userCarFilters);
+  const pageNumber = useSelector((state) => state.catalog.pageNumber);
+  const pageSize = useSelector((state) => state.catalog.pageSize);
   console.log("listOfCarsItem", listOfFilteredCars);
   useEffect(() => {
-    dispatch(GetCars({ data: userCarFilters, pageNumber: 1, pageSize: 9 }));
-  }, [dispatch, userCarFilters]);
+    dispatch(GetCars({ data: userCarFilters, pageNumber, pageSize}));
+  }, [dispatch, pageNumber, pageSize, userCarFilters]);
   return (
     <div className={classes.body}>
       <div className={classes.carItems}>

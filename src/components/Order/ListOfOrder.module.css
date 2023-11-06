@@ -9,3 +9,11 @@
   margin: 24px 0px 48px 0px;
   font-size: 24px !important;
 }
+
+.noContentIcon{
+  width: 200px;
+  margin: 0 auto;
+}
+.noCotentTitle{
+  color: darkred;
+}

@@ -1,0 +1,18 @@
+.bagContainer {
+  margin: 0 10px;
+  position: relative;
+}
+
+.bagContainer:hover {
+  display: block;
+}
+.bagItem {
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bagItem:hover {
+  color: rgb(206, 206, 206);
+  cursor: pointer;
+}

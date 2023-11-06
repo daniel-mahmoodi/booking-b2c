@@ -76,10 +76,14 @@ export const getFilters = () => {
 };
 export const GetCars = ({ data, pageNumber, pageSize }) => {
   return async (dispatch) => {
-    const dataNeeded = `${data.classIds ? `&ClassIds=${data.classIds}` : ""}${
-      data.modelId ? `&ModelId=${data.modelId}` : ""
-    }${data.fuelType ? `&FuelType=${data.fuelType}` : ""}${
-      data.isGearAutomatic ? `&IsGearAutomatic=${data.isGearAutomatic}` : ""
+    const dataNeeded = `${
+      data.classIds?.length ? `&ClassIds=${data.classIds}` : ""
+    }${data.modelId ? `&ModelId=${data.modelId}` : ""}${
+      data.fuelType ? `&FuelType=${data.fuelType}` : ""
+    }${
+      data.isGearAutomatic === 0 || data.isGearAutomatic
+        ? `&IsGearAutomatic=${data.isGearAutomatic}`
+        : ""
     }${data.peopleCapacity ? `&PeopleCapacity=${data.peopleCapacity}` : ""}${
       data.loadCapacity ? `&LoadCapacity=${data.loadCapacity}` : ""
     }`;
