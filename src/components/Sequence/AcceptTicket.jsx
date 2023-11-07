@@ -17,7 +17,7 @@ const AcceptTicket = () => {
     >
       <PaymentButton />
       <button onClick={toggleModal} className="uk-button uk-button-large shine">
-        <span>بستن</span>
+        <span>ادامه خرید</span>
       </button>
     </div>
   );
