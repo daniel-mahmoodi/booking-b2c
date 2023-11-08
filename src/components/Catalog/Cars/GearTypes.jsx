@@ -5,6 +5,7 @@ const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
   const [isOpen, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
+  // const toggleDropDown = () => setOpen((prev)=>!prev);
   const hideDropdown = () => setOpen(false);
   const shwoDropdown = () => setOpen(true);
 
@@ -21,6 +22,8 @@ const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
       className={classes.body}
       onMouseOut={hideDropdown}
       onMouseOver={shwoDropdown}
+      // onClick={toggleDropDown}
+      
     >
       <div className={classes.dropdown}>
         <div className={classes.dropdownHeader} onClick={hideDropdown}>

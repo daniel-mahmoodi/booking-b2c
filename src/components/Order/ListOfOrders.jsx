@@ -81,13 +81,11 @@ const ListOfOrders = () => {
                       </svg>
                     </div>
                     <p className={classes.noCotentTitle}>
-                      {" "}
                       لیست سفارشات یافت نشد. لطفا مجددا اقدام فرمایید.
                     </p>
                   </>
                 ) : (
                   <p className={classes.noCotentTitle}>
-                    {" "}
                     لطفا ابتدا وارد حساب کاربری خود شوید
                   </p>
                 )}

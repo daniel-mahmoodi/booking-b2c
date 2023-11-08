@@ -10,6 +10,15 @@
   max-width: 1200px;
   margin: 12px auto;
 }
+.noContentIcon {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.noCotentTitle {
+  color: darkred;
+}
+
 @media screen and (max-width: 1200px) {
   .carItems {
     grid-template-columns: repeat(2, 1fr);

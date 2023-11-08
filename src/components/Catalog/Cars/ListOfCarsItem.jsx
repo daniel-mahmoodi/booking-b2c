@@ -14,15 +14,21 @@ const ListOfCarsItem = () => {
   const pageSize = useSelector((state) => state.catalog.pageSize);
   console.log("listOfCarsItem", listOfFilteredCars);
   useEffect(() => {
-    dispatch(GetCars({ data: userCarFilters, pageNumber, pageSize}));
+    dispatch(GetCars({ data: userCarFilters, pageNumber, pageSize }));
   }, [dispatch, pageNumber, pageSize, userCarFilters]);
   return (
     <div className={classes.body}>
       <div className={classes.carItems}>
-        {listOfFilteredCars &&
+        {listOfFilteredCars ? (
           listOfFilteredCars.data?.map((item) => (
             <CarItem key={item.id} data={item} />
-          ))}
+          ))
+        ) : (
+          <div>
+            <div  className={classes.noCotentIcon}></div>
+            <p className={classes.noCotentTitle}>خودرویی یافت نشد</p>
+          </div>
+        )}
       </div>
     </div>
   );
