@@ -41,7 +41,7 @@
   width: 25%;
 }
 .ticketName {
-  width: 50%;
+  width: auto;
 }
 .title {
   font-size: 14px;
