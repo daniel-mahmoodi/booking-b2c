@@ -17,7 +17,6 @@ const Navbar = () => {
       setHeight(window.scrollY);
       return () => (window.onscroll = null);
     };
-    console.log("stickyOnTop", stickyOnTop, stickyNav, height, window.scrollY);
   }, [height, stickyNav, stickyOnTop]);
   return (
     <Fragment>

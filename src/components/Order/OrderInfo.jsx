@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./OrderDetails.module.css";
-import { paymentMethod, ticketStatus } from "../Utilities/Utils";
+import { paymentMethod, orderStatus } from "../Utilities/Utils";
 import moment from "jalali-moment";
 
 const OrderInfo = ({ selectedOrderDetails }) => {
@@ -61,7 +61,7 @@ const OrderInfo = ({ selectedOrderDetails }) => {
       <div className={classes.item}>
         <div className={classes.title}>وضعیت سفارش:</div>
         <div className={classes.data}>
-          {ticketStatus[selectedOrderDetails.status]}
+          {orderStatus[selectedOrderDetails.status]}
         </div>
       </div>
     </div>
