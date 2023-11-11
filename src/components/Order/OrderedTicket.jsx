@@ -22,7 +22,7 @@ const OrderedTicket = ({ ticket }) => {
       </div>
       <div className={classes.item}>
         <div className={classes.title}>قیمت:</div>
-        <div className={classes.data}>{ticket.price}</div>
+        <div className={classes.data}>{ticket.price? `${ticket.price} تومان`:''}</div>
       </div>
       <div  className={`${classes.item} ${classes.status} ${
           ticket.status === 0

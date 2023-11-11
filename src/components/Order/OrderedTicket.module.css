@@ -65,15 +65,15 @@
   .status {
     justify-content: center;
     padding: 2px;
-    margin: 2px;
+    margin: 2px 2px 8px 2px;
   }
   .ticketName {
     width: 100%;
   }
   .title {
-    font-size: 8px;
+    font-size: 10px;
   }
   .data {
-    font-size: 12px;
+    font-size: 13px;
   }
 }

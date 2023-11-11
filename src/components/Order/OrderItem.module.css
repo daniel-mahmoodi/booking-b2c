@@ -80,8 +80,9 @@ p {
     display: flex;
     justify-content: right;
     align-items: center;
-    padding: 6px;
+    padding: 6px 0px;
     width: 50%;
+    font-size: 12px;
   }
   .row {
     flex-wrap: wrap;
