@@ -59,7 +59,7 @@ const OrderInfo = ({ selectedOrderDetails }) => {
         </div>
       </div>
       <div className={classes.item}>
-        <div className={classes.title}>تیکت ستاتوس:</div>
+        <div className={classes.title}>وضعیت سفارش:</div>
         <div className={classes.data}>
           {ticketStatus[selectedOrderDetails.status]}
         </div>
