@@ -59,6 +59,7 @@ export const calculateDiscount = (token, orderId) => {
             orderActions.addSpinnerData({
               discountPercentages: response.data.discountPercentages,
               selectedIndex: response.data.selectedIndex,
+              spinnerData: response.data
             })
           );
           dispatch(uiActions.toggleSpinnerModal(true));

@@ -17,6 +17,7 @@ const initialState = {
   orderDetailsLoading: false,
   orderTicketsDetails: [],
   orderRefrence: null,
+  spinnerData: {},
 };
 const orderSlice = createSlice({
   name: "order",
@@ -36,6 +37,7 @@ const orderSlice = createSlice({
     addSpinnerData(state, action) {
       state.discountPercentages = action.payload.discountPercentages;
       state.selectedIndex = action.payload.selectedIndex;
+      state.spinnerData = action.payload.spinnerData;
     },
     sendUserToPay(state, action) {
       state.url = action.payload.url;

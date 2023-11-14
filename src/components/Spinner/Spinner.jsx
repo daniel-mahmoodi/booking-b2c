@@ -18,11 +18,11 @@ const innerBorderWidth = 6;
 const innerRadius = 10;
 const radiusLineColor = "#eeeeee";
 const radiusLineWidth = 0;
-const fontFamily = "Nunito";
+const fontFamily = "IRANSansX";
 const fontWeight = "bold";
-const fontSize = 20;
-// const fontStyle = "normal";
-const textDistance = 60;
+const fontSize = 18;
+const fontStyle = "normal";
+const textDistance = 100;
 const spinDuration = 1.0;
 
 let isInitial = true;
@@ -35,16 +35,15 @@ const Spinner = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [startingOption, setStartingOption] = useState(0);
   const token = useSelector((state) => state.auth.token);
-  const selectedIndex = useSelector((state) => state.order.selectedIndex);
+  const spinnerData = useSelector((state) => state.order.spinnerData);
   const orderId = useSelector((state) => state.order.orderId);
-  const discountPercentages = useSelector(
-    (state) => state.order.discountPercentages
-  );
+
+  console.log("spinnerData", spinnerData);
   // console.log(
   //   "spinner",
-  //   discountPercentages,
+  //   spinnerData.discountPercentages,
   //   orderId,
-  //   selectedIndex,
+  //   spinnerData.selectedIndex,
   //   startingOption,
   //   showConfetti,
   //   priseNumber,
@@ -56,9 +55,9 @@ const Spinner = () => {
   useEffect(() => {
     // console.log("spinner useEffect");
     let data = [];
-    discountPercentages.map((segment, index) =>
+    spinnerData.discountPercentages.map((segment, index) =>
       data.push({
-        option: ` ${segment} درصد`,
+        option: `${segment === 0 ? "ایشالله دفعه بعد" : `${segment} درصد   `}`,
         style:
           index === 3 || index === 10 || index === 17
             ? { backgroundColor: "#f54242", textColor: "#e3e3e3" }
@@ -66,7 +65,7 @@ const Spinner = () => {
       })
     );
     setReceivedData(data);
-  }, [discountPercentages]);
+  }, [spinnerData.discountPercentages]);
 
   const handleSpinClick = () => {
     if (!mustSpin) {
@@ -106,7 +105,6 @@ const Spinner = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        direction: "ltr",
       }}
       id="modal-next"
     >
@@ -141,48 +139,56 @@ const Spinner = () => {
           </div>
         )}
         {receivedData.length && (
-          <Wheel
-            mustStartSpinning={mustSpin}
-            prizeNumber={selectedIndex}
-            data={receivedData}
-            backgroundColors={backgroundColors}
-            textColors={textColors}
-            fontFamily={fontFamily}
-            fontSize={fontSize}
-            fontWeight={fontWeight}
-            // fontStyle={fontStyle}
-            outerBorderColor={outerBorderColor}
-            outerBorderWidth={outerBorderWidth}
-            innerRadius={innerRadius}
-            innerBorderColor={innerBorderColor}
-            innerBorderWidth={innerBorderWidth}
-            radiusLineColor={radiusLineColor}
-            radiusLineWidth={radiusLineWidth}
-            spinDuration={spinDuration}
-            startingOptionIndex={startingOption}
-            // perpendicularText="true"
-            disableInitialAnimation="true"
-            textDistance={textDistance}
-            onStopSpinning={() => {
-              setMustSpin(false);
-              setStartingOption(selectedIndex);
-              if (discountPercentages[selectedIndex]) {
-                setShowConfetti(true);
+          <div style={{ direction: "rtl" }}>
+            <Wheel
+              mustStartSpinning={mustSpin}
+              prizeNumber={spinnerData.selectedIndex}
+              data={receivedData}
+              backgroundColors={backgroundColors}
+              textColors={textColors}
+              fontFamily={fontFamily}
+              fontSize={fontSize}
+              fontWeight={fontWeight}
+              fontStyle={fontStyle}
+              outerBorderColor={outerBorderColor}
+              outerBorderWidth={outerBorderWidth}
+              innerRadius={innerRadius}
+              innerBorderColor={innerBorderColor}
+              innerBorderWidth={innerBorderWidth}
+              radiusLineColor={radiusLineColor}
+              radiusLineWidth={radiusLineWidth}
+              spinDuration={spinDuration}
+              startingOptionIndex={startingOption}
+              // perpendicularText="true"
+              disableInitialAnimation="true"
+              textDistance={textDistance}
+              onStopSpinning={() => {
+                setMustSpin(false);
+                setStartingOption(spinnerData.selectedIndex);
+                if (
+                  spinnerData.discountPercentages[spinnerData.selectedIndex]
+                ) {
+                  setShowConfetti(true);
+                  setTimeout(() => {
+                    setShowPrize(true);
+                    setPriseNumber(
+                      spinnerData.discountPercentages[spinnerData.selectedIndex]
+                    );
+                  }, 100);
+                } else {
+                  setTimeout(() => {
+                    setShowPrize(true);
+                    setPriseNumber(
+                      spinnerData.discountPercentages[spinnerData.selectedIndex]
+                    );
+                  }, 50);
+                }
                 setTimeout(() => {
-                  setShowPrize(true);
-                  setPriseNumber(discountPercentages[selectedIndex]);
-                },  100);
-              } else {
-                setTimeout(() => {
-                  setShowPrize(true);
-                  setPriseNumber(discountPercentages[selectedIndex]);
-                }, 50);
-              }
-              setTimeout(() => {
-                setShowConfetti(false);
-              },  12000);
-            }}
-          />
+                  setShowConfetti(false);
+                }, 12000);
+              }}
+            />
+          </div>
         )}
         {showPrize ? (
           <div
@@ -208,6 +214,29 @@ const Spinner = () => {
             >
               پرداخت سفارش
             </button>
+            <div className="spin-pay-desc">
+              <p>مبلغ پرداختی:</p>
+              <div>
+                {spinnerData.totalAmount ===
+                spinnerData.discountedTotalAmount ? (
+                  <p className="spin-pay-total-amount">
+                    {Number(spinnerData.totalAmount).toLocaleString()}تومان
+                  </p>
+                ) : (
+                  <>
+                    <p className="spin-pay-disc-amount">
+                      {Number(
+                        spinnerData.discountedTotalAmount
+                      ).toLocaleString()}
+                      تومان
+                    </p>
+                    <p className="spin-pay-total-amount">
+                      {Number(spinnerData.totalAmount).toLocaleString()}تومان
+                    </p>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         ) : (
           <>
