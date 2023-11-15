@@ -4,6 +4,7 @@ import { paymentMethod, orderStatus } from "../Utilities/Utils";
 import moment from "jalali-moment";
 
 const OrderInfo = ({ selectedOrderDetails }) => {
+  console.log("selectedOrderDetails", selectedOrderDetails);
   return (
     <div className={classes.details}>
       <div className={classes.item}>
@@ -64,6 +65,13 @@ const OrderInfo = ({ selectedOrderDetails }) => {
           {orderStatus[selectedOrderDetails.status]}
         </div>
       </div>
+      {selectedOrderDetails.status === 0 ? (
+        <div className={classes.warning}>
+             اگر بعد از 30 دقیقه سفارش خود را نهایی نکنید این سفارش لغو خواهد شد.
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

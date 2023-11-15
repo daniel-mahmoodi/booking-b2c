@@ -50,6 +50,12 @@
   padding-right: 3px;
   font-size: 16px;
 }
+.warning{
+  width: 100%;
+  color: #ee395b;
+  font-size: 16px;
+  margin: 6px 6px;
+}
 .isPayed {
   color: forestgreen;
 }
