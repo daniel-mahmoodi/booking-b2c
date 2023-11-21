@@ -23,7 +23,6 @@ const MainPage = () => {
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
   const token = useSelector((state) => state.auth.token);
-  console.log("token", token);
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {

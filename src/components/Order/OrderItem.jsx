@@ -18,7 +18,6 @@ const OrderItem = ({ data }) => {
       dispatch(profileActions.selectActiveTab("orderDetails"));
     }
   };
-  console.log("data", data);
   return (
     <div>
       {Object.keys(data).length ? (
