@@ -82,7 +82,7 @@ p {
     align-items: center;
     padding: 6px 0px;
     width: 50%;
-    font-size: 12px;
+    font-size: 10px;
   }
   .row {
     flex-wrap: wrap;

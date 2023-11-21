@@ -6,6 +6,8 @@ import moment from "jalali-moment";
 import { paymentMethod } from "../Utilities/Utils";
 import { orderActions } from "../../store/order-slice";
 import { profileActions } from "../../store/profile-slice";
+import { orderStatus } from "../Utilities/Utils";
+
 const OrderItem = ({ data }) => {
   // const history = useHistory();
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ const OrderItem = ({ data }) => {
       dispatch(profileActions.selectActiveTab("orderDetails"));
     }
   };
+  console.log("data", data);
   return (
     <div>
       {Object.keys(data).length ? (
@@ -47,9 +50,13 @@ const OrderItem = ({ data }) => {
               {paymentMethod[data.paymentMethod - 1]}
             </div>
             <div className={classes.item}>
+              <div className={classes.itemTitle}>وضعیت سفارش:</div>
+              {orderStatus[data.status]}
+            </div>
+            {/* <div className={classes.item}>
               <div className={classes.itemTitle}>درگاه:</div>
               {data.paymentGateway}
-            </div>
+            </div> */}
             <div className={`${classes.item} ${classes.payingSituation}`}>
               <div className={classes.itemTitle}>وضعیت پرداخت:</div>
               {data.isPayed ? (
