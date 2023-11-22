@@ -27,9 +27,18 @@
 
 .item {
   width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .itemTitle {
   display: none;
+}
+
+.rowNumbers {
+  color: #ee395b;
+  max-width: 10%;
 }
 .isPayed {
   color: forestgreen;
@@ -52,13 +61,19 @@
 .button {
   display: flex;
   justify-content: end;
-
   background-color: rgb(238, 57, 91);
   color: aliceblue;
   font-size: 8px;
-  padding: 3px 6px;
+  padding: 3px 12px;
   border: 0px;
   border-radius: 12px;
+}
+.infoButton{
+  position: absolute;
+  left: 0%;
+  border-radius: 50%;
+  padding: 0px 6px;
+  margin: 1px;
 }
 .button:hover {
   background-color: rgb(174, 42, 66);
@@ -72,12 +87,16 @@ p {
     padding: 0;
     margin: 6px 12px;
   }
+  .rowNumbers{
+    display: none;
+  }
   .itemTitle {
     display: block;
     padding-left: 3px;
   }
   .item {
     display: flex;
+    flex-direction: row;
     justify-content: right;
     align-items: center;
     padding: 6px 0px;
@@ -106,5 +125,8 @@ p {
     background-color: #ee395b;
     color: white;
     padding: 6px !important;
+  }
+  .button{
+    margin: 0px 2px;
   }
 }

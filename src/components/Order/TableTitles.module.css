@@ -11,6 +11,9 @@
 .item {
   width: 20%;
 }
+.rowNumbersitem {
+  width: 10%;
+}
 @media screen and (max-width: 800px) {
   .body {
     display: none;

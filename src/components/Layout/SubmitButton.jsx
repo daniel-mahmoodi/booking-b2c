@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useSubmitOrder } from "../Hook/useSubmitOrder";
 import MyLoading from "./MyLoading";
+import { clickable } from "../Utilities/Utils";
 
 const SubmitButton = ({ id }) => {
   const acceptButtonLoading = useSelector(
@@ -10,7 +11,7 @@ const SubmitButton = ({ id }) => {
   const serviceDetails = useSelector((state) => state.event.serviceDetails);
   const { submitOrder } = useSubmitOrder(id);
   const submitOrderHandler = (event) => {
-    event.stopPropagation();
+    clickable(event);
     submitOrder();
   };
 

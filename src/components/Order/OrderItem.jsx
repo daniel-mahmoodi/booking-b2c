@@ -3,12 +3,12 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
 import classes from "./OrderItem.module.css";
 import moment from "jalali-moment";
-import { paymentMethod } from "../Utilities/Utils";
+import { clickable, paymentMethod } from "../Utilities/Utils";
 import { orderActions } from "../../store/order-slice";
 import { profileActions } from "../../store/profile-slice";
 import { orderStatus } from "../Utilities/Utils";
 
-const OrderItem = ({ data }) => {
+const OrderItem = ({ data, rowNumber }) => {
   // const history = useHistory();
   const dispatch = useDispatch();
   const seeMoreHandler = () => {
@@ -17,6 +17,10 @@ const OrderItem = ({ data }) => {
       dispatch(orderActions.setOrderRefrence(data.orderRefrence));
       dispatch(profileActions.selectActiveTab("orderDetails"));
     }
+  };
+  const purchaseOrderProcess = (event) => {
+    console.log("purchaseOrderProcess");
+    clickable(event);
   };
   return (
     <div>
@@ -30,6 +34,9 @@ const OrderItem = ({ data }) => {
             )}
           </div>
           <div className={classes.row}>
+            <div className={classes.rowNumbers}>
+              <p>{rowNumber}</p>
+            </div>
             <div className={classes.item}>
               <div className={classes.itemTitle}>تاریخ:</div>
               <p>
@@ -41,21 +48,12 @@ const OrderItem = ({ data }) => {
             </div>
             <div className={classes.item}>
               <div className={classes.itemTitle}>مبلغ:</div>
-
               {data.totalAmount}
             </div>
             <div className={classes.item}>
               <div className={classes.itemTitle}>روش پرداخت:</div>
               {paymentMethod[data.paymentMethod - 1]}
             </div>
-            <div className={classes.item}>
-              <div className={classes.itemTitle}>وضعیت سفارش:</div>
-              {orderStatus[data.status]}
-            </div>
-            {/* <div className={classes.item}>
-              <div className={classes.itemTitle}>درگاه:</div>
-              {data.paymentGateway}
-            </div> */}
             <div className={`${classes.item} ${classes.payingSituation}`}>
               <div className={classes.itemTitle}>وضعیت پرداخت:</div>
               {data.isPayed ? (
@@ -64,6 +62,27 @@ const OrderItem = ({ data }) => {
                 <p className={classes.notPayed}>پرداخت نشد</p>
               )}
             </div>
+            <div className={classes.item}>
+              <div className={classes.itemTitle}>وضعیت سفارش:</div>
+              {orderStatus[data.status]}
+              {data.status === 1 ? (
+                <>
+                  <button
+                    onClick={purchaseOrderProcess}
+                    className={classes.button}
+                  >
+                    پرداخت
+                  </button>
+                  <button className={classes.infoButton}>!</button>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+            {/* <div className={classes.item}>
+              <div className={classes.itemTitle}>درگاه:</div>
+              {data.paymentGateway}
+            </div> */}
           </div>
           <div className={classes.row}>
             <div className={classes.desc}>

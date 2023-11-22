@@ -24,8 +24,12 @@ const ListOfOrders = () => {
           <>
             {/* <h2 className={classes.title}>لیست سفارشات</h2> */}
             <TableTitles />
-            {listOfOrders.map((order) => (
-              <OrderItem key={order.orderRefrence} data={order} />
+            {listOfOrders.map((order, index) => (
+              <OrderItem
+                key={order.orderRefrence}
+                data={order}
+                rowNumber={index + 1}
+              />
             ))}
           </>
         ) : (
