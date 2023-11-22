@@ -22,6 +22,9 @@ const OrderItem = ({ data, rowNumber }) => {
     console.log("purchaseOrderProcess");
     clickable(event);
   };
+  const showInfoHandler = () => {
+    console.log("showInfoHandler");
+  };
   return (
     <div>
       {Object.keys(data).length ? (
@@ -66,15 +69,23 @@ const OrderItem = ({ data, rowNumber }) => {
               <div className={classes.itemTitle}>وضعیت سفارش:</div>
               {orderStatus[data.status]}
               {data.status === 1 ? (
-                <>
+                <div className={classes.buttonsParent}>
                   <button
                     onClick={purchaseOrderProcess}
                     className={classes.button}
                   >
                     پرداخت
                   </button>
-                  <button className={classes.infoButton}>!</button>
-                </>
+                  <div
+                    onMouseEnter={showInfoHandler}
+                    className={classes.infoButton}
+                  >
+                    <ion-icon
+                      style={{ fontSize: "24px" }}
+                      name="alert-circle-outline"
+                    ></ion-icon>
+                  </div>
+                </div>
               ) : (
                 ""
               )}
