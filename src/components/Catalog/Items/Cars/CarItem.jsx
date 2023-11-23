@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./CarItem.module.css";
-import { uiActions } from "../../../store/ui-slice";
 import { useDispatch } from "react-redux";
-import { catalogActions } from "../../../store/catalog-slice";
+import { catalogActions } from "../../../../store/catalog-slice";
+import { uiActions } from "../../../../store/ui-slice";
 const CarItem = ({ data }) => {
   const dispatch = useDispatch();
   const showPopUp = () => {

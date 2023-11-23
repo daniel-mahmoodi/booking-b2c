@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { catalogActions } from "../../store/catalog-slice";
+import { catalogActions } from "../../../store/catalog-slice";
 import { useHistory } from "react-router-dom";
-import { fetchCatalogDetails } from "../../store/catalog-action";
+import { fetchCatalogDetails } from "../../../store/catalog-action";
+import classes from "../Main/HomePageCatalog.module.css";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const CatalogItem = ({ data }) => {
   const dispatch = useDispatch();
@@ -13,15 +14,9 @@ const CatalogItem = ({ data }) => {
     history.push("/catalog");
   };
   return (
-    <div
-      onClick={catalogSelectedHandler}
-      className="item btn"
-      style={{ padding: "1px" }}
-    >
-      <div className="shine svg-container">
-        <img src={`${IMGUrl}${data.imageUrl.replace("..", "")}`} alt="" />
-        <span>{data.catalogName}</span>
-      </div>
+    <div onClick={catalogSelectedHandler} className={classes.item}>
+      <img src={`${IMGUrl}${data.imageUrl.replace("..", "")}`} alt="" />
+      <div className={classes.itemTitle}>{data.catalogName}</div>
     </div>
   );
 };

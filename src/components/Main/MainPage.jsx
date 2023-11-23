@@ -17,7 +17,7 @@ import ListOfOrders from "../Order/ListOfOrders";
 import OrderDetails from "../Order/OrderDetails";
 import PrintTicketsList from "../PrintTicket/PrintTicketsList";
 import PrintPage from "../PrintTicket/PrintPage";
-import Cars from "../Catalog/Cars/Cars";
+import Cars from "../Catalog/Items/Cars/Cars";
 const MainPage = () => {
   const dispatch = useDispatch();
   const basketChanged = useSelector((state) => state.basket.basketChanged);

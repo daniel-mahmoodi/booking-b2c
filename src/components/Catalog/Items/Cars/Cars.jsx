@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilters } from "../../../store/catalog-action";
 import Classes from "./Classes";
 import Models from "./Models";
 import GearTypes from "./GearTypes";
@@ -10,9 +9,10 @@ import PeopleCapacity from "./FuelType";
 import classes from "./Cars.module.css";
 import DropDown from "./FuelType";
 import ListOfCarsItem from "./ListOfCarsItem";
-import { catalogActions } from "../../../store/catalog-slice";
 import Capacity from "./Capacity";
 import FuelType from "./FuelType";
+import { getFilters } from "../../../../store/catalog-action";
+import { catalogActions } from "../../../../store/catalog-slice";
 
 const initialState = {
   classIds: [],

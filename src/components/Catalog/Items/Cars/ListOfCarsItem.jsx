@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CarItem from "./CarItem";
-import { GetCars } from "../../../store/catalog-action";
 import classes from "./ListOfCarsItem.module.css";
+import { GetCars } from "../../../../store/catalog-action";
 //{classId,fuelType,isGearAutomatic,peopleCapacity,loadCapacity}
 const ListOfCarsItem = () => {
   const dispatch = useDispatch();
