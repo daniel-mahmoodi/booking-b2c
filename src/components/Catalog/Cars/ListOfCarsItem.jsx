@@ -18,7 +18,7 @@ const ListOfCarsItem = () => {
   }, [dispatch, pageNumber, pageSize, userCarFilters]);
   return (
     <div className={classes.body}>
-      {listOfFilteredCars.length ? (
+      {listOfFilteredCars.data?.length ? (
         <div className={classes.carItems}>
           {listOfFilteredCars.data?.map((item) => (
             <CarItem key={item.id} data={item} />
