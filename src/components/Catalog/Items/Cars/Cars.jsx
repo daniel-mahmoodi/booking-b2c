@@ -13,6 +13,7 @@ import Capacity from "./Capacity";
 import FuelType from "./FuelType";
 import { getFilters } from "../../../../store/catalog-action";
 import { catalogActions } from "../../../../store/catalog-slice";
+import Catalog from "../../Main/Catalog";
 
 const initialState = {
   classIds: [],
@@ -37,7 +38,6 @@ const Cars = () => {
   const dispatch = useDispatch();
   const listOfCars = useSelector((state) => state.catalog.listOfCars);
   const [state, localDispatch] = useReducer(reducer, initialState);
-  console.log("state", state);
   useEffect(() => {
     dispatch(getFilters());
   }, [dispatch]);
@@ -58,6 +58,7 @@ const Cars = () => {
   };
   return (
     <div>
+       <Catalog />
       {Object.keys(listOfCars).length ? (
         <div className={classes.body}>
           <div className={classes.items}>

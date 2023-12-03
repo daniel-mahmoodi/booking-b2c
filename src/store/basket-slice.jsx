@@ -139,13 +139,7 @@ const basketSlice = createSlice({
               state.items = state.items.filter(
                 (event) => event.eventId !== item.eventId
               );
-              console.log(
-                "State before:here"
-                // existingBasketItem,
-                // existingService,
-                // current(item),
-                // current(state.items)
-              );
+            
             }
           }
           return item;

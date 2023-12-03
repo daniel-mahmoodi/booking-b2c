@@ -38,7 +38,6 @@ const Spinner = () => {
   const spinnerData = useSelector((state) => state.order.spinnerData);
   const orderId = useSelector((state) => state.order.orderId);
 
-  console.log("spinnerData", spinnerData);
   // console.log(
   //   "spinner",
   //   spinnerData.discountPercentages,

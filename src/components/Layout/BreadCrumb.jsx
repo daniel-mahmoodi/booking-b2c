@@ -5,7 +5,6 @@ const BreadCrumb = ({ location }) => {
   //   const location = useLocation();
 
   //   let currentLink = "";
-  // console.log('location',location);
   const crumbs = location
     .split("/")
     .filter((crumb) => crumb !== "")

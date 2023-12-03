@@ -19,7 +19,6 @@ const OrderItem = ({ data, rowNumber }) => {
     }
   };
   const purchaseOrderProcess = (event) => {
-    console.log("purchaseOrderProcess");
     clickable(event);
   };
   const showInfoHandler = () => {

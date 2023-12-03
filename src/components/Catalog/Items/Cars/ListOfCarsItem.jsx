@@ -12,7 +12,6 @@ const ListOfCarsItem = () => {
   const userCarFilters = useSelector((state) => state.catalog.userCarFilters);
   const pageNumber = useSelector((state) => state.catalog.pageNumber);
   const pageSize = useSelector((state) => state.catalog.pageSize);
-  console.log("listOfCarsItem", listOfFilteredCars);
   useEffect(() => {
     dispatch(getCars({ data: userCarFilters, pageNumber, pageSize }));
   }, [dispatch, pageNumber, pageSize, userCarFilters]);

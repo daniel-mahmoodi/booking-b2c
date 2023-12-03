@@ -107,7 +107,6 @@ export const sendCartData = (basket, token) => {
         dispatch(getCartData(token));
       })
       .catch((error) => {
-        console.log("error", error);
         if (error.response?.status === 401) {
           dispatch(authActions.logout());
         }

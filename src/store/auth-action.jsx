@@ -39,7 +39,6 @@ export const signUpRequest = (userData) => {
 
       .catch(function (error) {
         dispatch(authActions.toggleAuthLoading(true));
-        console.log("error", error.response);
         setTimeout(() => {
           dispatch(authActions.toggleAuthLoading(false));
         }, 2000);
@@ -84,7 +83,6 @@ export const loginRequest = (userData) => {
       })
 
       .catch(function (error) {
-        console.log(error);
         dispatch(authActions.toggleAuthLoading(true));
         setTimeout(() => {
           dispatch(authActions.toggleAuthLoading(false));
@@ -127,7 +125,6 @@ export const verifyOtp = ({ OtpToken, PhoneNumber }) => {
       })
 
       .catch(function (error) {
-        console.log(error, error.response.status);
         dispatch(authActions.toggleAuthLoading(true));
         setTimeout(() => {
           dispatch(authActions.toggleAuthLoading(false));

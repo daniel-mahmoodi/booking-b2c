@@ -9,7 +9,6 @@ const IncreaseDecreaseButton = ({ data, eventId, sansSelectedTitle }) => {
   // const [basketItemPlusOneItem, setTicketExist] = useState();
   const basketItems = useSelector((state) => state.basket.items);
   const serviceDetails = useSelector((state) => state.event.serviceDetails);
-  console.log("data", data, serviceDetails);
   // const checkStockHook = useCheckStock(data.id,data.capacity);
   const serviceExist = basketItems.find((event) => event.eventId === eventId);
   const basketItemPlusOneItem =

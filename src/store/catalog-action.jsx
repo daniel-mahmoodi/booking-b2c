@@ -24,7 +24,6 @@ export const fetchListOfCatalogs = () => {
         }
       })
       .catch((error) => {
-        console.log("error", error);
         setTimeout(() => {
           dispatch(catalogActions.toggleMyCatalogLoader(false));
           dispatch(catalogActions.toggleShowCatalogError(true));
@@ -51,7 +50,6 @@ export const fetchCatalogDetails = (parentId) => {
         }
       })
       .catch((error) => {
-        console.log("error", error);
         setTimeout(() => {
           dispatch(catalogActions.toggleMyCatalogDetailsLoader(false));
           dispatch(catalogActions.toggleShowCatalogDetailsError(true));
@@ -66,7 +64,6 @@ export const getFilters = () => {
       url: `${apiUrl}/Car/GetFilters`,
     })
       .then((response) => {
-        console.log("response", response);
         dispatch(catalogActions.addListOfFilters(response.data));
       })
       .catch((error) => {
@@ -92,7 +89,6 @@ export const getCars = ({ data, pageNumber, pageSize }) => {
       url: `${apiUrl}/Car/GetCars?PageNumber=${pageNumber}&PageSize=${pageSize}${dataNeeded}`,
     })
       .then((response) => {
-        console.log("response", response);
         dispatch(catalogActions.addListOfFilteredCars(response.data));
       })
       .catch((error) => {

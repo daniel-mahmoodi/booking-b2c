@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./Ticket.module.css";
 import Capacity from "./Capacity";
 const TicketPricing = ({ ticketDetails }) => {
-  console.log("ticketDetails", ticketDetails);
   return (
     <div className={classes.desc}>
       {ticketDetails.discountedPrice === ticketDetails.price ? (

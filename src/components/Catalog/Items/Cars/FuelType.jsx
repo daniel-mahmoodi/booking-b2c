@@ -3,7 +3,6 @@ import classes from "./DropDown.module.css";
 const FuelType = ({ filterSelected, itemType, data, ItemsName, field }) => {
   const [isOpen, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  console.log("data", isOpen);
 
   const hideDropdown = () => setOpen(false);
   const shwoDropdown = () => setOpen(true);

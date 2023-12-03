@@ -8,7 +8,6 @@ import classes from "./BasketTab.module.css";
 import BreadCrumb from "../Layout/BreadCrumb";
 function BasketTab() {
   const basketItems = useSelector((state) => state.basket.items);
-  console.log("basketItems", basketItems);
   const totalDiscountedPrice = useSelector(
     (state) => state.basket.totalDiscountedPrice
   );

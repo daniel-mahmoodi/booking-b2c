@@ -4,7 +4,6 @@ import { useState } from "react";
 const Classes = ({ data, filterSelected, itemType, ItemsName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selecteditems, setSelecteditems] = useState([]);
-  console.log("selecteditems", selecteditems);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };

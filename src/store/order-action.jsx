@@ -35,7 +35,6 @@ export const sendOrder = (token) => {
 
       .catch(function (error) {
         dispatch(orderActions.toggleOrderLoading(true));
-        console.log("error", error);
         setTimeout(() => {
           dispatch(orderActions.toggleOrderLoading(false));
         }, 2000);
@@ -69,7 +68,6 @@ export const calculateDiscount = (token, orderId) => {
 
       .catch(function (error) {
         // dispatch(orderActions.toggleOrderLoading(true));
-        console.log("error", error);
         setTimeout(() => {
           // dispatch(orderActions.toggleOrderLoading(false));
         }, 2000);
@@ -115,7 +113,6 @@ export const finalizeOrder = ({
 
       .catch(function (error) {
         // dispatch(orderActions.toggleOrderLoading(true));
-        console.log("error", error);
         setTimeout(() => {
           // dispatch(orderActions.toggleOrderLoading(false));
         }, 2000);
@@ -159,7 +156,6 @@ export const getAllOrders = (token) => {
     })
     .catch((error) => {
         dispatch(orderActions.getAllOrdersLoading(false))
-        console.log("error getAllOrders", error);
       });
   };
 };
@@ -179,7 +175,6 @@ export const getOrderDetails = (token, id) => {
       })
       .catch((error) => {
         dispatch(orderActions.getOrderDetailsLoading(false))
-        console.log("error getAllOrders", error);
       });
   };
 };
@@ -191,7 +186,6 @@ export const getOrderTicketsDetails = (token, orderId) => {
       headers: { Authorization: token },
     })
       .then((response) => {
-        console.log("orderTicketsDetails", response);
         // if (response.status === 200) {
           dispatch(orderActions.addOrderTicketsDetails(response.data));
         // }

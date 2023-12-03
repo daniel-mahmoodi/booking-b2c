@@ -4,7 +4,6 @@ import { paymentMethod, orderStatus } from "../Utilities/Utils";
 import moment from "jalali-moment";
 
 const OrderInfo = ({ selectedOrderDetails }) => {
-  console.log("selectedOrderDetails", selectedOrderDetails);
   return (
     <div className={classes.details}>
       <div className={classes.item}>
