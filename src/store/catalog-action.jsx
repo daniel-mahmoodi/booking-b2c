@@ -74,7 +74,7 @@ export const getFilters = () => {
       });
   };
 };
-export const GetCars = ({ data, pageNumber, pageSize }) => {
+export const getCars = ({ data, pageNumber, pageSize }) => {
   return async (dispatch) => {
     const dataNeeded = `${
       data.classIds?.length ? `&ClassIds=${data.classIds}` : ""

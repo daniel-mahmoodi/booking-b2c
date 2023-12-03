@@ -1,29 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./DropDown.module.css";
 const FuelType = ({ filterSelected, itemType, data, ItemsName, field }) => {
-  console.log("data", data);
   const [isOpen, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  console.log("data", isOpen);
 
   const hideDropdown = () => setOpen(false);
   const shwoDropdown = () => setOpen(true);
-
-  const handleItemClick = (item, event) => {
-    selectedItem == event.id
-      ? setSelectedItem(null)
-      : setSelectedItem(event.id);
+  const handleItemClick = (event) => {
+    setSelectedItem((prevSelectedItem) =>
+      prevSelectedItem === event.id ? null : event.id
+    );
     hideDropdown();
-    filterSelected(itemType, item.id);
   };
+
+  useEffect(() => {
+    filterSelected(itemType, selectedItem);
+  }, [itemType, selectedItem]);
 
   return (
     <div
       className={classes.body}
+      // onClick={() => setOpen((prev) => !prev)}
       onMouseOut={hideDropdown}
       onMouseOver={shwoDropdown}
     >
       <div className={classes.dropdown}>
-        <div className={classes.dropdownHeader} onClick={hideDropdown}>
+        <div className={classes.dropdownHeader}>
           {field
             ? selectedItem
               ? data.find((item) => item.id == selectedItem)[field]

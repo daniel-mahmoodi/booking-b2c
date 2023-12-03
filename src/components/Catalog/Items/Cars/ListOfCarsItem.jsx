@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CarItem from "./CarItem";
 import classes from "./ListOfCarsItem.module.css";
-import { GetCars } from "../../../../store/catalog-action";
+import { getCars } from "../../../../store/catalog-action";
 //{classId,fuelType,isGearAutomatic,peopleCapacity,loadCapacity}
 const ListOfCarsItem = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const ListOfCarsItem = () => {
   const pageSize = useSelector((state) => state.catalog.pageSize);
   console.log("listOfCarsItem", listOfFilteredCars);
   useEffect(() => {
-    dispatch(GetCars({ data: userCarFilters, pageNumber, pageSize }));
+    dispatch(getCars({ data: userCarFilters, pageNumber, pageSize }));
   }, [dispatch, pageNumber, pageSize, userCarFilters]);
   return (
     <div className={classes.body}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./DropDown.module.css";
 
 function Capacity({ data, filterSelected, itemType, ItemsName }) {
@@ -8,11 +8,22 @@ function Capacity({ data, filterSelected, itemType, ItemsName }) {
   const hideDropdown = () => setOpen(false);
   const shwoDropdown = () => setOpen(true);
 
+  // const handleItemClick = (item) => {
+  //   selectedItem == item ? setSelectedItem(null) : setSelectedItem(item);
+  //   hideDropdown();
+  //   filterSelected(itemType, item);
+  // };
   const handleItemClick = (item) => {
-    selectedItem == item ? setSelectedItem(null) : setSelectedItem(item);
+    setSelectedItem((prevSelectedItem) =>
+      prevSelectedItem ===item ? null :item
+    );
     hideDropdown();
-    filterSelected(itemType, item);
   };
+
+  useEffect(() => {
+    filterSelected(itemType, selectedItem);
+  }, [ itemType, selectedItem]);
+
 
   return (
     <div
@@ -21,7 +32,7 @@ function Capacity({ data, filterSelected, itemType, ItemsName }) {
       onMouseOver={shwoDropdown}
     >
       <div className={classes.dropdown}>
-        <div className={classes.dropdownHeader} onClick={hideDropdown}>
+        <div className={classes.dropdownHeader} >
           {selectedItem
             ? data.find((item) => item == selectedItem)
             : ItemsName}

@@ -10,13 +10,16 @@ const Models = ({ data, filterSelected, itemType, ItemsName }) => {
   const hideDropdown = () => setOpen(false);
   const shwoDropdown = () => setOpen(true);
 
-  const handleItemClick = (item, event) => {
-    selectedItem == event.id
-      ? setSelectedItem(null)
-      : setSelectedItem(event.id);
+  const handleItemClick = (event) => {
+    setSelectedItem((prevSelectedItem) =>
+      prevSelectedItem === event.id ? null : event.id
+    );
     hideDropdown();
-    filterSelected(itemType, item.id);
   };
+
+  useEffect(() => {
+    filterSelected(itemType, selectedItem);
+  }, [ itemType, selectedItem]);
 
   useEffect(() => {
     if (selectedItem) {
@@ -36,7 +39,7 @@ const Models = ({ data, filterSelected, itemType, ItemsName }) => {
       onMouseOver={shwoDropdown}
     >
       <div className={classes.dropdown}>
-        <div className={classes.dropdownHeader} onClick={hideDropdown}>
+        <div className={classes.dropdownHeader}>
           {header}
 
           <i

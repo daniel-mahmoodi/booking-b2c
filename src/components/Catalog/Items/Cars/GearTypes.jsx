@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./DropDown.module.css";
+import { useEffect } from "react";
 
 const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
   const [isOpen, setOpen] = useState(false);
@@ -9,13 +10,28 @@ const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
   const hideDropdown = () => setOpen(false);
   const shwoDropdown = () => setOpen(true);
 
-  const handleItemClick = (item) => {
-    selectedItem == item.id
-      ? setSelectedItem(null)
-      : setSelectedItem(item.id);
+  const handleItemClick = (event) => {
+    setSelectedItem((prevSelectedItem) =>
+      prevSelectedItem === event.id ? null : event.id
+    );
     hideDropdown();
-    filterSelected(itemType, item.id);
   };
+
+  useEffect(() => {
+    filterSelected(itemType, selectedItem);
+  }, [ itemType, selectedItem]);
+
+  // const handleItemClick = (item) => {
+  //   selectedItem == item.id
+  //     ? setSelectedItem(null)
+  //     : setSelectedItem(item.id);
+  //   hideDropdown();
+  //   filterSelected(itemType, item.id);
+  // };
+
+  // data.isGearAutomatic === 0 || data.isGearAutomatic
+  //   ? `&IsGearAutomatic=${data.isGearAutomatic}`
+  //   : ""
 
   return (
     <div
@@ -23,12 +39,11 @@ const GearTypes = ({ data, filterSelected, itemType, ItemsName }) => {
       onMouseOut={hideDropdown}
       onMouseOver={shwoDropdown}
       // onClick={toggleDropDown}
-      
     >
       <div className={classes.dropdown}>
-        <div className={classes.dropdownHeader} onClick={hideDropdown}>
-          {selectedItem
-            ? data.find((item) => item.id == selectedItem).gearTitle
+        <div className={classes.dropdownHeader}>
+          {selectedItem === 0 || selectedItem
+            ? data.find((item) => item.id === selectedItem).gearTitle
             : ItemsName}
 
           <i

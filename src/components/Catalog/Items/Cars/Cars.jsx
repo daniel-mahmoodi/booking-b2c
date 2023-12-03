@@ -43,7 +43,11 @@ const Cars = () => {
   }, [dispatch]);
 
   const addUserFiltersHandler = () => {
-    dispatch(catalogActions.addUserCarFilters(state));
+    
+    // const timeoutId = setTimeout(() => {
+      dispatch(catalogActions.addUserCarFilters(state));
+    // }, 3000);
+    // clearTimeout(timeoutId);
   };
   const handleFilterSelected = (name, value) => {
     localDispatch({
@@ -106,7 +110,7 @@ const Cars = () => {
               filterSelected={handleFilterSelected}
               itemType={"fuelType"}
               data={listOfCars.fuelTypes}
-              ItemsName={"نوع موتور"}
+              ItemsName={"نوع سوخت"}
             />
           </div>
           <button className={classes.searchBtn} onClick={addUserFiltersHandler}>
