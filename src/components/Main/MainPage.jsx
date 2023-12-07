@@ -10,7 +10,9 @@ import ServiceDetails from "../Card/ServiceDetails";
 import Registration from "../Auth/Registration";
 import Profile from "../Profile/Profile";
 import { Login } from "../Auth/Login";
-import { sendCartData } from "../../store/basket-action";
+import {
+  sendCartData,
+} from "../../store/basket-action";
 import { basketActions } from "../../store/basket-slice";
 import PaymentDetails from "../Payment/PaymentDetails";
 import ListOfOrders from "../Order/ListOfOrders";
@@ -23,10 +25,12 @@ const MainPage = () => {
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
   const token = useSelector((state) => state.auth.token);
+  
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {
-      dispatch(sendCartData(items, token));
+      dispatch(sendCartData(items, token,false));
+      console.log("update");
     }
   }, [dispatch, token]);
   // prevent footer component shows in login and signin pages
@@ -37,8 +41,9 @@ const MainPage = () => {
   const shouldShowNavbar = !excludeNavbarRoutes.includes(location.pathname);
   useEffect(() => {
     if (basketChanged && token) {
+      console.log("update after basketChanged");
       const timer = setTimeout(() => {
-        dispatch(sendCartData(items, token));
+        dispatch(sendCartData(items, token,true));
         dispatch(basketActions.toggleBasketChanges(false));
       }, 1000);
       return () => {

@@ -23,7 +23,7 @@ function App() {
     (state) => state.ui.showCounselingModal
   );
   const urlToPay = useSelector((state) => state.order.url);
-
+ 
   useEffect(() => {
     if (urlToPay) {
       setTimeout(() => {

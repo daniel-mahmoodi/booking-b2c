@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { authActions } from "../../store/auth-slice";
 import { uiActions } from "../../store/ui-slice";
+import { basketActions } from "../../store/basket-slice";
 
 const NavSignInButton = () => {
   const history = useHistory();
@@ -12,6 +13,7 @@ const NavSignInButton = () => {
     dispatch(uiActions.toggleSideBar(false));
     if (isLoggedIn) {
       dispatch(authActions.logout());
+      dispatch(basketActions.eraseAllBasket());
     } else {
       history.push("/login");
     }
