@@ -71,11 +71,11 @@
   align-items: center;
   margin-top: 6px;
 }
-.spin-pay-total-amount {
+.spin-pay-disc-amount {
   margin: 0 3px;
   color: rgb(47, 163, 47);
 }
-.spin-pay-disc-amount {
+.spin-pay-total-amount {
   margin: 0 3px;
   color: rgb(200, 44, 44);
   font-size: 14px;

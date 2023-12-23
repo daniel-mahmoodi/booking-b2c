@@ -218,7 +218,7 @@ const Spinner = () => {
               <div>
                 {spinnerData.totalAmount ===
                 spinnerData.discountedTotalAmount ? (
-                  <p className="spin-pay-total-amount">
+                  <p className="spin-pay-disc-amount">
                     {Number(spinnerData.totalAmount).toLocaleString()}تومان
                   </p>
                 ) : (
