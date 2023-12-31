@@ -107,9 +107,48 @@ export const getCartData = (token) => {
 
     try {
       const basketData = await fetchData();
-      let totalPrice = 0;
 
-      basketData.basketItems.flatMap((event) =>
+      // const originalArray = [
+      //   {
+      //     "id":1123,
+      //     "eventId":3,
+      //     "eventTitle":"تفریحات دریایی سیشیل",
+      //     "ticketId":1231,
+      //     "ticketTitle":"شاتل",
+      //     "sansTitle":"Title",
+      //     "sansId":"723",
+      //     "executeDate":"1/2/2024 12:11:01 AM",
+      //     "price":239800.000000,
+      //     "discountedPrice":239800.000000,
+      //     "imageUrl":"wwwroot\\gallery\\ab9bc513-1909-4114-9e9e-a677109b5a0f20230923.jpg",
+      //     "commission":0,
+      //     "count":5,
+      //     "capacity":10
+      //   },
+      //   // Add more objects as needed
+      // ];
+
+      const transformedBasketData = basketData.basketItems.map((item) => ({
+        eventId: item.eventId,
+        eventTitle: item.eventTitle,
+        tickets: {
+          commission: item.commission,
+          count: item.count,
+          capacity: item.capacity,
+          ticketId: item.ticketId,
+          ticketTitle: item.ticketTitle,
+          sansTitle: item.sansTitle,
+          sansId: item.sansId,
+          executeDate: item.executeDate,
+          price: item.price,
+          discountedPrice: item.discountedPrice,
+          imageUrl: item.imageUrl,
+        },
+      }));
+
+      // console.log(transformedBasketData);
+      let totalPrice = 0;
+      transformedBasketData.flatMap((event) =>
         event.tickets.map((item) =>
           item.price === item.discountedPrice
             ? (totalPrice = totalPrice + item.price * item.count)
@@ -117,7 +156,7 @@ export const getCartData = (token) => {
         )
       );
       let totalQuantity = 0;
-      basketData.basketItems.flatMap((event) =>
+      transformedBasketData.flatMap((event) =>
         event.tickets.map(
           (item) => (totalQuantity = totalQuantity + item.count)
         )
@@ -126,11 +165,15 @@ export const getCartData = (token) => {
       dispatch(
         basketActions.replaceBasket({
           basketState: {
-            basketData,
+            mobile: basketData.mobile,
+            userFullName: basketData.userFullName,
+            transformedBasketData,
             totalPrice,
             totalQuantity,
           } || {
-            basketData: {},
+            transformedBasketData: [],
+            mobile: '',
+            userFullName: '',
             totalPrice: 0,
             totalQuantity: 0,
           },
@@ -150,7 +193,7 @@ export const getCartData = (token) => {
   };
 };
 
-export const sendCartData = (basket, token,isUserDeletedLastItemOfBasket) => {
+export const sendCartData = (basket, token, isUserDeletedLastItemOfBasket) => {
   return async (dispatch) => {
     let sendCartItems = { cartItems: [] };
     const transformedData = {
@@ -163,7 +206,12 @@ export const sendCartData = (basket, token,isUserDeletedLastItemOfBasket) => {
         })
       ),
     };
-    console.log("transformedData", transformedData, sendCartItems,isUserDeletedLastItemOfBasket);
+    console.log(
+      "transformedData",
+      transformedData,
+      sendCartItems,
+      isUserDeletedLastItemOfBasket
+    );
 
     // const newItems = basket?.filter((item) => item.quantity !== 0);
     // if (basket.length !== 0) {
@@ -174,7 +222,7 @@ export const sendCartData = (basket, token,isUserDeletedLastItemOfBasket) => {
     //     });
     //   });
     // }
-    if (!isUserDeletedLastItemOfBasket ) {
+    if (!isUserDeletedLastItemOfBasket) {
       dispatch(getCartData(token));
     } else {
       axios({

@@ -51,6 +51,46 @@ function App() {
     showSideBar,
     showSpinnerModal,
   ]);
+  const originalArray = [
+    {
+      "id":1123,
+      "eventId":3,
+      "eventTitle":"تفریحات دریایی سیشیل",
+      "ticketId":1231,
+      "ticketTitle":"شاتل",
+      "sansTitle":"Title",
+      "sansId":"723",
+      "executeDate":"1/2/2024 12:11:01 AM",
+      "price":239800.000000,
+      "discountedPrice":239800.000000,
+      "imageUrl":"wwwroot\\gallery\\ab9bc513-1909-4114-9e9e-a677109b5a0f20230923.jpg",
+      "commission":0,
+      "count":5,
+      "capacity":10
+    },
+    // Add more objects as needed
+  ];
+  
+  const transformedArray = originalArray.map(item => ({
+    eventId: item.eventId,
+    eventTitle: item.eventTitle,
+    tickets: {
+      commission: item.commission,
+      count: item.count,
+      capacity: item.capacity,
+      ticketId: item.ticketId,
+      ticketTitle: item.ticketTitle,
+      sansTitle: item.sansTitle,
+      sansId: item.sansId,
+      executeDate: item.executeDate,
+      price: item.price,
+      discountedPrice: item.discountedPrice,
+      imageUrl: item.imageUrl,
+    },
+  }));
+  
+  console.log(transformedArray);
+  
   return (
     <div className="App" dir="rtl">
       {showSpinnerModal && <Spinner />}
