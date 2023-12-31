@@ -181,9 +181,9 @@ export const getCartData = (token) => {
         return acc;
       }, {});
 
-      const resultArray = Object.values(transformedData);
+      const resultTransformedData = Object.values(transformedData);
 
-      console.log(resultArray);
+      // console.log(resultArray);
 
       // console.log(transformedBasketData);
       let totalPrice = 0;
@@ -209,17 +209,17 @@ export const getCartData = (token) => {
       basketData.basketItems.map(
         (item) => (totalQuantity = totalQuantity + item.count)
       );
-
+console.log('resultTransformedData',resultTransformedData);
       dispatch(
         basketActions.replaceBasket({
           basketState: {
+            resultTransformedData,
             mobile: basketData.mobile,
             userFullName: basketData.userFullName,
-            transformedData,
             totalPrice,
             totalQuantity,
           } || {
-            transformedData: [],
+            resultTransformedData: [],
             mobile: "",
             userFullName: "",
             totalPrice: 0,
@@ -254,12 +254,12 @@ export const sendCartData = (basket, token, isUserDeletedLastItemOfBasket) => {
         })
       ),
     };
-    console.log(
-      "transformedData",
-      transformedData,
-      sendCartItems,
-      isUserDeletedLastItemOfBasket
-    );
+    // console.log(
+    //   "transformedData",
+    //   transformedData,
+    //   sendCartItems,
+    //   isUserDeletedLastItemOfBasket
+    // );
 
     // const newItems = basket?.filter((item) => item.quantity !== 0);
     // if (basket.length !== 0) {

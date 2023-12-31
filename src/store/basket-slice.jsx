@@ -27,7 +27,7 @@ const basketSlice = createSlice({
       // state.basketChanged = true;
     },
     replaceBasket(state, action) {
-      state.items = action.payload.basketState.transformedData;
+      state.items = action.payload.basketState.resultTransformedData;
       state.mobile = action.payload.basketState.mobile;
       state.userFullName = action.payload.basketState.userFullName;
       state.totalDiscountedPrice = action.payload.basketState.totalPrice;
