@@ -128,38 +128,86 @@ export const getCartData = (token) => {
       //   // Add more objects as needed
       // ];
 
-      const transformedBasketData = basketData.basketItems.map((item) => ({
-        eventId: item.eventId,
-        eventTitle: item.eventTitle,
-        tickets: {
-          commission: item.commission,
-          count: item.count,
-          capacity: item.capacity,
-          ticketId: item.ticketId,
-          ticketTitle: item.ticketTitle,
-          sansTitle: item.sansTitle,
-          sansId: item.sansId,
-          executeDate: item.executeDate,
-          price: item.price,
-          discountedPrice: item.discountedPrice,
-          imageUrl: item.imageUrl,
-        },
-      }));
+      // const transformedBasketData = basketData.basketItems.map((item) => ({
+      //   eventId: item.eventId,
+      //   eventTitle: item.eventTitle,
+      //   tickets: {
+      //     commission: item.commission,
+      //     count: item.count,
+      //     capacity: item.capacity,
+      //     ticketId: item.ticketId,
+      //     ticketTitle: item.ticketTitle,
+      //     sansTitle: item.sansTitle,
+      //     sansId: item.sansId,
+      //     executeDate: item.executeDate,
+      //     price: item.price,
+      //     discountedPrice: item.discountedPrice,
+      //     imageUrl: item.imageUrl,
+      //   },
+      // }));
+      // const data = [
+      //   {
+      //     "id": 1123,
+      //     "eventId": 3,
+      //     "eventTitle": "تفریحات دریایی سیشیل",
+      //     "ticketId": 1231,
+      //     "ticketTitle": "شاتل",
+      //     "sansTitle": "Title",
+      //     "sansId": "723",
+      //     "executeDate": "1/2/2024 12:11:01 AM",
+      //     "price": 239800.000000,
+      //     "discountedPrice": 239800.000000,
+      //     "imageUrl": "wwwroot\\gallery\\ab9bc513-1909-4114-9e9e-a677109b5a0f20230923.jpg",
+      //     "commission": 0,
+      //     "count": 5,
+      //     "capacity": 10
+      //   },
+      //   // ... more objects
+      // ];
+
+      const transformedData = basketData.basketItems.reduce((acc, current) => {
+        const { eventId, eventTitle, ...rest } = current;
+
+        if (!acc[eventId]) {
+          acc[eventId] = {
+            eventId,
+            eventTitle,
+            tickets: [],
+          };
+        }
+
+        acc[eventId].tickets.push(rest);
+
+        return acc;
+      }, {});
+
+      const resultArray = Object.values(transformedData);
+
+      console.log(resultArray);
 
       // console.log(transformedBasketData);
       let totalPrice = 0;
-      transformedBasketData.flatMap((event) =>
-        event.tickets.map((item) =>
-          item.price === item.discountedPrice
-            ? (totalPrice = totalPrice + item.price * item.count)
-            : (totalPrice = totalPrice + item.discountedPrice * item.count)
-        )
+      // transformedData.flatMap((event) =>
+      //   event.tickets.map((item) =>
+      //     item.price === item.discountedPrice
+      //       ? (totalPrice = totalPrice + item.price * item.count)
+      //       : (totalPrice = totalPrice + item.discountedPrice * item.count)
+      //   )
+      // );
+      basketData.basketItems.map((item) =>
+        item.price === item.discountedPrice
+          ? (totalPrice = totalPrice + item.price * item.count)
+          : (totalPrice = totalPrice + item.discountedPrice * item.count)
       );
       let totalQuantity = 0;
-      transformedBasketData.flatMap((event) =>
-        event.tickets.map(
-          (item) => (totalQuantity = totalQuantity + item.count)
-        )
+      // transformedData.flatMap((event) =>
+      //   event.tickets.map(
+      //     (item) => (totalQuantity = totalQuantity + item.count)
+      //   )
+      // );
+
+      basketData.basketItems.map(
+        (item) => (totalQuantity = totalQuantity + item.count)
       );
 
       dispatch(
@@ -167,13 +215,13 @@ export const getCartData = (token) => {
           basketState: {
             mobile: basketData.mobile,
             userFullName: basketData.userFullName,
-            transformedBasketData,
+            transformedData,
             totalPrice,
             totalQuantity,
           } || {
-            transformedBasketData: [],
-            mobile: '',
-            userFullName: '',
+            transformedData: [],
+            mobile: "",
+            userFullName: "",
             totalPrice: 0,
             totalQuantity: 0,
           },
