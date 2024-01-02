@@ -6,7 +6,7 @@ export function useSubmitOrder( id ) {
   const dispatch = useDispatch();
 
   const submitOrder = () => {
-    dispatch(getServiceDetails(id));
+    // dispatch(getServiceDetails(id));
     dispatch(getSanses(id));
     dispatch(eventActions.toggleTicketComponent(false));
   };
