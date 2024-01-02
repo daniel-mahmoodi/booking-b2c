@@ -1,11 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { getServiceDetails } from "../../store/event-action";
 import { useHistory } from "react-router-dom";
 import SubmitButton from "../Layout/SubmitButton";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const Card = ({ data }) => {
-  const dispatch = useDispatch();
 
   const history = useHistory();
   const selectCardHandler = () => {
