@@ -129,8 +129,11 @@ export const verifyOtp = ({ OtpToken, PhoneNumber }) => {
         setTimeout(() => {
           dispatch(authActions.toggleAuthLoading(false));
         }, 2000);
-        if (error.response?.status === 415)
-          dispatch(authActions.showLoginWarning(error.response.data));
+        if (error.response?.status === 415 || 400) {
+          dispatch(
+            authActions.showLoginWarning({ OtpToken: error.response.data })
+          );
+        }
       });
     //  dispatch(uiActions.showWarning(response.response.data));
   };

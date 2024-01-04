@@ -43,7 +43,7 @@ function LoginByOTP({ changeRegistrationType }) {
     if (!state.Mobile) {
       dispatch(
         authActions.showLoginWarning({
-          ConfirmPassword: "این فیلد نباید خالی باشد",
+          Mobile: "این فیلد نباید خالی باشد",
         })
       );
     }

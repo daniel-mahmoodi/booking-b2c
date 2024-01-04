@@ -65,6 +65,7 @@ function AddingOTP() {
       dispatch(authActions.sendUserToMainPage(false));
     };
   }, [dispatch, history, sendUser]);
+  console.log("loginWarning", loginWarning);
   return (
     <div className="page-wrapper" id="login">
       <div className="cover"></div>
