@@ -1,9 +1,16 @@
 .body {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2px;
+  margin-bottom: 24px;
+}
+.listContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 24px auto;
+  margin: 0 auto;
   width: 780px;
+  /* width: auto; */
 }
 
 .title {
@@ -19,14 +26,14 @@
   color: darkred;
 }
 
-@media screen and (max-width:1200px){
-  .body{
+@media screen and (max-width: 1200px) {
+  .listContainer {
     width: 680px;
   }
 }
 
-@media screen and (max-width:1000px){
-  .body{
+@media screen and (max-width: 1000px) {
+  .listContainer {
     width: auto;
   }
 }

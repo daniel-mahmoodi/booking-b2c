@@ -9,13 +9,14 @@ import { profileActions } from "../../store/profile-slice";
 import { orderStatus } from "../Utilities/Utils";
 
 const OrderItem = ({ data, rowNumber }) => {
-  // const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const seeMoreHandler = () => {
     if (data) {
       // history.push(`/profile/${data.orderRefrence}`);
       dispatch(orderActions.setOrderRefrence(data.orderRefrence));
-      dispatch(profileActions.selectActiveTab("orderDetails"));
+      dispatch(profileActions.selectActiveTab("details"));
+      history.push('/profile/orders/details')
     }
   };
   const purchaseOrderProcess = (event) => {

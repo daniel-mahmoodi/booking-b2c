@@ -16,10 +16,11 @@ const ListOfOrders = () => {
   useEffect(() => {
     token && dispatch(getAllOrders(token));
   }, [dispatch, isLoggedIn, token]);
+
   return (
-    <div className="profile-left" id="basket">
+    <div className={classes.body}>
       <BreadCrumb location={"/orders"} />
-      <div className={classes.body}>
+      <div className={classes.listContainer}>
         {Object.keys(listOfOrders).length ? (
           <>
             {/* <h2 className={classes.title}>لیست سفارشات</h2> */}

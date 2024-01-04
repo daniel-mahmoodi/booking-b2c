@@ -26,9 +26,9 @@ const OrderDetails = () => {
   }, [dispatch, orderRefrence, token]);
 
   return (
-    <div className="profile-left" id="basket">
+    <div className={classes.body}>
       <BreadCrumb location={"/orders/details"} />
-      <div className={classes.body}>
+      <div className={classes.container}>
         {Object.keys(selectedOrderDetails).length ? (
           <>
             {/* <h2 className={classes.mainTitle}>جزئیات سفارش</h2> */}
