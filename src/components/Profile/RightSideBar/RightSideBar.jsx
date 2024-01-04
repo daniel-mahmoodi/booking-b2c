@@ -1,44 +1,71 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { profileActions } from "../../../store/profile-slice";
 import classes from "./RightSideBar.module.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faBasketShopping,
+  faHatWizard,
+  faShieldHalved,
+  faPersonWalkingLuggage,
+} from "@fortawesome/free-solid-svg-icons";
 function RightSideBar() {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
+
+  const activeTab = useSelector((state) => state.profile.activeTab);
+  console.log("activeTab", activeTab);
+
   const showTabHandler = (tab) => {
     dispatch(profileActions.selectActiveTab(tab));
+    history.push(`/profile/${tab}`);
   };
 
   return (
-    <div className="profile-right">
-      <div className="img-container">
-        <div className="overlay"></div>
-        <img src="/assets/img/avatar-2.png" alt="" className="avatar" />
-        <p className="title">نام کاربری</p>
-      </div>
-      <div className={classes.profileSidenav}>
-        <ul>
-          <li onClick={() => showTabHandler("dashboard")}>
-            <a className={classes.link}>داشبورد</a>
-          </li>
-          <li onClick={() => showTabHandler("editProfile")}>
-            <a className={classes.link}>ویرایش حساب کاربری</a>
-          </li>
-          <li onClick={() => showTabHandler("basket")}>
-            <a className={classes.link}>سبد خرید</a>
-          </li>
-          <li onClick={() => showTabHandler("factor")}>
-            <a className={classes.link}>پوشش بیمه نامه</a>
-          </li>
-          <li onClick={() => showTabHandler("order")}>
-            <a className={classes.link}>سفارش ها</a>
-          </li>
-          <li onClick={() => showTabHandler("exit")}>
-            <a className={classes.link}>خروج از حساب کاربری</a>
-          </li>
-        </ul>
-      </div>
+    <div className={classes.profileSidenav}>
+      <ul className={classes.links}>
+        <li
+          className={activeTab === "account" ? classes.active : ""}
+          onClick={() => showTabHandler("account")}
+        >
+          <FontAwesomeIcon icon={faUser} />
+          <p>حساب کاربری</p>
+        </li>
+        <hr />
+        <li
+          className={activeTab === "basket" ? classes.active : ""}
+          onClick={() => showTabHandler("basket")}
+        >
+          <FontAwesomeIcon icon={faBasketShopping} />
+          <p>سبد خرید</p>
+        </li>
+        <hr />
+        <li
+          className={activeTab === "insurance" ? classes.active : ""}
+          onClick={() => showTabHandler("insurance")}
+        >
+          <FontAwesomeIcon icon={faShieldHalved} />
+          <p>پوشش بیمه نامه</p>
+        </li>
+        <hr />
+        <li
+          className={activeTab === "orders" ? classes.active : ""}
+          onClick={() => showTabHandler("orders")}
+        >
+          <FontAwesomeIcon icon={faHatWizard} />
+          <p>سفارش ها</p>
+        </li>
+        <hr />
+        <li
+          className={activeTab === "exit" ? classes.active : ""}
+          onClick={() => showTabHandler("exit")}
+        >
+          <FontAwesomeIcon icon={faPersonWalkingLuggage} />
+          <p>خروج از حساب کاربری</p>
+        </li>
+      </ul>
     </div>
   );
 }

@@ -1,42 +1,70 @@
-.profileSidenav ul {
+.profileSidenav {
+  width: 18rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  margin-left: 24px;
+  padding: 0px;
+}
+hr {
+  margin: 0 6% !important;
+  color: #f4415325;
+}
+.links {
   list-style-type: none;
-  padding: 10px 15px;
+  padding: 0px;
+  margin: 0;
   font-size: 14px;
-  margin-bottom: 0;
 }
 
-.profileSidenav li {
-  margin: 5px 0;
-}
-
-.profileSidenav li .link {
+.links li {
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  align-items: center;
   text-decoration: none;
-  padding: 5px 15px;
+  margin: 0;
+  padding: 15px 20px;
   position: relative;
-  display: block;
-  border-radius: 10px;
-  color: #686e71;
-  transition: 0.5s;
+  color: #333333;
   font-size: 14px;
 }
 
-.profileSidenav li .link.active {
-  color: #f44153;
+.links li :first-child {
+  font-size: 24px;
+  width: 32px;
+  margin-left: 12px !important;
+}
+.links li p {
+  padding-right: 12px !important;
+  font-weight: 600;
+  font-size: 14px;
 }
 
-.profileSidenav li .link:hover {
-  color: #f44153;
-  background-color: #f4415317;
+.active {
+  color: #f44153 !important;
+  background-color: #f4415314;
+}
+.links li:first-child{
+  border-radius: 12px 12px 0 0;
+}
+.links li:last-child{
+  border-radius: 0 0 12px 12px;
 }
 
-.profileSidenav li .link::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background-color: #f44153;
-  border-radius: 50%;
-  position: absolute;
-  right: 4px;
-  top: 13px;
+
+@media screen and (max-width:980px) {
+  .profileSidenav{
+    width: 12rem;
+    margin: 0px;
+  }
+  .links li :first-child {
+    font-size: 24px;
+    width: 24px;
+    margin-left: 2px !important;
+  }
+  .links li p {
+    padding-right: 6px !important;
+    font-weight: 300;
+    font-size: 12px;
+  }
 }

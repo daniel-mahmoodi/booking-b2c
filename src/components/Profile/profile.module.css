@@ -1,0 +1,16 @@
+.body {
+  max-width: 68rem;
+  margin: auto;
+  margin-top: 24px;
+}
+.container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+@media screen and (max-width: 680px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+}

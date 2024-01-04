@@ -76,8 +76,9 @@ function BasketTab() {
           </div>
         </div>
       ) : (
-        <div className={classes.noContentIcon}>
-          <div>
+        
+        <div className={classes.body}>
+          <div className={classes.noContentIcon}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="ionicon"
