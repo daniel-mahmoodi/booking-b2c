@@ -209,7 +209,7 @@ export const getCartData = (token) => {
       basketData.basketItems.map(
         (item) => (totalQuantity = totalQuantity + item.count)
       );
-console.log('resultTransformedData',resultTransformedData);
+      console.log("resultTransformedData", resultTransformedData);
       dispatch(
         basketActions.replaceBasket({
           basketState: {
@@ -270,7 +270,11 @@ export const sendCartData = (basket, token, isUserDeletedLastItemOfBasket) => {
     //     });
     //   });
     // }
-    if (!isUserDeletedLastItemOfBasket) {
+    if (isUserDeletedLastItemOfBasket) {
+      console.log(
+        "!isUserDeletedLastItemOfBasket",
+        !isUserDeletedLastItemOfBasket
+      );
       dispatch(getCartData(token));
     } else {
       axios({

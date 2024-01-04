@@ -29,7 +29,7 @@ const MainPage = () => {
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {
-      dispatch(sendCartData(items, token,false));
+      dispatch(sendCartData(items, token,basketChanged));
       console.log("update");
     }
   }, [dispatch, token]);
@@ -43,7 +43,7 @@ const MainPage = () => {
     if (basketChanged && token) {
       console.log("update after basketChanged");
       const timer = setTimeout(() => {
-        dispatch(sendCartData(items, token,true));
+        dispatch(sendCartData(items, token,basketChanged));
         dispatch(basketActions.toggleBasketChanges(false));
       }, 1000);
       return () => {
