@@ -194,9 +194,9 @@ const Spinner = () => {
             style={{ padding: "32px", fontSize: "20px", fontWeight: "bold" }}
           >
             {priseNumber ? (
-              <div>تبریک شما برنده {priseNumber} درصد تخفیف شدید</div>
+              <div>تبریک شما برنده {priseNumber} درصد تخفیف شده اید</div>
             ) : (
-              <div>متاسفانه شما تخفیف دریافت نکردید</div>
+              <div>متاسفانه شما تخفیف دریافت نکرده اید</div>
             )}
             <button
               onClick={finalizeOrderHandler}
@@ -217,7 +217,7 @@ const Spinner = () => {
               <p>مبلغ پرداختی:</p>
               <div>
                 {spinnerData.totalAmount ===
-                spinnerData.discountedTotalAmount ? (
+                spinnerData.discountedTotalAmount || spinnerData.discountedTotalAmount ===0 ? (
                   <p className="spin-pay-disc-amount">
                     {Number(spinnerData.totalAmount).toLocaleString()}تومان
                   </p>
