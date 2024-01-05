@@ -7,8 +7,6 @@ import OffcanvasMenu from "./components/Navbar/OffcanvasMenu";
 import Checkout from "./components/Order/Checkout";
 import Spinner from "./components/Spinner/Spinner";
 
-
-
 import Counseling from "./components/Catalog/Counseling/Counseling";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
