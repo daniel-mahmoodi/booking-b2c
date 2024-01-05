@@ -1,57 +1,43 @@
-.header {
-  /* padding-bottom: 84px; */
-}
-.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 10;
-  min-height: 84px;
-  animation-name: stickyShow;
-  animation-duration: 1s;
-  animation-delay: 0s;
-  /* animation-fill-mode: both; */
-}
-@keyframes stickyShow {
-  from {
-    top: -300px;
-  }
-  to {
-    top: 0px;
-  }
-}
-.stickyOnTop {
+.body {
   position: relative;
-  min-height: 84px;
-}
-.catalog {
-  position: fixed;
-  top: -300px;
-  left: 0;
-  right: 0;
-  margin: auto;
   z-index: 10;
-  min-height: 84px;
-  animation-name: stickyHide;
-  animation-duration: 1s;
-  animation-delay: 0s;
-  /* animation-fill-mode: both; */
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  /* padding-bottom: 84px; */
+  padding: 0px;
 }
-@keyframes stickyHide {
-  from {
-    top: 0px;
-  }
-  to {
-    top: -300px;
-  }
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1400px;
+  margin: 0 auto;
 }
-@media screen and (max-width: 760px) {
-  .header {
-    padding-bottom: 168px;
+.rightHeader {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.leftHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 680px) {
+  .body {
+    background-color: #ee395b;
   }
-  .catalog {
-    min-height: 168px;
+  .container {
+    /* justify-content: center; */
+    width: 100%;
+  }
+  .rightHeader {
+    /* display: none; */
+    justify-content: center;
+  }
+  .leftHeader {
+    justify-content: left;
   }
 }

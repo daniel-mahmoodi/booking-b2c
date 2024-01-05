@@ -1,0 +1,32 @@
+.page-header__btn {
+  margin-right: 50px;
+}
+
+.btnMenue {
+  display: none;
+  margin-left: 20px;
+}
+
+.btnMenue a {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #dddddd;
+  transition: 0.5s;
+}
+
+.btnMenue a:hover,
+.btnMenue a:focus,
+.btnMenue a:active {
+  color: #222222;
+}

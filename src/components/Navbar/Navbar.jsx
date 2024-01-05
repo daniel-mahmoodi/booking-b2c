@@ -1,38 +1,33 @@
-import React, { Fragment, useEffect, useState } from "react";
-import Catalog from "../Catalog/Main/Catalog";
-import NavbarHeader from "./NavbarHeader";
+import React from "react";
+import MainNavMenu from "./MainNavMenu/MainNavMenu";
+import NavLogo from "./NavLogo";
+// import UserInfoSticky from "./UserInfoSticky";
+import ShoppingBag from "./ShoppingBag";
+import NavSignInButton from "./NavSignInButton";
+import NavSearch from "./NavSearch";
+import HomeInMobile from "./HomeInMobile";
+import HambergerMobileButton from "./HambergerMobileButton";
 import classes from "./Navbar.module.css";
-const Navbar = () => {
-  // const [stickyNav, setStickyNav] = useState(false);
-  // const [stickyOnTop, setStickyOnTop] = useState(false);
-  // const [height, setHeight] = useState(false);
-  // useEffect(() => {
-  //   window.onscroll = () => {
-  //     setStickyOnTop(window.scrollY >= 84 ? true : false);
-  //     if (height < window.scrollY && stickyOnTop) {
-  //       setStickyNav(false);
-  //     } else {
-  //       setStickyNav(true);
-  //     }
-  //     setHeight(window.scrollY);
-  //     return () => (window.onscroll = null);
-  //   };
-  // }, [height, stickyNav, stickyOnTop]);
+function navbar() {
   return (
-    <Fragment>
-      {/* <div className={stickyOnTop ? classes.header : ""}> */}
-      <div className={classes.header}>
-        <NavbarHeader />
-      </div>
-      {/* <div
-        className={`${stickyNav ? classes.sticky : classes.catalog} ${
-          !stickyOnTop ? classes.stickyOnTop : ""
-        }`}
-      >
-        <Catalog />
-      </div> */}
-    </Fragment>
-  );
-};
+    <div className={classes.body}>
+      <div className={classes.container}>
+        <div className={classes.rightHeader}>
+          <NavLogo />
+          <MainNavMenu />
+        </div>
+        <div className={classes.leftHeader}>
+          {/* <NavSearch /> */}
+          {/* <HomeInMobile /> */}
+          <ShoppingBag />
+          <NavSignInButton />
+          <HambergerMobileButton />
+        </div>
 
-export default Navbar;
+        {/* <UserInfoSticky /> */}
+      </div>
+    </div>
+  );
+}
+
+export default navbar;

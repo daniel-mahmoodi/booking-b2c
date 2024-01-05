@@ -1,0 +1,13 @@
+.body {
+  width: 100px;
+  height: 100px;
+}
+.logo{
+  /* width: 100%; */
+
+}
+.logo > img {
+  object-fit: contain;
+  width: 80% !important;
+  height: 80% !important;
+}
