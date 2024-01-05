@@ -10,9 +10,7 @@ import ServiceDetails from "../Card/ServiceDetails";
 import Registration from "../Auth/Registration";
 import Profile from "../Profile/Profile";
 import { Login } from "../Auth/Login";
-import {
-  sendCartData,
-} from "../../store/basket-action";
+import { sendCartData } from "../../store/basket-action";
 import { basketActions } from "../../store/basket-slice";
 import PaymentDetails from "../Payment/PaymentDetails";
 import ListOfOrders from "../Order/ListOfOrders";
@@ -20,30 +18,26 @@ import OrderDetails from "../Order/OrderDetails";
 import PrintTicketsList from "../PrintTicket/PrintTicketsList";
 import PrintPage from "../PrintTicket/PrintPage";
 import Cars from "../Catalog/Items/Cars/Cars";
+import MyComponent from "../../MyComponent";
 const MainPage = () => {
   const dispatch = useDispatch();
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
   const token = useSelector((state) => state.auth.token);
-  
+
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {
-      dispatch(sendCartData(items, token,basketChanged));
+      dispatch(sendCartData(items, token, basketChanged));
       console.log("update");
     }
   }, [dispatch, token]);
-  // prevent footer component shows in login and signin pages
-  const location = useLocation();
-  const excludeFooterRoutes = ["/login", "/signup", "/print-page"];
-  const shouldShowFooter = !excludeFooterRoutes.includes(location.pathname);
-  const excludeNavbarRoutes = ["/print-page"];
-  const shouldShowNavbar = !excludeNavbarRoutes.includes(location.pathname);
+
   useEffect(() => {
     if (basketChanged && token) {
       console.log("update after basketChanged");
       const timer = setTimeout(() => {
-        dispatch(sendCartData(items, token,basketChanged));
+        dispatch(sendCartData(items, token, basketChanged));
         dispatch(basketActions.toggleBasketChanges(false));
       }, 1000);
       return () => {
@@ -56,7 +50,6 @@ const MainPage = () => {
     <div className="page-home">
       <div className="page-wrapper">
         <main className="page-main">
-          {shouldShowNavbar && <Navbar />}
           <Switch>
             <Route path="/" exact>
               <Redirect to="/home" />
@@ -64,10 +57,13 @@ const MainPage = () => {
             <Route path="/home" exact>
               <HomePage />
             </Route>
+            <Route path="/error" exact>
+              <MyComponent />
+            </Route>
             <Route path="/catalog" exact>
               <MainEventsPage />
             </Route>
-            <Route path="/profile" exact>
+            <Route path="/profile">
               <Profile />
             </Route>
             <Route path="/Payment/:paymentId" exact>
@@ -98,7 +94,6 @@ const MainPage = () => {
               <Redirect to="/home" />
             </Route>
           </Switch>
-          {shouldShowFooter && <Footer />}
         </main>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import ReactToPrint, { useReactToPrint } from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 import Print from "../PrintTicket/Print";
 import { useRef } from "react";
 const Printer = () => {

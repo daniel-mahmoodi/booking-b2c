@@ -34,15 +34,23 @@ const Calendar = ({ getDateFromCalendar, dateIsSelected }) => {
   useEffect(() => {
     getDateFromCalendar(date);
   }, [date]);
-  
+
   useEffect(() => {
     if (date) {
       dateIsSelected(true);
     }
   }, [date, dateIsSelected]);
-
   return (
     <div className={classes.body}>
+      {/* <DatePicker
+        inputClass={classes.customInput}
+        value={state.date}
+        onChange={convertToGre}
+        calendar={persian}
+        locale={persian_fa}
+        calendarPosition="bottom-right"
+        placeholder="تاریخ را انتخاب کنید"
+      /> */}
       <DatePicker
         inputClass={classes.customInput}
         value={state.date}
@@ -50,7 +58,15 @@ const Calendar = ({ getDateFromCalendar, dateIsSelected }) => {
         calendar={persian}
         locale={persian_fa}
         calendarPosition="bottom-right"
-        placeholder="تاریخ ورود"
+        placeholder="تاریخ را انتخاب کنید"
+        mapDays={({ date }) => {
+          let color;
+
+          if ([4, 5, 6, 7].includes(date.day)) color = "green";
+          if ([11, 12, 13, 14].includes(date.day)) color = "red";
+
+          if (color) return { className: "highlight highlight-" + color };
+        }}
       />
     </div>
   );

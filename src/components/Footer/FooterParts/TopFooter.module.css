@@ -1,0 +1,75 @@
+.body {
+  padding: 80px 0 0;
+}
+
+.body .uk-h3 {
+  -o-text-overflow: ellipsis;
+  margin-bottom: 20px;
+  overflow: hidden;
+  color: #222222;
+
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.body .uk-list li {
+  color: #222222;
+  font-weight: 600;
+}
+
+.body .uk-list li a {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  color: #222222;
+  font-weight: 400;
+  transition: 0.3s;
+}
+
+.body .uk-list li a:hover,
+.body .uk-list li a:focus,
+.body .uk-list li a:active {
+  color: #f44153;
+  text-decoration: none;
+}
+
+.body .uk-nav-default li a {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  color: #222222;
+  font-size: 14px;
+  line-height: 1.8;
+  transition: 0.3s;
+}
+
+.body .uk-nav-default li a:hover,
+.body .uk-nav-default li a:focus,
+.body .uk-nav-default li a:active {
+  color: #f44153;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  box-sizing: content-box;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.container > * {
+  width: 30%;
+}
+
+@media (max-width: 640px) {
+  .container {
+    flex-direction: column-reverse;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

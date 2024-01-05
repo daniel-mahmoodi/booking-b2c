@@ -1,5 +1,4 @@
 import React from "react";
-import { submitOrderHandler } from "../Utilities/Utils";
 import SubmitButton from "../Layout/SubmitButton";
 
 const ProductFeatures = ({ price, id }) => {

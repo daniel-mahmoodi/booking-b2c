@@ -6,12 +6,14 @@ import Sequences from "./components/Sequence/Sequence";
 import OffcanvasMenu from "./components/Navbar/OffcanvasMenu";
 import Checkout from "./components/Order/Checkout";
 import Spinner from "./components/Spinner/Spinner";
-import BasicDocument from "./BasicDocument";
-import PrintTicketsList from "./components/PrintTicket/PrintTicketsList";
-import Printer from "./components/Utilities/Printer";
-import ReactPrintHtml from "./components/Utilities/ReactPrintHtml";
-import ReactToPdf from "./components/Utilities/ReactToPdf";
+
+
+
 import Counseling from "./components/Catalog/Counseling/Counseling";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+
 function App() {
   const showSideBar = useSelector((state) => state.ui.showSideBar);
   const showSequencesModal = useSelector(
@@ -23,7 +25,7 @@ function App() {
     (state) => state.ui.showCounselingModal
   );
   const urlToPay = useSelector((state) => state.order.url);
- 
+
   useEffect(() => {
     if (urlToPay) {
       setTimeout(() => {
@@ -51,10 +53,16 @@ function App() {
     showSideBar,
     showSpinnerModal,
   ]);
-  
-  
+  // prevent footer component shows in login and signin pages
+  const location = useLocation();
+  const excludeFooterRoutes = ["/login", "/signup", "/print-page"];
+  const shouldShowFooter = !excludeFooterRoutes.includes(location.pathname);
+  const excludeNavbarRoutes = ["/print-page"];
+  const shouldShowNavbar = !excludeNavbarRoutes.includes(location.pathname);
+
   return (
-    <div className="App" dir="rtl">
+    <div className="App">
+      {shouldShowNavbar && <Navbar />}
       {showSpinnerModal && <Spinner />}
       {/* <BasicDocument /> */}
       {/* <ReactPrintHtml /> */}
@@ -64,7 +72,10 @@ function App() {
       {showSideBar && <OffcanvasMenu />}
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}
-      <MainPage />
+      <div className="App-body">
+        <MainPage />
+      </div>
+      {shouldShowFooter && <Footer />}
     </div>
   );
 }

@@ -11,6 +11,7 @@ const NavSignInButton = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const sendUserToLoginhandler = () => {
     dispatch(uiActions.toggleSideBar(false));
+    dispatch(uiActions.sendUserToOtpPage(false));
     if (isLoggedIn) {
       dispatch(authActions.logout());
       dispatch(basketActions.eraseAllBasket());

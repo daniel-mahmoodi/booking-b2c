@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Margin, usePDF } from "react-to-pdf";
-import PrintTicketsList from "../PrintTicket/PrintTicketsList";
+// import PrintTicketsList from "../PrintTicket/PrintTicketsList";
 // import { Button } from "./Button";
 // import { Container } from "./Container";
 

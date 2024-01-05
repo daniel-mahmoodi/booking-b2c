@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./OrderDetails.module.css";
-import { paymentMethod, orderStatus } from "../Utilities/Utils";
+import { paymentMethod, orderStatus } from "../../locals/fa";
 import moment from "jalali-moment";
 
 const OrderInfo = ({ selectedOrderDetails }) => {

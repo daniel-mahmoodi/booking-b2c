@@ -14,7 +14,7 @@ const ShoppingBag = () => {
   // );
 
   const sendUserToBasketHandler = () => {
-    history.push("/profile");
+    history.push("/profile/basket");
     dispatch(profileActions.selectActiveTab("basket"));
   };
   return (

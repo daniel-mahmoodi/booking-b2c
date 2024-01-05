@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./OrderedTicket.module.css";
-import { ticketStatus } from "../Utilities/Utils";
+import { ticketStatus } from "../../locals/fa";
 const OrderedTicket = ({ ticket }) => {
  
   return (

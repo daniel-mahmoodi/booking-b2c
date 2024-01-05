@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./PaymentTable.module.css";
 import moment from "jalali-moment";
-import { paymentsType } from "../Utilities/Utils";
+import { paymentsType } from "../../locals/fa";
 
 const PaymentTable = ({ paymentDetails }) => {
   return (

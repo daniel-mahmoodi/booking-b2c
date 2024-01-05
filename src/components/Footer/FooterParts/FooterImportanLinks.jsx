@@ -1,32 +1,31 @@
-import React from 'react'
-
+import React from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import classes from "./FooterImportanLinks.module.css";
+import { takishBlogUrl } from "../../../locals/fa";
 const FooterImportanLinks = () => {
   return (
-     <div className="uk-width-1-3@m uk-visible@s">
-              <div className="uk-grid uk-grid-small uk-child-width-1-2@s" data-uk-grid>
-                <div>
-                  <h3 className="uk-h3">لینک مهم</h3>
-                  {/* <ul className="uk-nav uk-nav-default">
-                    <li><a href="/">لینک ۱</a></li>
-                    <li><a href="/">لینک ۲</a></li>
-                    <li><a href="/">لینک ۳</a></li>
-                    <li><a href="/">لینک ۴</a></li>
-                    <li><a href="/">لینک ۵</a></li>
-                    <li><a href="/">لینک ۶</a></li>
-                  </ul> */}
-                </div>
-                <div>
-                  <h3 className="uk-h3">خدمات</h3>
-                  {/* <ul className="uk-nav uk-nav-default">
-                    <li><a href="/">لینک ۱</a></li>
-                    <li><a href="/">لینک ۱</a></li>
-                    <li><a href="/">لینک ۱</a></li>
-                    <li><a href="/">لینک ۱</a></li>
-                  </ul> */}
-                </div>
-              </div>
-            </div>
-  )
-}
+    <div className={classes.body}>
+      <div className={classes.listContainer}>
+        <h3 className={classes.title}>با تاکیش 724</h3>
+        <ul className={classes.list}>
+          <a href={`${takishBlogUrl}`}>مجله تاکیش 724</a>
+          <Link to="">درباره ما</Link>
+          <Link to="">تماس با ما</Link>
+          <Link to="">قوانین</Link>
+        </ul>
+      </div>
+      <div className={classes.listContainer}>
+        <h3 className={classes.title}>خدمات</h3>
+        <ul className={classes.list}>
+          <Link to="">سوالات متداول</Link>
+          <Link to="">چطور یک سرویس را رزرو کنم؟</Link>
+          <Link to="">شیوه ی شارژ کیف پول</Link>
+          <Link to="">شیوه ی پرداخت</Link>
+          <Link to="">حریم شخصی کاربران</Link>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-export default FooterImportanLinks
+export default FooterImportanLinks;

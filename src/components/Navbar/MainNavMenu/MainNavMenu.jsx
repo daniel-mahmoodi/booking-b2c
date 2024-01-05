@@ -6,7 +6,7 @@ import { profileActions } from "../../../store/profile-slice";
 const MainNavMenu = () => {
   const dispatch = useDispatch();
   const changeProfileTabHandler = () => {
-    dispatch(profileActions.selectActiveTab("order"));
+    dispatch(profileActions.selectActiveTab("orders"));
   };
   return (
     <div className="page-header__mainmenu">
@@ -25,7 +25,7 @@ const MainNavMenu = () => {
           <li className={classes.divider}></li>
           <li onClick={changeProfileTabHandler}>
             <NavLink
-              to="/profile"
+              to="/profile/orders"
               className={classes.menuItem}
               activeClassName={classes.active}
               style={{ fontFamily: "iransans" }}

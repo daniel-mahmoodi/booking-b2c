@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
 import classes from "./OrderItem.module.css";
 import moment from "jalali-moment";
-import { clickable, paymentMethod } from "../Utilities/Utils";
+import { paymentMethod, orderStatus } from "../../locals/fa";
 import { orderActions } from "../../store/order-slice";
 import { profileActions } from "../../store/profile-slice";
-import { orderStatus } from "../Utilities/Utils";
+import { clickable } from "../../Utilities/Utils";
 
 const OrderItem = ({ data, rowNumber }) => {
   const history = useHistory();
@@ -16,7 +16,7 @@ const OrderItem = ({ data, rowNumber }) => {
       // history.push(`/profile/${data.orderRefrence}`);
       dispatch(orderActions.setOrderRefrence(data.orderRefrence));
       dispatch(profileActions.selectActiveTab("details"));
-      history.push('/profile/orders/details')
+      history.push("/profile/orders/details");
     }
   };
   const purchaseOrderProcess = (event) => {
