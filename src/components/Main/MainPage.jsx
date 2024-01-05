@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
+
 import MainEventsPage from "../Events/MainEventsPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchListOfCatalogs } from "../../store/catalog-action";

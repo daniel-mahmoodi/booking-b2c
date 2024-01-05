@@ -1,5 +1,5 @@
 .body {
-  /* width: 1400px; */
+  width: 100%;
   height: 690px;
   margin: 0 auto;
 }
@@ -18,4 +18,15 @@
   object-fit: cover;
   /* Center the background image */
   background-position: center;
+}
+@media (max-width: 680px) {
+  .body {
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    background-color: #ee395b;
+  }
+  .image {
+    display: none;
+  }
 }

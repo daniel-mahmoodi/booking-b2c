@@ -1,7 +1,7 @@
 import React from "react";
 import { instagramLink } from "../../../locals/fa";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faInstagram } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 const MiddleFooter = () => {
   return (
     <div>
@@ -9,7 +9,7 @@ const MiddleFooter = () => {
       <ul>
         <li>
           <a href={`${instagramLink}`}>
-            {/* <FontAwesomeIcon icon={faInstagram} /> */}
+            <FontAwesomeIcon icon={faInstagram} />
           </a>
         </li>
       </ul>
