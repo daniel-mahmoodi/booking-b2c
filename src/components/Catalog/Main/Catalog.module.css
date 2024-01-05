@@ -49,7 +49,7 @@
        margin: 0 15px;
      }
    }
-   @media only screen and (max-width: 640px) {
+   @media only screen and (max-width: 680px) {
      .items {
        max-width: 300px;
      }

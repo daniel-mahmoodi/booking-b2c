@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { catalogActions } from "../../../store/catalog-slice";
 import { useHistory } from "react-router-dom";
 import { fetchCatalogDetails } from "../../../store/catalog-action";
-import classes from "../Main/HomePageCatalog.module.css";
+import classes from "./../Main/HomePageCatalog.module.css";
 const IMGUrl = process.env.REACT_APP_API_IMAGE_URL;
 const CatalogItem = ({ data }) => {
   const dispatch = useDispatch();
