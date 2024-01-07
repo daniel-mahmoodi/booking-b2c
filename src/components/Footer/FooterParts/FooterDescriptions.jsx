@@ -2,12 +2,13 @@ import React from "react";
 import { phoneNumber, takishEmail, persian } from "../../../locals/fa";
 import classes from "./FooterDescriptions.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Logo from "../../Layout/Logo";
 const FooterDescriptions = () => {
   return (
     <div className={classes.body}>
       <div className={classes.logo}>
         <Link to="/">
-          <img className="" src="/assets/img/takish-logo.png" alt="تاکیش724" />
+          <Logo/>
         </Link>
       </div>
       <p>{persian.footerDescriptions}</p>
