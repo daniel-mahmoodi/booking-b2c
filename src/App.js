@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./App.css";
 import MainPage from "./components/Main/MainPage";
@@ -58,6 +58,21 @@ function App() {
   const excludeNavbarRoutes = ["/print-page"];
   const shouldShowNavbar = !excludeNavbarRoutes.includes(location.pathname);
 
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  useEffect(() => {
+    if (!showSideBar) {
+      const timer = setTimeout(() => {
+        setShowOffcanvas(false);
+      }, 2000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+    if (showSideBar) {
+      setShowOffcanvas(true);
+    }
+  }, [showSideBar]);
+
   return (
     <div className="App">
       {shouldShowNavbar && <Navbar />}
@@ -67,7 +82,12 @@ function App() {
       {/* <ReactToPdf /> */}
       {/* <Printer /> */}
       {showCounselingModal && <Counseling />}
-      {showSideBar && <OffcanvasMenu />}
+      <div className={`offcanvas-menu ${showSideBar ? "visible " : ""}`}>
+        {showOffcanvas && <OffcanvasMenu />}
+      </div>
+      <div
+        className={`offcanvas-menu-bg ${showSideBar ? "visible " : ""}`}
+      ></div>
       {showSequencesModal && <Sequences />}
       {showCheckoutModal && <Checkout />}
       <div className="App-body">
