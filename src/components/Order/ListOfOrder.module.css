@@ -37,3 +37,8 @@
     width: auto;
   }
 }
+@media screen and (max-width: 680px) {
+  .body {
+    width: 100%;
+  }
+}

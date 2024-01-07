@@ -1,11 +1,29 @@
-.body {
+.noContentBody {
   background-color: white;
   border-radius: 12px;
-  width: 68rem;
+  /* width: 68rem; */
+  width: 100%;
   margin: 0 auto;
+  color: var(--darkRed-color) !important;
 }
 .noContentIcon {
-  width: auto;
+  width: 200px;
   margin: 0 auto;
-  color: rgb(158, 33, 33) !important;
+}
+
+@media (max-width: 680px) {
+  .body {
+    background-color: var(--white-color);
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+  .noContentBody {
+    width: 100%;
+    background-color: var(--white-color);
+    margin-bottom: 12px;
+    border: 1px solid var(--grayBorder-color);
+  }
+  .noContentIcon {
+    width: 50%;
+  }
 }

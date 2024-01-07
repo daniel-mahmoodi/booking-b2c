@@ -1,30 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { profileActions } from "../../../store/profile-slice";
 import classes from "./RightSideBar.module.css";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+} from "react-router-dom/cjs/react-router-dom.min";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
-  faBasketShopping,
   faHatWizard,
   faShieldHalved,
   faPersonWalkingLuggage,
+  faCartFlatbedSuitcase,
 } from "@fortawesome/free-solid-svg-icons";
 function RightSideBar() {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const activeTab = useSelector((state) => state.profile.activeTab);
-  console.log("activeTab", activeTab);
 
   const showTabHandler = (tab) => {
     dispatch(profileActions.selectActiveTab(tab));
     history.push(`/profile/${tab}`);
   };
+  
+  useEffect(() => {
+    const parts = history.location.pathname.split("/");
+    const lastPart = parts[parts.length - 1];
+    dispatch(profileActions.selectActiveTab(lastPart));
+  }, [dispatch, history.location.pathname]);
 
   return (
-    <div className={classes.profileSidenav}>
+    <div className={classes.body}>
       <ul className={classes.links}>
         <li
           className={activeTab === "account" ? classes.active : ""}
@@ -38,7 +45,7 @@ function RightSideBar() {
           className={activeTab === "basket" ? classes.active : ""}
           onClick={() => showTabHandler("basket")}
         >
-          <FontAwesomeIcon icon={faBasketShopping} />
+          <FontAwesomeIcon icon={faCartFlatbedSuitcase} />
           <p>سبد خرید</p>
         </li>
         <hr />
