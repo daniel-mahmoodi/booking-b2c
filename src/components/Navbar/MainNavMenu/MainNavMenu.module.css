@@ -24,6 +24,10 @@
   margin: 0 3px;
   width: 100%;
 }
+.menuItem:hover {
+  text-decoration: none;
+  color: black;
+}
 .active {
   font-weight: bold;
 }
@@ -41,7 +45,7 @@
   background: var(--border-1);
   background-color: rgba(77, 70, 70, 0.3);
 }
-@media(max-width:680px){
+@media (max-width: 680px) {
   .body {
     display: none;
   }

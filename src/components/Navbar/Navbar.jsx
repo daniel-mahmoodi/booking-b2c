@@ -15,7 +15,7 @@ function navbar() {
   return (
     <div className={classes.navBody}>
       <div className={classes.headerBody}>
-        <div className={classes.Headerontainer}>
+        <div className={classes.HeaderContainer}>
           <div className={classes.rightHeader}>
             <NavLogo />
             <MainNavMenu />
@@ -40,7 +40,7 @@ function navbar() {
           </Link>
           <div className={classes.bottomListItem}>
             <ShoppingBag />
-            <span className={classes.bottomListIconDesc}>سفارشات</span>
+            <span className={classes.bottomListIconDesc}>سبد خرید</span>
           </div>
           <div className={classes.bottomListItem}>
             <NavSignInButton />

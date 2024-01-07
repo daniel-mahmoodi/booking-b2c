@@ -13,7 +13,7 @@
   align-items: center;
 }
 .bagItem:hover {
-  color: rgb(206, 206, 206);
+  /* color: rgb(206, 206, 206); */
   cursor: pointer;
 }
 @media (max-width: 680px) {

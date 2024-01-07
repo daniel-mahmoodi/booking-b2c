@@ -8,9 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartFlatbedSuitcase,
   faCircleXmark,
+  faHatWizard,
   faHeadset,
   faInbox,
   faMountainCity,
+  faPersonWalkingLuggage,
+  faShieldHalved,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 const OffcanvasMenu = () => {
   const dispatch = useDispatch();
@@ -36,12 +40,26 @@ const OffcanvasMenu = () => {
               />
               <span>خانه</span>
             </Link>
-            <Link to="/profile/orders">
+            <Link to="/profile/basket">
               <FontAwesomeIcon
                 className={classes.bottomListIcon}
                 icon={faCartFlatbedSuitcase}
               />
+              <span>سبد خرید</span>
+            </Link>
+            <Link to="/profile/orders">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faHatWizard}
+              />
               <span>سفارشات</span>
+            </Link>
+            <Link to="/profile/account">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faUser}
+              />
+              <span>حساب کاربری</span>
             </Link>
             <Link to="/call-us">
               <FontAwesomeIcon
@@ -56,6 +74,22 @@ const OffcanvasMenu = () => {
                 icon={faInbox}
               />
               <span>درباره ما</span>
+            </Link>
+
+            <Link to="/profile">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faShieldHalved}
+              />
+              <span>پوشش بیمه نامه</span>
+            </Link>
+
+            <Link to="/profile">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faPersonWalkingLuggage}
+              />
+              <span>خروج از حساب کاربری</span>
             </Link>
           </ul>
         </div>
