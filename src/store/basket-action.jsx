@@ -270,10 +270,10 @@ export const sendCartData = (basket, token, isUserDeletedLastItemOfBasket) => {
     //     });
     //   });
     // }
-    if (isUserDeletedLastItemOfBasket) {
+    if (!isUserDeletedLastItemOfBasket) {
       console.log(
-        "!isUserDeletedLastItemOfBasket",
-        !isUserDeletedLastItemOfBasket
+        "isUserDeletedLastItemOfBasket",
+        isUserDeletedLastItemOfBasket
       );
       dispatch(getCartData(token));
     } else {

@@ -23,7 +23,7 @@ const MainPage = () => {
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
   const token = useSelector((state) => state.auth.token);
-
+  console.log("basketChanged", basketChanged);
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {
@@ -34,8 +34,8 @@ const MainPage = () => {
 
   useEffect(() => {
     if (basketChanged && token) {
-      console.log("update after basketChanged");
       const timer = setTimeout(() => {
+        console.log("update after basketChanged", basketChanged);
         dispatch(sendCartData(items, token, basketChanged));
         dispatch(basketActions.toggleBasketChanges(false));
       }, 1000);

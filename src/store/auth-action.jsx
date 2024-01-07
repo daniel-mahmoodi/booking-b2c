@@ -89,8 +89,12 @@ export const loginRequest = (userData) => {
         }, 2000);
         if (error.response?.status === 415)
           dispatch(authActions.showLoginWarning(error.response.data));
-      });
-    //  dispatch(uiActions.showWarning(response.response.data));
+        if (error.response?.status === 400){
+          //todo: inja bayad baraye error object besazi
+        }
+        // dispatch(authActions.showLoginWarning({}));
+      //  dispatch(uiActions.showWarning(response.response.data));
+    });
   };
 };
 export const verifyOtp = ({ OtpToken, PhoneNumber }) => {
