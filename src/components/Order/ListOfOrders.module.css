@@ -1,0 +1,37 @@
+.body {
+  width: 100%;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius);
+  padding: 2px;
+}
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 24px 0px 48px 0px;
+  font-size: 24px !important;
+}
+
+.noContentIcon {
+  width: 200px;
+  margin: 0 auto;
+}
+.noCotentTitle {
+  color: var(--darkRed-color);
+}
+
+@media screen and (max-width: 1200px) {
+  .listContainer {
+    /* width: 680px; */
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .body {
+    margin-bottom: 24px;
+  }
+}
