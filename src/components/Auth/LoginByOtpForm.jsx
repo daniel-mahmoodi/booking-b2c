@@ -1,10 +1,11 @@
 import React from "react";
+import Logo from "../Layout/Logo";
 
 const LoginByOtpForm = ({onSubmit,mobile,onInputChange,loginWarning,changeRegistrationType,sendUserToRegistration}) => {
   return (
     <div className="card-login" style={{ marginTop: "-400px" }}>
       <div className="header">
-        <img src="/assets/img/takish-logo.png" alt="" />
+      <Logo/>
       </div>
       <h1 className="title">ورود به سایت</h1>
       <div className="uk-width-3-3@m body">

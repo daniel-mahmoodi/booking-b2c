@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { loginRequest } from "../../store/auth-action";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
+import Logo from "../Layout/Logo";
 
 const initialState = {
   Email: "",
@@ -63,7 +64,7 @@ function LoginByPass({ changeRegistrationType }) {
       <div id="particles-js"></div>
       <div className="card-login" style={{ marginTop: "-400px" }}>
         <div className="header">
-          <img src="/assets/img/takish-logo.png" alt="" />
+        <Logo/>
         </div>
         <h1 className="title">ورود به سایت</h1>
         <div className="uk-width-3-3@m body">

@@ -4,6 +4,7 @@ import { loginRequest, verifyOtp } from "../../store/auth-action";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
 import MyLoading from "../Layout/MyLoading";
+import Logo from "../Layout/Logo";
 
 const initialState = {
   Mobile: "",
@@ -72,7 +73,7 @@ function AddingOTP() {
       <div id="particles-js"></div>
       <div className="card-login" style={{ marginTop: "-400px" }}>
         <div className="header">
-          <img src="/assets/img/takish-logo.png" alt="" />
+          <Logo />
         </div>
         <h1 className="title">ورود به سایت</h1>
         <div className="uk-width-3-3@m body">

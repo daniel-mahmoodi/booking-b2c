@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { signUpRequest } from "../../store/auth-action";
 import { authActions } from "../../store/auth-slice";
+import Logo from "../Layout/Logo";
 
 const initialState = {
   FirstName: "",
@@ -63,7 +64,7 @@ const RegistrationByOTP = ({ changeRegistrationType }) => {
   return (
     <div className="card-login" style={{ marginTop: "-300px" }}>
       <div className="header">
-        <img src="/assets/img/takish-logo.png" alt="" />
+      <Logo/>
       </div>
       <h1 className="title">ثبت نام</h1>
 
