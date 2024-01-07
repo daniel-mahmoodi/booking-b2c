@@ -21,7 +21,7 @@
 }
 @media (max-width: 680px) {
   .body {
-    height: 100px;
+    height: 50px;
     margin: 0;
     padding: 0;
     background-color: #ee395b;

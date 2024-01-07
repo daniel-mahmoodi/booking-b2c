@@ -9,7 +9,7 @@ import Catalog from "../../Catalog/Main/Catalog";
 import HomePageCatalog from "../../Catalog/Main/HomePageCatalog";
 import GetWPData from "../GetWPData";
 import { useGetWPData } from "../../Hook/useGetWPData";
-
+import classes from "./HomePage.module.css";
 const HomePage = () => {
   const { data, media, loading } = useGetWPData(22);
   console.log("data, media, loading", data, media, loading);
@@ -18,24 +18,12 @@ const HomePage = () => {
       {/* <Slider /> */}
       <HomeBanner />
 
-      <div style={{ marginBottom: "10rem" }}>
+      <div className={classes.catalog}>
         <HomePageCatalog />
       </div>
-      <div
-        style={{
-          marginBottom: "24px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <GetWPData category={22} />
-          <GetWPData category={36} />
-        </div>
+      <div className={classes.category}>
+        <GetWPData category={22} />
+        <GetWPData category={36} />
       </div>
 
       {/* <Catalog /> */}
@@ -46,7 +34,7 @@ const HomePage = () => {
           )
         : ""}
       {/* <SectionFeatured /> */}
-    
+
       <SecondSectionBanner />
     </Fragment>
   );
