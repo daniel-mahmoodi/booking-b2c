@@ -9,15 +9,14 @@ const MainNavMenu = () => {
     dispatch(profileActions.selectActiveTab("orders"));
   };
   return (
-    <div className="page-header__mainmenu">
-      <nav className="mainmenu" data-uk-navbar="">
-        <ul className="uk-navbar-nav">
+    <div className={classes.body}>
+      <nav className={classes.container}>
+        <ul className={classes.list}>
           <li>
             <NavLink
               to="/home"
               className={classes.menuItem}
               activeClassName={classes.active}
-              style={{ fontFamily: "iransans" }}
             >
               خانه
             </NavLink>
@@ -28,7 +27,6 @@ const MainNavMenu = () => {
               to="/profile/orders"
               className={classes.menuItem}
               activeClassName={classes.active}
-              style={{ fontFamily: "iransans" }}
             >
               سفارشات
             </NavLink>
@@ -40,7 +38,6 @@ const MainNavMenu = () => {
               to="/about"
               className={classes.menuItem}
               activeClassName={classes.active}
-              style={{ fontFamily: "iransans" }}
             >
               درباره ما
             </NavLink>
@@ -51,9 +48,8 @@ const MainNavMenu = () => {
               to="contact-us"
               className={classes.menuItem}
               activeClassName={classes.active}
-              style={{ fontFamily: "iransans" }}
             >
-              تماس با ما
+             مرکز پشتیبانی آنلاین
             </NavLink>
           </li>
         </ul>

@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import classes from './HambergerMobileButton.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 const HambergerMobileButton = () => {
   const dispatch = useDispatch();
   const toggleSideBarHandler = () => {
@@ -9,9 +11,9 @@ const HambergerMobileButton = () => {
   };
   return (
     <div onClick={toggleSideBarHandler} className={classes.btnMenu}>
-      <a>
-        <ion-icon name="menu-outline"></ion-icon>
-      </a>
+      <div>
+      <FontAwesomeIcon icon={faBars} />
+      </div>
     </div>
   );
 };

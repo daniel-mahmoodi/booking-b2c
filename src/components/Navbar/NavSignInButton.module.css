@@ -1,0 +1,39 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.body:hover {
+  background-color: rgb(255, 245, 245);
+  border-radius: 0.5rem;
+}
+.container {
+  padding: 6px 12px;
+  width: 100%;
+  height: 100%;
+}
+.container > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container > p > * {
+  margin: 0 3px;
+}
+.container > p :first-child {
+  font-size: 16px;
+}
+@media (max-width: 680px) {
+  .container > p {
+    flex-direction: column;
+  }
+  .container > p :first-child {
+    font-size: 32px;
+    /* padding: 0; */
+    color: #ee395b;
+  }
+  .desc {
+    color: #581522;
+  }
+}

@@ -16,3 +16,11 @@
   color: rgb(206, 206, 206);
   cursor: pointer;
 }
+@media (max-width: 680px) {
+  .bagItem {
+    font-size: 32px;
+    padding: 0;
+    color: #ee395b;
+  }
+}
+

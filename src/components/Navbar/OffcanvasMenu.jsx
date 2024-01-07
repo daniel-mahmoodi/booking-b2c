@@ -1,71 +1,63 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
-import NavSignInButton from "./NavSignInButton";
 import { Link } from "react-router-dom";
+import classes from "./OffcanvasMenu.module.css";
+import Logo from "../Layout/Logo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartFlatbedSuitcase,
+  faCircleXmark,
+  faHeadset,
+  faInbox,
+  faMountainCity,
+} from "@fortawesome/free-solid-svg-icons";
 const OffcanvasMenu = () => {
   const dispatch = useDispatch();
   const toggleSideBarHandler = () => {
     dispatch(uiActions.toggleSideBar(false));
   };
   return (
-    <div id="offcanvas" data-uk-offcanvas="overlay: true">
-      <div
-        className="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between"
-        style={{
-          display: "block",
-          position: "absolute",
-          right: "0px",
-          left: "auto",
-          top: "0px",
-          zIndex: "1000",
-        }}
-      >
-        <button
-          onClick={toggleSideBarHandler}
-          className="uk-offcanvas-close"
-          style={{ backgroundColor: "white", border: "0" }}
-          type="button"
-          data-uk-close=""
-        >
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-        <div>
-          <div className="uk-margin">
-            <div className="logo">
-              <a className="logo__link">
-                <img
-                  className="logo__img"
-                  src="/assets/img/takish-logo.png"
-                  alt="Doremi"
-                  style={{ width: "200px" }}
-                />
-              </a>
-            </div>
+    <div className={classes.body}>
+      <div onClick={toggleSideBarHandler} className={classes.background}></div>
+      <div className={classes.container}>
+        {/* <button className={classes.closeBtn} onClick={toggleSideBarHandler}>
+          <FontAwesomeIcon icon={faCircleXmark} />
+        </button> */}
+        <div className={classes.menu}>
+          <div className={classes.logo}>
+            <Logo />
           </div>
-          <div className="uk-margin-medium">
-            <ul
-              onClick={toggleSideBarHandler}
-              className="uk-nav uk-nav-default uk-nav-parent-icon"
-              data-uk-nav
-            >
-              <li className="uk-parent">
-                <Link to="/">خانه</Link>
-              </li>
-              <li className="uk-parent">
-                <Link to="/orders">سفارشات</Link>
-              </li>
-              <li className="uk-parent">
-                <Link to="/">تماس با ما</Link>
-              </li>
-              <li className="uk-parent">
-                <Link to="/">پشتیبانی</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <NavSignInButton />
+          <ul className={classes.list} onClick={toggleSideBarHandler}>
+            <Link to="/home">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faMountainCity}
+              />
+              <span>خانه</span>
+            </Link>
+            <Link to="/profile/orders">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faCartFlatbedSuitcase}
+              />
+              <span>سفارشات</span>
+            </Link>
+            <Link to="/call-us">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faHeadset}
+              />
+              <span>مرکز پشتیبانی آنلاین</span>
+            </Link>
+            <Link to="/about">
+              <FontAwesomeIcon
+                className={classes.bottomListIcon}
+                icon={faInbox}
+              />
+              <span>درباره ما</span>
+            </Link>
+          </ul>
         </div>
       </div>
     </div>

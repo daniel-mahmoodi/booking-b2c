@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { profileActions } from "../../store/profile-slice";
 import NavShoppingItems from "./NavShoppingItems";
 import classes from "./ShoppingBag.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartFlatbedSuitcase } from "@fortawesome/free-solid-svg-icons";
 const ShoppingBag = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -20,32 +22,8 @@ const ShoppingBag = () => {
   return (
     <div onClick={sendUserToBasketHandler} className={classes.bagContainer}>
       <div className={classes.bagItem}>
-        <ion-icon name="bag-handle-outline"></ion-icon>
+      <FontAwesomeIcon icon={faCartFlatbedSuitcase} />
       </div>
-
-      {/* <div className="basket-header">
-        {items.map((item) => (
-          <NavShoppingItems key={item.id} data={item} />
-        ))}
-        {totalDiscountedPrice > 0 && (
-          <>
-            <hr />
-            <p className="total-price-box">
-              <span>مبلغ قابل پرداخت</span>
-              <span className="text-green fw-md">
-                {Number(totalDiscountedPrice).toLocaleString()} تومان
-              </span>
-            </p>
-          </>
-        )}
-        <hr />
-        <a
-          onClick={sendUserToBasketHandler}
-          className="uk-button uk-button-danger shine"
-        >
-          {totalDiscountedPrice > 0 ? "مشاهده سبد خرید" : "سبد شما خالی است"}
-        </a>
-      </div> */}
       {totalQuantity > 0 && (
         <span
           style={{

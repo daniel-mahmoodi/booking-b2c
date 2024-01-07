@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { authActions } from "../../store/auth-slice";
 import { uiActions } from "../../store/ui-slice";
 import { basketActions } from "../../store/basket-slice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
+import classes from "./NavSignInButton.module.css";
 
 const NavSignInButton = () => {
   const history = useHistory();
@@ -21,13 +24,20 @@ const NavSignInButton = () => {
   };
 
   return (
-    <div onClick={sendUserToLoginhandler} className="page-header__sing-in">
-      <a className="uk-button uk-button-danger">
-        <i className="fas fa-sign-in-alt"></i>
-        <span style={{ marginRight: "5px" }} data-login>
-          {isLoggedIn ? "خروج" : "ورود / ثبت نام"}
-        </span>
-      </a>
+    <div onClick={sendUserToLoginhandler} className={classes.body}>
+      <div className={classes.container}>
+        {isLoggedIn ? (
+          <p>
+            <FontAwesomeIcon icon={faRightFromBracket} />
+            <span className={classes.desc}>خروج</span>
+          </p>
+        ) : (
+          <p>
+            <FontAwesomeIcon icon={faUser} />
+            <span className={classes.desc}>ورود یا ثبت نام</span>
+          </p>
+        )}
+      </div>
     </div>
   );
 };
