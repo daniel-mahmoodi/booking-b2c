@@ -1,12 +1,12 @@
-@mixin red-text {
+ @mixin red-text {
   color: #ee395b;
 }
 @mixin red-bg {
   background-color: #ee395b;
-}
+} 
 
-// use above sass class in any css component like bellow:
+/* // use above sass class in any css component like bellow:
 // .danger {
 //   @include important-text;
 //   background-color: green;
-// }
+// } */

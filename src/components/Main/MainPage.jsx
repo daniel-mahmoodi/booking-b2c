@@ -12,8 +12,7 @@ import { Login } from "../Auth/Login";
 import { sendCartData } from "../../store/basket-action";
 import { basketActions } from "../../store/basket-slice";
 import PaymentDetails from "../Payment/PaymentDetails";
-import ListOfOrders from "../Order/ListOfOrders";
-import OrderDetails from "../Order/OrderDetails";
+
 import PrintTicketsList from "../PrintTicket/PrintTicketsList";
 import PrintPage from "../PrintTicket/PrintPage";
 import Cars from "../Catalog/Items/Cars/Cars";
@@ -23,19 +22,19 @@ const MainPage = () => {
   const basketChanged = useSelector((state) => state.basket.basketChanged);
   const items = useSelector((state) => state.basket.items);
   const token = useSelector((state) => state.auth.token);
-  console.log("basketChanged", basketChanged);
+
   useEffect(() => {
     dispatch(fetchListOfCatalogs());
     if (token) {
       dispatch(sendCartData(items, token, basketChanged));
-      console.log("update");
+      // console.log("update");
     }
   }, [dispatch, token]);
 
   useEffect(() => {
     if (basketChanged && token) {
       const timer = setTimeout(() => {
-        console.log("update after basketChanged", basketChanged);
+        // console.log("update after basketChanged", basketChanged);
         dispatch(sendCartData(items, token, basketChanged));
         dispatch(basketActions.toggleBasketChanges(false));
       }, 1000);
